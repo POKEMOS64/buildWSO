@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block class %}
+continent
+{% endblock class %}
+{% block index %}
+<div class="col lef-xl3 xl9 s12 s_info_nav__post">
+
+  <div class="s_info_nav__post__lk">
+    <span class="s_info_nav__post__name">
+      Вход
+    </span>
+    <form action="{% url 'users:login' %}" method="POST">
+      {% csrf_token %}
+      <div class="werf">
+        <label for="{{ form.username.id_for_label}}">Лицевой счет</label>
+        {{ form.username}}
+      </div>
+      <div class="werf">
+        <label for="{{ form.password.id_for_label}}">Пароль</label>
+        {{ form.password}}
+      </div>
+      <button type="submit" class="button__click">Войти</button>
+
+    </form>
+    <a href="{% url 'users:registration' %}" class="link">Пройти регистрацию {{ username}}</a>
+  </div>
+  <!--  -->
+  <span class="s_info_nav__post__name">
+    Передача показаний без авторизации
+  </span>
+  <div class="s_info_nav__post__old">
+    <a class="curlc mkd" href="#"><span>МКД</span></a>
+    <a class="curlc ch" href="#"><span>Частный сектор</span></a>
+    <a class="curlc sela" href="#"><span>Села</span></a>
+  </div>
+</div>
+{% endblock index %}

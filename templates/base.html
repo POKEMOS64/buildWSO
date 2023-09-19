@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %} МУП «БАЛАКОВО-ВОДОКАНАЛ» {% endblock title %}
+  </title>
+  <link rel="stylesheet" href="{% static 'css/reset.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fixx.css ' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@300;400;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/css/iziModal.min.css"
+    integrity="sha512-3c5WiuZUnVWCQGwVBf8XFg/4BKx48Xthd9nXi62YK0xnf39Oc2FV43lIEIdK50W+tfnw2lcVThJKmEAOoQG84Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+</head>
+
+<body>
+  <div class="container max">
+    <div class="wrap flex__line">
+      <div class="col xl3 s0 header__block">
+        <!-- Шапка -->
+        <div class="header">
+          <div class="wrap">
+            <a class="col xl12 s12 header__logo" href="#">
+              <img src="{% static 'img/logo.jpg' %}" alt="">
+            </a>
+            <div class="col xl12 s12 header__name">
+              <span>МУП</span>
+              <span> Балаково-Водоканал</span>
+            </div>
+          </div>
+        </div>
+        <!-- Шапка -->
+        {% include "tpl/__menu.html" %}
+
+      </div>
+      <section class="contact col xl12 s12">
+        <div class="wrap">
+          <div class="contact__inform col xl9 lef-xl3  lef-m0 m12">
+            <div class="col xl8 m12 contact__card" itemscope="" itemtype="https://schema.org/PostalAddress">
+              <div class="phone">
+                <span>ПРИЕМНАЯ:</span>
+                <a itemprop="telephone" href="tel:8(8453) 44-45-82" class="phone">8(8453) 44-45-82</a>
+              </div>
+              <div class="phone">
+                <span>ДИСПЕТЧЕРСКАЯ СЛУЖБА:</span>
+                <a itemprop="telephone" href="tel:8(8453) 44-45-33" class="phone">8(8453) 44-45-33</a>
+              </div>
+              <div class="mail">
+                <span>Наша почта:</span>
+                <a itemprop="email" href="mailto:office@bal-vod.ru" class="mail">office@bal-vod.ru</a>
+              </div>
+            </div>
+            <div class="contact__login col xl4 m12">
+              <div class="loginIn">
+
+                {% if user.is_authenticated %}
+                <p>Добро пожаловать: <span>{{ user.username }}</span></p>
+                <p><a href="{% url 'users:profile' %}">Личный кабинет</a></p>
+                {% else %}
+                <p>Пройдите авторизацию</p>
+                <a href="{% url 'users:login' %}">Вход</a>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% block index %}
+      <!-- Главная страница -->
+      {% endblock %}
+
+      {% block informations %}
+      <!-- Страница информации -->
+      {% endblock informations %}
+
+      {% block lk %}
+
+      {% endblock lk %}
+    </div>
+  </div>
+  <div class="footer__static">
+    <div class="wave">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <script src=" {% static 'js/libs/jquery.js' %}"></script>
+  <script src=" {% static 'js/owl.carousel.min.js' %}"></script>
+  <script src=" {% static 'js/app.js' %}"></script>
+</body>
+
+</html>

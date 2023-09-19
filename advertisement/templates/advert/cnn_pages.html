@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная {% endblock title %}
+{% block class %}
+lk
+{% endblock class %}
+{% block index %}
+<section class="s_info_cnn_pages col xl9 lef-xl3 white">
+    <div class="container max">
+        <div class="wrap">
+            <div class="col xl8 m12 advertisement">
+                <h2>ИЗВЕЩЕНИЕ</h2>
+                <div class="advertisement__pages">
+                    {% for obj in text %}
+                    {{obj.header|safe}}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col xl12 advertisement__carusel">
+                <div class="wrap">
+                    <div class="col xl6 advertisement__carusel__name">
+                        График обхода
+                    </div>
+                    <div class="owl-carousel owl-theme">
+                        {% for obj in advertviews %}
+                        <div class="item">
+                            <div class="wrap">
+                                <div class="col xl12 item__data">
+                                    <p>{{ obj.dataAd }}</p><span>{{ obj.gapTime }}</span>
+                                </div>
+                                <div class="col xl12 item__name">
+                                    <p>{{ obj.optMaps }}</p>
+                                    {% if obj.optMaps_one == '0' %}
+
+                                    {% else %}
+                                    <p>{{ obj.optMaps_one }}</p>
+                                    {% endif %}
+                                    {% if obj.optMaps_two == '0' %}
+                                    {% else %}
+                                    <p>{{ obj.optMaps_two }}</p>
+                                    {% endif %}
+                                    {% if obj.optMaps_three == '0' %}
+                                    {% else %}
+                                    <p>{{ obj.optMaps_three }}</p>
+                                    {% endif %}
+
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col xl12">
+                {% for obj in text %}
+                {{obj.sectionText|safe}}
+                {% endfor %}
+
+            </div>
+            <div class="col xl12">
+                <p>
+                    Настоящее Извещение размещено на официальной странице МУП «Балаково-Водоканал» в сети Интернет в
+                    соответствии с подпунктом «а» пункта 119 Правил предоставления коммунальных услуг собственникам и
+                    пользователям помещений в многоквартирных домах и жилых домов, утвержденных Постановлением
+                    Правительства РФ
+                    от 6 мая 2011 г. N 354.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock index %}

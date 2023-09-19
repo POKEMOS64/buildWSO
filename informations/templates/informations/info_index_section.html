@@ -1,0 +1,72 @@
+{% extends './info_index_pages.html' %}
+{% load static %}
+{% block title %}
+{% for obj in idx %}
+{{obj.title}}
+{% endfor %}
+{% endblock title %}
+{% block class %}
+lk
+{% endblock class %}
+
+{% block section %}
+<div class="col xl12 m12 advertisement infor">
+  <h2>Общая информация</h2>
+
+  <div class="info__informations-text typog">
+    {% for obj in idx %}
+    {{obj.pagesText| safe}}
+    {% endfor %}
+
+
+    {% for obj in infoDoc %}
+    <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+    {% endfor %}
+  </div>
+</div>
+<div class="col xl12 debt__tabs__base">
+  <h3>Архив документов</h3>
+  <div class="wrap">
+    <div class="debt__tabs__elements col xl12">
+      <button class="tablinks active" onclick="openDebt(event,'two')">
+        <div>2022</div>
+      </button>
+      <button class="tablinks" onclick="openDebt(event,'one')">
+        <div>2021</div>
+      </button>
+      <button class="tablinks" onclick="openDebt(event,'zero')">
+        <div>2020</div>
+      </button>
+    </div>
+
+    <div class="col xl12">
+      <div id="two" class="tabcontent " style="display: block;">
+        <h3>2022</h3>
+        <div class="items">
+          {% for obj in infoDocLast %}
+          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+          {% endfor %}
+        </div>
+
+      </div>
+      <div id="one" class="tabcontent" style="display: none;">
+        <h3>2021</h3>
+        <div class="items">
+          {% for obj in infoDocforeLast %}
+          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+          {% endfor %}
+        </div>
+      </div>
+      <div id="zero" class="tabcontent" style="display: none;">
+        <h3>20220</h3>
+        <div class="items">
+          {% for obj in infoDocforenazLast %}
+          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock section %}

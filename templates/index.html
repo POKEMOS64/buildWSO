@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} Главная {% endblock title %}
+{% block class %}
+continent
+{% endblock class %}
+{% block index %}
+  <div class="col xl6 s12 s_info_nav__post">
+        
+    <div class="s_info_nav__post__lk">
+      <span class="s_info_nav__post__name">
+        Передача показаний
+      </span>
+      <form action="" method="post">
+       <div class="werf">
+        <label for="">Лицевой счет</label>
+        <input type="text" name="lk">
+       </div>
+        <div class="werf">
+          <label for="">Пароль</label>
+          <input type="password" name="pass" id="">
+        </div>
+        <button type="submit" class="button__click">Войти</button>
+        
+      </form>
+      <a href="#" class="link">Пройти регистрацию</a>
+    </div>
+    <!--  -->
+    <span class="s_info_nav__post__name">
+      Передача показаний без авторизации
+    </span>
+    <div class="s_info_nav__post__old">
+      <a class="curlc mkd" href="#"><span>МКД</span></a>
+      <a class="curlc ch" href="#"><span>Частный сектор</span></a>
+      <a class="curlc sela" href="#"><span>Села</span></a>
+    </div> 
+  </div>
+{% endblock index %}

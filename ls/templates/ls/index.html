@@ -1,0 +1,581 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Главная {% endblock title %}
+{% block class %}
+lk
+{% endblock class %}
+{% block index %}
+<div class="col xl6 s12 s_info_nav__post ">
+  <div class="forms__receipt">
+    <div class="wrap">
+      <a href="#" class="print__click" onclick="javascript:callPrint();">Печать</a>
+      <div id="h1">Извещение </div>
+      <div>
+        {{ userProf }}
+       
+      </div>
+    </div>
+    
+  
+  <div class="col xl12 forms__receipt__id " id="printableArea">
+    
+      <div class="forms__receipt__base">
+        <div class="forms__receipt__base__line">Электронная квитанция</div>
+        <!--  -->
+        {% for obj in page_ls %}
+          
+        
+        <div class="forms__receipt__base__wrappers">
+          <div class="wrappers" >
+            <div class="info">
+              <div class="info__block">
+                <!-- Счет- извещения -->
+              <div class="spore table">
+                <div class="full">Счет- извещения за <span>Июнь 2023 г.</span></div>
+              </div>
+              <!-- Счет- извещения -->
+                <!-- Индентификатор -->
+              <div class="spore">
+                <div>Индентификатор ПД: <span>30ВУ539176-01-3061</span></div>
+                <div>Единый ЛС: <span>30ВУ539176</span> код ЖКУ: <span>80ВУ747091-01</span></div>
+              </div>
+              <!-- Индентификатор -->
+              
+              <!-- Получатель -->
+              <div class="spore">
+                <div class="full">Получатель: 
+                  <span>
+                    МУП "Балаково-Водоканал"
+                    <!-- org -->
+                  </span></div>
+              </div>
+              <!-- Получатель -->
+              <!-- ИНН/КПП -->
+              <div class="spore">
+                <div>
+                  <!-- ИНН/КПП innkpp -->
+                  <span>ИНН/КПП 6439053289/ 643901001</span>
+                </div>
+              </div>
+              <!-- ИНН/КПП -->
+              <!-- rsch -->
+              <div class="spore">
+                <div>
+                  р/с
+                  <span>40702810800000000300
+                    <!-- rsch -->
+                  </span>
+                    
+                  в <span>
+                    АО "Балаково-Банк"
+                    <!-- bank -->
+                  </span>
+                  БИК 
+                  <span>
+                    <!-- bic -->
+                    046311890
+                  </span>
+                </div>
+              </div>
+              <!-- rsch -->
+              
+              <!--  -->
+              <div class="spore table">
+                <div class="full">Адрес потребителя: 
+                  <span>
+                    {{ obj.adr }}
+                    <!-- adr -->
+                  </span>
+                </div>
+                <div class="spore">
+                  <div>Ф.И.О. потребителя: 
+                    <span>
+                      <!-- fio -->
+                      {{ obj.fio}}
+                    </span>
+                  </div>
+                </div>
+                <div class="full">Л/счет потребителя: 
+                  <span>
+                    {{ obj.ls}}
+                    <!-- adr -->
+                  </span>
+                </div>
+                <div class="full">Площади: 
+                  <span>
+                    {{ obj.o_s}}
+                    <!-- adr -->
+                  </span>
+                  Зарегистрировано:
+                  <span>  {{ obj.kol_prog }} </span>
+                </div>
+              </div>
+              <!-- Скрытая информация -->
+              <div class="spore spoller">
+                <p>Пункт приема: <strong>Комарова, д. 134/1, тел. 62-00-38, 68-79-92</strong>
+                </p>
+                <p>Адрес эл.почты: <strong>  mkdkomarova@bal-vod.ru ,mkdkomarova@yandex.ru</strong></p>
+                <p>Режим работы: Понедельник с 13:00 до 17:00, Вторник с 08:00 до 17:00 обед с 12:00 до 13:00, Среда с 13:00 до 19:00, Четверг: не приемный день, Пятница с 08:00 до 12:00</p>
+                <p>Телефон для передачи показаний: <strong>68-79-92</strong> Срок оплаты до <strong>10.07.2023</strong></p>
+
+              </div>
+              <!-- Скрытая информация -->
+              </div>
+              <!-- QR -->
+              <div class="info__qr">
+                  <img src="/img/qr.png" alt="">
+                  <div class="info__qr__itogo">
+                    Всего к оплате
+                    <span>{{ obj.it_sumnach}}</span>
+                    рублей
+                  </div>
+                  <div class="info__qr__datacell">
+                    <div>
+                      Учтена последняя оплата
+                    <span>{{ obj.pred_plat}}</span>
+                    </div>
+                    <div>
+                      Передача показаний 
+                    <span>до 25 числа</span>
+                    </div>
+                  </div>
+              </div>
+              <!-- QR -->
+            </div>
+            <div class="table">
+              {% if obj.name_met1  %}
+                
+              
+              <div class="spore">
+                <table border="1">
+                  <thead>
+                    <tr>
+                      <td rowspan="2">№ пр. учета</td>
+                      <td colspan="2">Показания счетчика</td>
+                      <td rowspan="2">Годен до</td>
+                    </tr>
+                    <tr>
+                      <td>Перд.</td>
+                      <td>Тек.</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% if obj.name_met1 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met1 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met1 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met1 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met1 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met2 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met2 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met2 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met2 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met2 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met3 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met3 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met3 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met3 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met3 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met4 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met4 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met4 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met4 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met4 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met5 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met5 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met5 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met5 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met5 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met6 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met6 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met6 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met6 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met6 }} -->
+                    {% endif %}
+
+                    {% if obj.name_met7 %}
+                      <tr>
+                        <td>
+                          {{ obj.name_met7 }}
+                        </td>
+                        <td>
+                          {{ obj.cou_met7 }}
+                        </td>
+                        <td></td>
+                        <td>{{ obj.date_met7 }}</td>
+                      </tr>
+                      <!-- {{ obj.name_met5 }} -->
+                    {% endif %}
+                    
+                    
+                  </tbody>
+                </table>
+              </div>
+              {% endif %}
+            </div>
+            <div class="line">
+              <div class="wrap">
+                <div class="col xl10 raschet">
+                  <table cellspacing="5" cellpadding="13" border="1">
+                    <thead>
+                      <tr>
+                        <td>Вид платежа</td>
+                      <td>Сальдо</td>
+                      <td>Един.</td>
+                      <td>Ставка</td>
+                      <td>Кол.Един</td>
+                      <td>Начисл. Инд.потр</td>
+                      <td>Коэф. повыш.</td>
+                      <td>Сумма повыш.</td>
+                      <td>Перерасчет</td>
+                      <td>Итого</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      {% if obj.nach_11 %}
+                        <tr>
+                          <td>{{ obj.nach_11 }}</td>
+                          <td> ---- </td>
+                          <td>{{ obj.nach_21}}</td>
+
+                          <td>{{ obj.nach_51}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_41}}
+                            {% else %}
+                                {{ obj.nach_31}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_61}}</td>
+                          <td>{{ obj.nach_71}}</td>
+                          <td>{{ obj.nach_81}}</td>
+                          <td>{{ obj.nach_91}}</td>
+                          <td>{{ obj.nach_61}}</td>
+                        </tr>
+                        <!-- {{ obj.nach_11 }} -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_101 != '0.00' %}
+                        <tr>
+                          <td>ПК ХВ</td>
+                          <td> ---- </td>
+                          <td> ---- </td>
+
+                          <td> ---- </td>
+
+                          <td> ---- </td>
+
+                          <td>{{ obj.nach_101}}</td>
+                          <td> ---- </td>
+                          <td> ---- </td>
+                          <td> ---- </td>
+                          <td>{{ obj.nach_101}}</td>
+                        </tr>
+                        <!-- {{ obj.nach_101 }} -->
+                         
+                      {% endif %}
+
+                      
+
+                      {% if obj.nach_12 %}
+                        <tr>
+                          <td>{{ obj.nach_12 }}</td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_22}}</td>
+
+                          <td>{{ obj.nach_52}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_42}}
+                            {% else %}
+                                {{ obj.nach_32}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_62}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_62}}</td>
+                        </tr>
+                        <!-- Pos -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_103 != '0.00' %}
+                      <tr>
+                        <td>ПК ГВ</td>
+                        <td> ---- </td>
+                        <td> ---- </td>
+
+                        <td> ---- </td>
+
+                        <td> ---- </td>
+
+                        <td>{{ obj.nach_103}}</td>
+                        <td> ---- </td>
+                        <td> ---- </td>
+                        <td> ---- </td>
+                        <td>{{ obj.nach_103}}</td>
+                      </tr>
+                      <!-- obj.nach_103 -->
+                      
+                    {% endif %}
+
+                    {% if obj.nach_13 %}
+                        <tr>
+                          <td>{{ obj.nach_13 }}</td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_23}}</td>
+
+                          <td>{{ obj.nach_53}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_53}}
+                            {% else %}
+                                {{ obj.nach_43}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_63}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_63}}</td>
+                        </tr>
+                        <!-- obj.nach_13 -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_14 %}
+                        <tr>
+                          <td>{{ obj.nach_14 }}</td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_24}}</td>
+
+                          <td>{{ obj.nach_54}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_54}}
+                            {% else %}
+                                {{ obj.nach_44}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_64}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_64}}</td>
+                        </tr>
+                        <!-- obj.nach_13 -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_15 %}
+                        <tr>
+                          <td>{{ obj.nach_15 }}</td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_25}}</td>
+
+                          <td>{{ obj.nach_55}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_45}}
+                            {% else %}
+                                {{ obj.nach_35}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_65}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_65}}</td>
+                        </tr>
+                        <!-- obj.nach_15 -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_16 %}
+                        <tr>
+                          <td>{{ obj.nach_16 }}</td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_26}}</td>
+
+                          <td>{{ obj.nach_56}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_46}}
+                            {% else %}
+                                {{ obj.nach_36}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_66}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_66}}</td>
+                        </tr>
+                        <!-- obj.nach_15 -->
+                        
+                      {% endif %}
+
+                      {% if obj.nach_57 %}
+                        <tr>
+                          <td>
+                            {% if obj.nach_27 %}
+                              {{ obj.nach_27 }}
+                              {% else %}
+                                ОДН
+                            {% endif %}
+                            
+
+                          </td>
+                          <td> ------ </td>
+                          <td>{{ obj.nach_37}}</td>
+
+                          <td>{{ obj.nach_57}}</td>
+
+                          <td>
+                            {% if obj.name_met1 %}
+                              {{obj.nach_47}}
+                            {% else %}
+                                {{ obj.nach_37}}
+                            {% endif %}
+                          </td>
+
+                          <td>{{ obj.nach_67}}</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>------</td>
+                          <td>{{ obj.nach_67}}</td>
+                        </tr>
+                        <!-- obj.nach_15 -->
+                        
+                      {% endif %}
+
+                      
+                      
+                     
+                      <!-- Итого -->
+                      <tr>
+                        <td>Итого:</td>
+                        <td>277,47</td>
+                        <td></td>
+                        <td></td>
+                        <td>------</td>
+                        <td>491,47</td>
+                        <td>------</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>768,94</td>
+                      </tr>
+                      <!-- Итого -->
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col xl2 raschet__info">
+
+                </div>
+                </div>
+            </div>
+            <div class="info-2">
+              Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вопрос грамматики продолжил коварный домах, всеми заголовок пояс, знаках его текст запятых осталось над речью по всей агентство. Парадигматическая, речью. Имеет?
+              Далеко-далеко за словесными горами в стране гласных и согласных, живут рыбные тексты. Большой заманивший мир скатился послушавшись переписывается, но, первую собрал, родного рукопись что текст букв использовало свой безопасную журчит подпоясал снова. Приставка однажды ipsum буквенных сбить вершину послушавшись необходимыми от всех безопасную бросил всеми. Сбить пустился семь пунктуация своего ее, несколько собрал!
+            </div>
+
+            <div class="table-2">
+              Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. Все если заголовок моей жаренные свою предложения взобравшись своих щеке.
+            </div>
+            </div>
+            
+          </div>
+        {% endfor %}
+        </div>
+        <!--  -->
+      </div>
+
+    
+
+  </div>
+  </div>
+  <script>
+    function callPrint() {
+     
+      var printCSSres = '<link rel="stylesheet" href="{% static 'css/reset.min.css' %}" type="text/css" />';
+      var printCSS = '<link rel="stylesheet" href=" {% static 'css/print.min.css' %}" type="text/css" />';
+      
+      var printText = document.getElementById('printableArea').innerHTML;
+      var windowPrint = window.open('','','left=50,top=50,width=1000px,height=800px,toolbar=0,scrollbars=1,status=0');
+      windowPrint.document.write(printCSSres);
+      windowPrint.document.write(printCSS);
+      windowPrint.document.write(printText);
+      windowPrint.document.close();
+      windowPrint.focus();
+      
+  }
+  </script>
+{% endblock index %}

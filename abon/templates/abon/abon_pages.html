@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Ответы на часто задаваемые вопросы {% endblock title %}
+{% block class %}
+lk
+{% endblock class %}
+{% block index %}
+
+<section class="s_info_cnn_pages col xl9 lef-xl3 white">
+	<div class="container max">
+		<div class="wrap">
+			<div class="col xl8 m12 advertisement abon">
+				<h2>Абонентский отдел</h2>
+				<div class="abon__grid">
+					<div class="wrap">
+						<div class="item col xl6">
+							<h4>Запись на опломбировку водомеров многоквартирных домов (МКД)</h4>
+							<div class="link">
+								<span>тел.</span>
+								<a href="tel:+7">8(8453) 62-00-83</a>
+							</div>
+						</div>
+						<!--  -->
+						<div class="item col xl6">
+							<h4>Запись на опломбировку водомеров частных секторов</h4>
+							<div class="link">
+								<span>тел.</span>
+								<a href="tel:+7">8(8453) 44-45-32</a>
+							</div>
+						</div>
+						<!--  -->
+						<div class="item col xl12">
+							<h4>Отдел по юридическим лицам
+								<br>
+								<br>ул. Комарова д. 134/1
+							</h4>
+							<div class="link">
+								<span>тел.</span>
+								<a href="tel:+7">8(8453) 44-45-32</a>
+							</div>
+						</div>
+						<!--  -->
+					</div>
+
+				</div>
+				<div class="abon__pages">
+					<h3>Общая информация</h3>
+					<p>«РВК-Архангельск» обеспечивает питьевой водой и оказывает услуги водоотведения 350 тысячам жителей
+						столицы Поморья.</p>
+					<p>Для удобства потребителей в главном офисе компании (улица Касаткиной 9) открыт Центр обслуживания
+						клиентов, который работает принципу «единого окна». Здесь посетители могут оплатить услуги водоснабжения и
+						водоотведения, погасить долги, получить консультацию специалистов по начислениям, оформить документы на
+						присоединение к сетям, получение технических условий и т.д.</p>
+					<p>В 2020 году предприятие значительно расширило спектр дополнительных услуг. Среди них – установка и
+						поверка приборов учета, подвоз воды, вывоз стоков, установка септиков, аренда спецтехники. Все их также
+						можно заказать в главном офисе «РВК-Архангельск.</p>
+				</div>
+			</div>
+			<div class="col xl4 m12 abon__operating-mode">
+				<h3>График работы</h3>
+				<div class="abon__operating-mode__list">
+					<div><span>Понедельник</span> с 13:00 до 17:00;</div>
+					<div><span>Вторник</span> с 8:00 до 17:00; </div>
+					<div><span>Среда</span> с 13:00 до 19:00;</div>
+					<div><span>Четверг</span> — не приемный день;</div>
+					<div><span>Пятница</span> с 8:00 до 12:00.</div>
+					<div><span class="ultra">(обед с 12:00 до 13:00)</span></div>
+				</div>
+				<h3>Отдел по юридическим лицам</h3>
+				<div class="abon__operating-mode__list">
+					<div><span>Понедельник</span> с 08:00 до 17:00;</div>
+					<div><span>Вторник</span> с 8:00 до 17:00; </div>
+					<div><span>Среда</span> с 08:00 до 17:00;</div>
+					<div><span>Четверг</span> — не приемный день;</div>
+					<div><span>Пятница</span> с 8:00 до 16:00;</div>
+					<div><span class="ultra">(обед с 12:00 до 12:48)</span></div>
+				</div>
+				<div class="abon__operating-mode__phone">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$(document).ready(function () {
+		$('.captcha-refresh').click(function () {
+			var $form = $(this).parents('form');
+			var url = location.protocol + "//" + window.location.hostname + ":"
+				+ location.port + "/captcha/refresh/";
+
+			// Make the AJAX-call
+			$.getJSON(url, {}, function (json) {
+				$form.find('input[name="captcha_0"]').val(json.key);
+				$form.find('img.captcha').attr('src', json.image_url);
+			});
+
+			return false;
+		});
+	});
+</script>
+{% endblock index %}

@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="col xl8 s12 s_info_nav__info">
+  <h1>Документы</h1>
+  <div class="wrap">
+    <div class="col xl12 s_info_nav__info__list">
+      <div class="wrap">
+        <!--  -->
+        {% for obj in InformPage_list %}
+          
+        
+        <div class="col xl12 items">
+          <h3>{{ obj.link_description }}</h3>
+          <div class="description">
+            {{ obj.short_description | safe }}
+          </div>
+          <div class="link__url">
+            <a href="../media/{{obj.upload_a_file}}">
+            <i style="background-image: url('{% static "img/doc_down.webp" %}');"></i> Скачать документ</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>

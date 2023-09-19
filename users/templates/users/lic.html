@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block class %}
+continent
+{% endblock class %}
+{% block index %}
+<div class="col lef-xl3 xl9 s12 s_info_nav__post">
+  <div class="inducations">
+    <div class="wrap">
+      <div class="name_razdel col xl12">
+        <div class="hint">Область для заполнения</div>
+        <div class="name">Внести показания</div>
+      </div>
+
+      <div class="s_info_nav__post__lk lic">
+        <form action="{% url 'users:profile' %}" method="post">
+          {% csrf_token %}
+          <div class="werf">
+            {{form.user}}
+          </div>
+          <div class="werf">
+            <label for="{{ form.lic.id_for_label}}">Выбрать лицевой</label>
+            <select name="list1" onchange="document.getElementById('id_lic_def').value= this.value">
+              <option>Выберите из списка</option>
+              <option value="{{ user.lic}}">{{ user.lic}}</option>
+              <option value="{{ user.lic2}}">{{ user.lic2}}</option>
+              <option value="{{ user.lic3}}">{{ user.lic3}}</option>
+              <option value="{{ user.lic4}}">{{ user.lic4}}</option>
+              <option value="{{ user.lic6}}">{{ user.lic6}}</option>
+            </select>
+            {{ form.lic_def}}
+            {{ form.errors}}
+            <button type="submit">Переключить</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock index %}

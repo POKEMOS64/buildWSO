@@ -1,0 +1,20 @@
+<footer>
+  <div class="container footer">
+    <div class="wrap">
+      {% for obj in OrgDataField_list %}
+        
+      
+      <div class="col xl4 m12 adress">
+        {{ obj.organization_data_one | safe }}
+      </div>
+      <div class="col xl4 m12 contact">
+        {{ obj.organization_data_two | safe }}
+      </div>
+      <div class="col xl4 m12">
+        {{ obj.organization_data_three | safe }}
+        
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</footer>

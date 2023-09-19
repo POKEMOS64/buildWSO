@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Информация {{page_name}} {% endblock title %}
+
+
+{% block informations %}
+<style>
+  .button_click{
+    background: rgb(48, 114, 228);
+    padding: 1rem !important;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .button_click2{
+    background: rgb(32, 41, 55);
+    padding: 1rem !important;
+    color: #fff;
+    border-radius: 10px;
+  }
+</style>
+<div class="col xl8 s12 s_info_nav__info">
+  <h1>О предприятии</h1>
+  <div class="wrap">
+    <div class="col xl12 info__text">
+      
+    </div>
+  </div>
+</div>
+{% include "module/__document_inf.html" %}
+<div class="col xl12 Json_bop">
+  <div class="div">
+    
+    <script>
+      $(function() {
+     a = '100001'
+     $.getJSON('../media/json/'+ a +'.json', function(data) {
+         $.each(data, function(i, f) {
+            var tblRow = "<div class='button_click col xl6'>" + i + '</div>'+ "<div class='button_click2 col xl6'>" + f + '</div>'
+             $(tblRow).appendTo("#userdata .wrap");
+       });
+     });
+  });
+  </script>
+  <div id="userdata">
+    <div class="wrap">
+
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endblock informations %}

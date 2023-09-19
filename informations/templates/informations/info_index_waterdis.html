@@ -1,0 +1,33 @@
+{% extends './info_index_pages.html' %}
+{% load static %}
+{% block title %}
+{% for obj in dis %}
+{{obj.title}}
+{% endfor %}
+{% endblock title %}
+
+{% block class %}
+lk
+{% endblock class %}
+
+{% block section %}
+<div class="col xl8 m12 advertisement infor">
+  <h2>Водоотведение</h2>
+  <div class="info__informations-text typog">
+    {% for obj in dis %}
+    {{obj.pagesText| safe}}
+    {% endfor %}
+  </div>
+</div>
+<div class="col xl4 m12 abon__operating-mode">
+  <h3>Приложение к разделу</h3>
+  <div class="abon__operating-mode__list">
+
+    <a href="#" class="items">
+      <img src="{% static 'img/doc_down.png' %}" alt="">
+      <p>Справка по хим анализу питьевой воды, март 2022</p>
+    </a>
+    <div></div>
+  </div>
+</div>
+{% endblock section %}

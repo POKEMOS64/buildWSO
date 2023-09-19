@@ -1,0 +1,129 @@
+<section class="s_info_cnn_pages col xl9 lef-xl3 white">
+  <div class="container max">
+    <div class="wrap">
+      <div class="col xl8 m12 advertisement">
+        <h2>ИЗВЕЩЕНИЕ</h2>
+        <div class="advertisement__pages">
+          <p>МУП «Балаково-Водоканал» уведомляет Вас, сотрудниками МУП «Балаково Водоканал» будет осуществлен
+            поквартирный обход многоквартирных домов, частного сектора или сел, с целью проверки достоверности
+            предоставленных потребителями
+            сведений о показаниях индивидуальных приборов учета и (или) проверки их состояния.</p>
+          <blockquote>
+            <p>Жителям домов необходимо обеспечить допуск в указанное время представителей МУП «Балаково-Водоканал» в
+              занимаемые жилые помещения для совершения проверки. </p>
+          </blockquote>
+
+
+        </div>
+      </div>
+      <div class="col xl12 advertisement__carusel">
+        <div class="wrap">
+          <div class="col xl6 advertisement__carusel__name">
+            График обхода
+          </div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="wrap">
+                <div class="col xl12 item__data">
+                  <p>13.12.2022 </p><span>С 8:00 до 17:00</span>
+                </div>
+                <div class="col xl12 item__name">
+                  <p>улица Факел Социализма, дом 17</p>
+                  <p>улица Ленина, дома 117, 117а</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Должники -->
+      <div class="col xl12 debt__tabs__base">
+        <h3>Должники</h3>
+        <div class="wrap">
+          <div class="debt__tabs__elements col xl12">
+            <button class="tablinks" onclick="openDebt(event,'CH')">
+              <div>Должники</div>
+            </button>
+            <button class="tablinks" onclick="openDebt(event,'UR')">
+              <div>Управляющих компаний</div>
+            </button>
+            <button class="tablinks" onclick="openDebt(event,'TAMP')">
+              <div>Тампонирование</div>
+            </button>
+          </div>
+
+          <div class="col xl12">
+            <div id="CH" class="tabcontent">
+              <h3>Должники</h3>
+              <div class="elements name__block">
+                <div>№ п/п</div>
+                <div>№ л. счета</div>
+                <div>Адрес должника</div>
+                <div>Долг</div>
+              </div>
+              {% for obj in human %}
+              {% if obj.personalAccount == None %}
+
+              {% else %}
+              <div class="elements">
+                <div>{{ obj.namber }}</div>
+                <div>{{ obj.personalAccount }}</div>
+                <div>{{ obj.residentialAdress }}</div>
+                <div>{{ obj.debt }}</div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div id="UR" class="tabcontent">
+              <h3>Должники2</h3>
+              <div class="elements name__block">
+                <div>№ л. счета</div>
+                <div>Название</div>
+                <div>Адрес должника</div>
+                <div>Долг</div>
+              </div>
+              {% for obj in private %}
+              {% if obj.personalAccount == None %}
+
+              {% else %}
+              <div class="elements">
+                <div>{{ obj.personalAccount }}</div>
+                <div>{{ obj.personalName }}</div>
+                <div>{{ obj.residentialAdress }}</div>
+                <div>{{ obj.debt }}</div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div id="TAMP" class="tabcontent">
+              <h3>Тампонирование</h3>
+              <div class="elements name__block">
+                <div>№ л. счета</div>
+                <div>Название</div>
+                <div>Адрес должника</div>
+                <div>Долг</div>
+              </div>
+              {% for obj in person %}
+              {% if obj.personalAccount == None %}
+
+              {% else %}
+              <div class="elements">
+                <div>{{ obj.personalAccount }}</div>
+                <div>{{ obj.personalName }}</div>
+                <div>{{ obj.residentialAdress }}</div>
+                <div>{{ obj.debt }}</div>
+
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Должники -->
+    </div>
+  </div>
+</section>

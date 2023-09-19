@@ -1,0 +1,494 @@
+{% extends "base.html" %}
+{% load qr_code %}
+{% load static %}
+{% block class %}
+continent
+{% endblock class %}
+{% block index %}
+<div class="col lef-xl3 xl9 lef-m0 m12 s_info_nav__post">
+  <div class="profile">
+    <div class="wrap">
+      <div class="profile__name_part col xl12 s0">
+        <div class="wrap">
+          <div class="hint col xl5">Область профиля</div>
+          <div class="name col xl7">Внести показания</div>
+        </div>
+      </div>
+
+      <!-- --------------------------------------------------------- -->
+      <div class="col xl12 s12 info">
+        <div class="wrap">
+          <div class="col xl5 m12 profile__info__views">
+            <div class="profile__info__views__edit">
+              <h3>Данные пользователя</h3>
+              <div>
+                <a class="button_click" href="{% url 'persona:user' %}">Редактировать данные</a>
+                <a class="button_click" href="{% url 'users:addlis' %}">Добавить лицевой</a>
+              </div>
+            </div>
+            <form action="{% url 'users:profile' %}" method="post">
+              {% csrf_token %}
+
+              <div>
+                <span>Логин: </span>
+                <span>{{user.username}}</span>
+              </div>
+              <div>
+                <span>Ф.И.О. потребителя: </span>
+                <span>{{user.first_name}}</span>
+              </div>
+              <div>
+                <span>Электронная почта:</span>
+                <span class="middle">{{ user.email}}</span>
+              </div>
+
+              <div>
+                <span>Номер телефона:</span>
+                <span>{{user.phone}}</span>
+              </div>
+              <div>
+                <span>Лицевой счет</span>
+
+                <span>{{ user.lic_def}}</span>
+              </div>
+              <div class="werf">
+                <label for="{{ form.lic.id_for_label}}">Выбрать лицевой</label>
+                <select name="list1" onchange="document.getElementById('id_lic_def').value= this.value">
+
+                  {% if user.lic %}
+                  <option>Выберите из списка</option>
+                  <option value="{{ user.lic}}">{{ user.lic}}</option>
+
+                  {% if user.lic2 %}
+                  <option value="{{ user.lic2}}">{{ user.lic2}}</option>
+                  {% endif %}
+
+                  {% if user.lic3 %}
+                  <option value="{{ user.lic3}}">{{ user.lic3}}</option>
+                  {% endif %}
+
+                  {% if user.lic4 %}
+                  <option value="{{ user.lic4}}">{{ user.lic4}}</option>
+                  {% endif %}
+
+                  {% if user.lic5 %}
+                  <option value="{{ user.lic5}}">{{ user.lic5}}</option>
+                  {% endif %}
+
+                  {% if user.lic6 %}
+                  <option value="{{ user.lic6}}">{{ user.lic6}}</option>
+                  {% endif %}
+
+                  {% else %}
+                  <option>Лицевых не найдено</option>
+                  {% endif %}
+
+                </select>
+                {{ form.lic_def}}
+                <button type="submit" name="profilels" class="button__click">Загрузить данные</button>
+                <p>{{form.errors}}</p>
+
+              </div>
+            </form>
+            <div class="profile__reset">
+              <div>
+                <span>Ваш пароль (Зашифрован хеш-функция "Tiger19")</span> <br>
+                <span>Операция по смене пароля, доступна только в вашем профиле.</span>
+              </div>
+              <a class="button__click" href="{% url 'users:password' %}">Изменить пароль</a>
+            </div>
+          </div>
+          <!-- --------------------------------------------------------- -->
+          <div class="col xl7 m12 profile__forms">
+            <blockquote>
+              <h4>Важно</h4>
+              <p class="danger">При вводе данных указывайте целое число, без запятой!</p>
+              {% if messages %}
+              <p class="danger_plus">{{messages}}</p>
+              {% endif %}
+
+            </blockquote>
+            {% if dataExport %}
+            <div class="info__data__result">
+
+              {% for obj in dataExport %}
+              <h3>Ранее введенные показания в этом месяце</h3>
+              {% if obj.codsch_hv1 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВ_1</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.hv1_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsh_gv1 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_1</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.gv1_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv2 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВ_2</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.hv2_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_gv2 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_2</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.gv2_data }}</span>
+                  </div>
+                </div>
+
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv3 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВС_3</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.hv3_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_gv3 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_3</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.gv3_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv4 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВС_4</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.hv_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsh_gv4 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_4</i>
+                  <div class="curcl">В этом месяце передали:
+                    <span>{{ obj.gv4_data }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+
+              {% endfor %}
+
+            </div>
+            {% endif %}
+            <!-- ------------------------------------------------------- -->
+            <form action="{% url 'users:profile' %}" method="post">
+              {% csrf_token %}
+              {% if datavhod %}
+              <div class="form_title">
+                <h2>Передача показаний</h2>
+
+                {% if dataExport %}
+                <div class="form_title__danger">
+                  <span>При коректировки данных просим заполнять поля которые не проходят коректировку, обновление
+                    происходит по всем показаниям!</span>
+                  <h4>{{ messages_ }}</h4>
+                </div>
+                {% else %}
+                <h4>{{ messages_ }}</h4>
+                {% endif %}
+
+              </div>
+
+              {% for obj in datavhod %}
+              {% if obj.codsch_hv1 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВ_1</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.hv1_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.hv1_data}}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsh_gv1 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_1</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.gv1_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.gv1_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv2 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВ_2</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.hv2_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.hv2_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_gv2 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_2</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.gv2_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.gv2_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv3 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВС_3</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.hv3_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.hv3_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_gv3 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_3</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.gv3_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.gv3_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsch_hv4 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ХВС_4</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.hv_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.hv_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+              {% if obj.codsh_gv4 %}
+              <div class="induc__case_text">
+                <div class="items">
+                  <i>Cчетчик ГВС_4</i>
+                  <div class="curcl">Показания в прошлом месяце:
+                    <span>{{ obj.gv4_data }}</span>
+                  </div>
+                </div>
+                <div class="items_forms">
+                  <label for="hv1">Ваши показания </label>
+                  {{ form__.gv4_data }}
+                </div>
+              </div>
+              {% endif %}
+              <!--  -->
+
+              {% endfor %}
+              <div class="induc__case_button">
+                <button type="submit" name="datavhod">Зафиксировать показания</button>
+              </div>
+              {% endif %}
+            </form>
+            <!-- ------------------------------------------------------- -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col lef-xl3 xl9 lef-m0 m12 tablo__informations">
+  <div class="wrap">
+    <div class="col xl12 tablo__informations__title">
+      <h2>Информация по лицевому счету</h2>
+    </div>
+    <div class="col xl4 m12 tablo__informations__content">
+      <div class="wrap">
+        {% for obj in LSData %}
+
+        <div class="col xl12">Локация: <span>{{ messages_ }}</span></div>
+        <div class="col xl12">Лицевой: <span>{{ obj.ls }}</span></div>
+        <div class="col xl12">Потребитель: <span>{{ obj.fio }}</span></div>
+        <div class="col xl12">Адрес проживания: <br> <br><span>{{ obj.adr_d }}</span></div>
+        {% endfor %}
+      </div>
+      <div class="wrap item-flex">
+        <h3>Счетчики:</h3>
+        {% for obj in LSData %}
+        {% if obj.name_met1 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met1 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met1 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met1 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met1 }}</div>
+          </div>
+        </div>
+        {% endif %}
+        {% if obj.name_met2 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met2 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met2 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met2 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met2 }}</div>
+          </div>
+        </div>
+        {% endif %}
+        {% if obj.name_met3 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met3 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met3 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met3 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met3 }}</div>
+          </div>
+        </div>
+        {% endif %}
+        {% if obj.name_met4 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met4 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met4 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met4 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met4 }}</div>
+          </div>
+        </div>
+        {% endif %}
+        {% if obj.name_met5 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met5 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met5 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met5 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met5 }}</div>
+          </div>
+        </div>
+        {% endif %}
+        {% if obj.name_met6 %}
+        <div class="items">
+          <div class="wrap">
+            <div class="col xl6">{{ obj.name_met6 }}</div>
+            <div class="col xl6 item__number">{{ obj.n_met6 }}</div>
+            <div class="col xl12">Показание: {{ obj.cou_met6 }}</div>
+            <div class="col xl12 item__data">Дата проверки: {{ obj.date_met6 }}</div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col xl8 m12 tablo__informations__chet">
+      <h2>Оплатить</h2>
+      <div class="tablo__informations__chet__qrcode">
+
+        <div class="qr__code">
+          {% qr_from_text qrMake options=qr_Options %}
+        </div>
+        {% for obj in LSData %}
+        <div class="tablo__informations__chet__qrcode__summa">
+          <span>К оплате:</span> <span>{{obj.it_dolg}} руб.</span>
+        </div>
+        {% endfor %}
+      </div>
+      <h2>Квитанции</h2>
+      <div class="wrap">
+
+        <div class="col xl12 item">
+          <div class="item__title">Январь</div>
+          <div class="item__link">
+            <a href="http://">Скачать квитанцию</a>
+          </div>
+        </div>
+        <div class="col xl12 line">2024</div>
+        <div class="col xl12 item">
+          <div class="item__title">Октябрь</div>
+          <div class="item__link">
+            <a href="http://">Скачать квитанцию</a>
+          </div>
+        </div>
+        <div class="col xl12 item">
+          <div class="item__title">Ноябрь</div>
+          <div class="item__link">
+            <a href="http://">Скачать квитанцию</a>
+          </div>
+        </div>
+        <div class="col xl12 item">
+          <div class="item__title">Декабрь</div>
+          <div class="item__link">
+            <a href="http://">Скачать квитанцию</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock index %}

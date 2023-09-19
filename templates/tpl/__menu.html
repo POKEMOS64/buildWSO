@@ -1,0 +1,24 @@
+<ul class="header__link__list">
+    <li><a href="#">О предприятии</a></li>
+    <li><a href="{% url 'informations:info' %}">Информация</a>
+        <ul>
+            <li><a href="{% url 'informations:watersupply' %}">Водоснабжение</a></li>
+            <li><a href="{% url 'informations:waterdis' %}">Водоотведение</a></li>
+            <li><a href="#">Подключение</a></li>
+            <li><a href="#">Нормативные акты</a></li>
+        </ul>
+    </li>
+
+
+    <li><a href="{% url 'question:question' %}">Ответы на часто задаваемые вопросы</a></li>
+    <li>
+        <a href="{% url 'abon:abon' %}">Абонентский отдел</a>
+        <ul>
+            <li><a href="{% url 'advertisement:advertisement' %}">Контрольный обход</a></li>
+            <li><a href="{% url 'ls:inducations' %}">Передача показаний</a></li>
+            <li><a href="{% url 'abon:indication' %}">Приборы учета</a></li>
+            <li><a href="{% url 'debt:debt' %}">Должники</a></li>
+        </ul>
+    </li>
+    <li><a href="{% url 'pages' %}">Диспетчерская служба</a></li>
+</ul>

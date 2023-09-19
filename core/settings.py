@@ -37,6 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
+    'person',
+    'ls',
+    'users.apps.UsersConfig',
+    'inducations',
+    'advertisement',
+    'dispatch',
+    'ckeditor',
+    'ckeditor_uploader',
+    'debt',
+    'question',
+    'connect',
+    'abon',
+    'informations',
+    'qr_code'
 ]
 
 MIDDLEWARE = [
@@ -73,13 +88,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "abon",
+        "USER": "water",
+        "PASSWORD": "Kill477!",
+        "HOST": "192.168.5.77",
+        "PORT": "5432",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -115,7 +139,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATICFILE_DIRS = [
-BASE_DIR / 'core/static',
+    BASE_DIR / 'core/static',
 ]
 
 STATIC_URL = 'static/'
@@ -127,3 +151,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'
+
+# ckeditor upload path
+CKEDITOR_UPLOAD_PATH = "uploads/"
+# Капча
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_IMAGE_SIZE = (150, 50)
+CAPTCHA_FONT_SIZE = (18)
+CAPTCHA_BACKGROUND_COLOR = '#FFF'
+CAPTCHA_FOREGROUND_COLOR = '#069'
+CAPTCHA_LENGTH = 3
+# Капча

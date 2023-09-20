@@ -1,0 +1,14 @@
+.line{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.line__div,.line__div-name{
+    background: #038ed1;
+    margin: .1rem;
+    justify-content: space-between;
+}
+.line__div,.line__div-name div{
+    padding: .3rem;
+    text-align: center;
+}

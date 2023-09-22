@@ -5,7 +5,7 @@
 lk
 {% endblock class %}
 {% block index %}
-<section class="s_info_nav continent xl9 col lef-xl3">
+<section class="s_info_nav continent col lef-xl3 xl9 lef-m0 m12  ">
 
   <div class="container">
     <div class="wrap">
@@ -14,25 +14,164 @@ lk
         <div class="wrap">
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
             <span class="s_info_nav__post__name">
-              Передача показаний МКД
+              Передача показаний МКД {{messadges}}
             </span>
-            {% if page_ls_dan == '0' %}
-            {{messages}}
+           
             <form class="datavhod" action="{% url 'ls:inducations' %}" method="POST">
-              {% csrf_token %}
-              <div class="werf">
-                <label for="">{{ form.id_ls.label}}</label>
-                {{ form.id_ls}}
-              </div>
-              <div class="werf">
-                <label for="">{{ form.name_dom.label}}</label>
-                {{ form.name_dom }}
-              </div>
-              <div class="werf">
-                <label for="">{{ form.name_kv.label}}</label>
-                {{ form.name_kv}}
-              </div>
-              <button type="submit" name="lslogin" class="button__click">Войти</button>
+              {% if page_ls_dan == '0' %}
+                {{messages}}
+                {{messages__}}
+                {% csrf_token %}
+                <div class="werf">
+                  <label for="">{{ form.id_ls.label}}</label>
+                  {{ form.id_ls}}
+                </div>
+                <div class="werf">
+                  <label for="">{{ form.name_dom.label}}</label>
+                  {{ form.name_dom }}
+                </div>
+                <div class="werf">
+                  <label for="">{{ form.name_kv.label}}</label>
+                  {{ form.name_kv}}
+                </div>
+                <button type="submit" name="lslogin" class="button__click">Войти</button>
+                {% else %}
+                {% for obj in page_ls_dan %}
+                  {% csrf_token %}
+                      <div class="werf">
+                        <label for="">{{ form.id_ls.label}}</label>
+                        {{ form.id_ls}}
+                      </div>
+                      <div class="werf">
+                        <label for="">{{ form.name_dom.label}}</label>
+                        {{ form.name_dom }}
+                      </div>
+                      <div class="werf">
+                        <label for="">{{ form.name_kv.label}}</label>
+                        {{ form.name_kv}}
+                      </div>
+                      {% if obj.codsch_hv1 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ХВ_1</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.hv1_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.hv1_data}}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsh_gv1 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ГВС_1</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.gv1_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.gv1_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsch_hv2 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ХВ_2</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.hv2_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.hv2_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsch_gv2 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ГВС_2</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.gv2_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.gv2_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsch_hv3 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ХВС_3</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.hv3_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.hv3_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsch_gv3 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ГВС_3</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.gv3_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.gv3_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsch_hv4 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ХВС_4</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.hv_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.hv_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                      <!--  -->
+                      {% if obj.codsh_gv4 %}
+                      <div class="induc__case_text">
+                        <div class="items">
+                          <i>Cчетчик ГВС_4</i>
+                          <div class="curcl">Показания в прошлом месяце:
+                            <span>{{ obj.gv4_data }}</span>
+                          </div>
+                        </div>
+                        <div class="items_forms">
+                          <label for="hv1">Ваши показания </label>
+                          {{ form.gv4_data }}
+                        </div>
+                      </div>
+                      {% endif %}
+                {% endfor %}
+                  <button type="submit" name="inducenter" class="button__click">Передать</button>
+              {% endif %}
 
             </form>
             <div class="infor__div">
@@ -56,149 +195,6 @@ lk
                 <span>Села</span></a>
             </div>
           </div>
-          {% else %}
-          {% for obj in page_ls_dan %}
-          <form class="induct" action="{% url 'ls:inducations' %}" method="POST">
-            {% csrf_token %}
-            <div class="induct__informations">
-              <div><span>Лицевой: </span><span>{{obj.id_ls}}</span></div>
-              <div><span>Номер дома: </span><span>{{obj.name_dom}}</span></div>
-            </div>
-            <div class="induc__case_text">
-              {% if obj.codsch_hv1 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ХВ_1</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.hv1_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.hv1_data}}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsh_gv1 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ГВС_1</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.gv1_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.gv1_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsch_hv2 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ХВ_2</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.hv2_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.hv2_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsch_gv2 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ГВС_2</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.gv2_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.gv2_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsch_hv3 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ХВС_3</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.hv3_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.hv3_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsch_gv3 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ГВС_3</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.gv3_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.gv3_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsch_hv4 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ХВС_4</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.hv_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.hv_data }}
-                </div>
-              </div>
-              {% endif %}
-              <!--  -->
-              {% if obj.codsh_gv4 %}
-              <div class="induc__case_text">
-                <div class="items">
-                  <i>Cчетчик ГВС_4</i>
-                  <div class="curcl">Показания в прошлом месяце:
-                    <span>{{ obj.gv4_data }}</span>
-                  </div>
-                </div>
-                <div class="items_forms">
-                  <label for="hv1">Ваши показания </label>
-                  {{ form__.gv4_data }}
-                </div>
-              </div>
-              {% endif %}
-              <button type="submit" name="inducenter" class="button__click">Передать</button>
-
-
-          </form>
-          <div class="infor__div">
-            <a href="#" class="link link-button">Подать заявку на регистрацию личного кабинета</a>
-            <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Имени семь наш
-              себя буквенных грамматики! О текст за, оксмокс предупредила выйти меня коварный города вдали страна,
-              заглавных имеет решила?</p>
-          </div>
-
-
-          {% endfor %}
-
-          {% endif %}
         </div>
       </div>
     </div>

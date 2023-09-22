@@ -7,7 +7,7 @@ class LkInduc(forms.Form):
     name_kv = forms.CharField(label='Номер квартиры', max_length=10)
 
     class Meta:
-        fields = ('id_ls', 'name_dom', 'name_kv')
+        fields = ('id_ls', 'name_kv')
 
 
 class ProfileUser(forms.Form):

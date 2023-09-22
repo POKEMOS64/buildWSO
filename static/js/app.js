@@ -44,3 +44,13 @@ function openDebt(evt, DebtClick){
   document.getElementById(DebtClick).style.display = 'block';
   evt.currentTarget.className +=' active';
 }
+
+$(window).on('load', function () {
+  $('.preloader-6').addClass("preloader-remove");     
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+document.querySelector('.target-burger').addEventListener("click",function(){
+    document.querySelector('body').classList.toggle('toggled');
+})
+})

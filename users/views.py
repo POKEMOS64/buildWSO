@@ -103,8 +103,11 @@ def profile(request):
         print('MKD')
         messages_ = 'МКД'
         SEND_ = InduExport
+        # Подмена переменной
         DRAW = InduExport.objects.filter(id_ls=tr_)
+        # Получаем строку
         DRAW_ = InduExport.objects.all().filter(id_ls=tr_)
+        # Выдергиваем все данные
     elif selaLS:
         print('Sela')
         messages_ = 'Село'
@@ -138,9 +141,7 @@ def profile(request):
         DRAW
     # -----------------------------------------------------------------
     form = UserProfileForm(instance=profile)
-    form__ = MakeStatement(
-
-    )
+    form__ = MakeStatement()
     if request.method == 'POST' and 'profilels' in request.POST:
         form = UserProfileForm(
             request.POST, request.FILES or None, instance=profile)

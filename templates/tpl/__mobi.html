@@ -1,3 +1,4 @@
+{% load static %}
 <div class="screen">
   <div class="headermenu">
     <a class="target-burger">
@@ -11,22 +12,31 @@
 
   <nav class="main-nav" role="navigation">
     <div class="logo">
-      <img src="/img/logo_bg.png" alt="">
+      <img src="{% static 'img/logo_bg.png' %}" alt="">
     </div>
     <ul>
       <li><a href="#">О предприятии</a></li>
-      <li><a href="#">Информация</a>
+      <li><a href="{% url 'informations:info' %}">Информация</a>
         <ul>
-          <li><a href="#">Подробнее</a></li>
+          <li><a href="{% url 'informations:watersupply' %}">Водоснабжение</a></li>
+          <li><a href="{% url 'informations:waterdis' %}">Водоотведение</a></li>
+          <li><a href="#">Подключение</a></li>
+          <li><a href="#">Нормативные акты</a></li>
         </ul>
       </li>
-      <li><a href="#">Водоснабжение</a></li>
-      <li><a href="#">Водоотведение</a></li>
-      <li><a href="#">Подключение</a></li>
-      <li><a href="#">Нормативные акты</a></li>
-      <li><a href="#">Контакты</a></li>
-      <li><a href="#">Вакансии</a></li>
-      <li><a href="#">Должники</a></li>
+
+
+      <li><a href="{% url 'question:question' %}">Ответы на часто задаваемые вопросы</a></li>
+      <li>
+        <a href="{% url 'abon:abon' %}">Абонентский отдел</a>
+        <ul>
+          <li><a href="{% url 'advertisement:advertisement' %}">Контрольный обход</a></li>
+          <li><a href="{% url 'ls:inducations' %}">Передача показаний</a></li>
+          <li><a href="{% url 'abon:indication' %}">Приборы учета</a></li>
+          <li><a href="{% url 'debt:debt' %}">Должники</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'pages' %}">Диспетчерская служба</a></li>
     </ul>
   </nav>
 

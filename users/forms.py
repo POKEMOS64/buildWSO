@@ -125,8 +125,11 @@ class AddLis(forms.Form):
 class MakeStatement(forms.Form):
     id_ls = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
+    
     name_dom = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
+    name_kv = forms.CharField(widget=forms.TextInput(
+        attrs={'class': 'form_first_name', 'readonly': True}), required=False)
     codsch_hv1 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
     hv1_data = forms.CharField(widget=forms.TextInput(

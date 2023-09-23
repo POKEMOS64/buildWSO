@@ -29,19 +29,34 @@ def inducaions(request):
 
     page_ls_dan = '0'
     messages = ''
+    inform__ = ''
     messadges = ''
     messages__=''
     datavhod = ''
     form__ = MakeStatement()
-    form = LkInduc()
+    form = MakeStatement()
     ls = ''
+    DRAW__ = ''
     # ------------ Таблицы---------------------
     if request.method == 'POST':
         form = MakeStatement(data=request.POST)
         id_lsPOST = request.POST['id_ls']
         name_domPOST = request.POST['name_dom']
-        name_kvPOST = request.POST['name_kv']
-
+        if len(request.POST['name_kv'])< 1:
+            name_kvPOST=None
+            print(name_kvPOST)
+            temp__check = InduImport.objects.filter(
+                id_ls=request.POST['id_ls'], 
+                name_dom=request.POST['name_dom'], 
+            )
+        else:
+            name_kvPOST = request.POST['name_kv']
+            temp__check = InduImport.objects.filter(
+                id_ls=request.POST['id_ls'], 
+                name_dom=request.POST['name_dom'], 
+                name_kv=request.POST['name_kv']
+            )
+            
         mkdLS = mkdLsList.objects.filter(id_ls=request.POST['id_ls'])
         selaLS = selaLsList.objects.filter(id_ls=request.POST['id_ls'])
         chLS = chLsList.objects.filter(id_ls=request.POST['id_ls'])
@@ -49,40 +64,59 @@ def inducaions(request):
         mkdLS__ = InduExport.objects.filter(id_ls=request.POST['id_ls'])
         selaLS__ = InduExportSela.objects.filter(id_ls=request.POST['id_ls'])
         chLS__ = InduExportCH.objects.filter(id_ls=request.POST['id_ls'])
+        # Временная проверка убрать до 11.2023
+        # temp__check = InduImport.objects.filter(
+        #     id_ls=request.POST['id_ls'], 
+        #     name_dom=request.POST['name_dom'], 
+        #     name_kv=name_kvPOST
+        #     )
+        
+        # temp__check__ = InduImport.objects.filter(
+        #     id_ls=request.POST['id_ls'], 
+        #     name_dom=request.POST['name_dom']
+        #     )
+        # ///Временная проверка убрать до 11.2023
         if mkdLS:
             SEND_ = InduExport
-            messadges = 'Передача показаний в МКД'
-            DRAW = mkdLS__
-            print('Есть', messadges)
+            if temp__check:
+                DRAW = mkdLS__
+            else:
+                DRAW__ = '0'
         elif selaLS:
             SEND_ = InduExportSela
-            messadges = 'Передача показаний в Село'
-            DRAW = selaLS__
-            print('Есть', messadges)
+            if temp__check:
+                DRAW = selaLS__
+            else:
+                DRAW__ = '0'
         elif chLS:
             SEND_ = InduExportCH
-            messadges = 'Передача показаний в Частный сектор'
-            DRAW = chLS__
-            print('Есть', messadges)
+            if temp__check:
+                DRAW = chLS__
+            else:
+                DRAW__ = '0'
         else:
-            messadges = 'Показания не найдены в текущем месяце.'
-        
-        if DRAW:
-            print('Есть', messadges)
+            DRAW__ = '0'
+            messadges = 'Ваш лицевой счет не найден в МУП "Балаково-Водоканал"'
+
+        if DRAW__ == '0':
+            inform__ = 'Лицевой счет не найден'
+            form = MakeStatement()
+        elif DRAW:
+            inform__ = 'Данные уже были внесены ранее'
+            form = MakeStatement()
         else:
             if 'lslogin' in request.POST:
+                
                 if form.is_valid():
                     page_ls_dan = InduImport.objects.filter(id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
-                    print(page_ls_dan)
                 else:
-                    messages__ = 'Данные не найдены, попробуйте еще раз!'
+                    print("Hello")
             elif 'inducenter' in request.POST:
                 datavhod = InduImport.objects.filter(id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
                 if datavhod:
                     datavhod = InduImport.objects.all().filter(id_ls=id_lsPOST)
                 else:
                     datavhod = ''
-                    messages = "Для этого лицевого, нет данных для заполнения."
                 if form.is_valid():
                     __hv1_data = form.cleaned_data['hv1_data']
                     __gv1_data = form.cleaned_data['gv1_data']
@@ -123,7 +157,9 @@ def inducaions(request):
                 else:
                     form__ = MakeStatement()
                     print("Робот")
-
+            else:
+                form__ = MakeStatement()
+                print("Робот")
     context = {'form': form,
-               'page_ls_dan': page_ls_dan, 'messages': messages,'messages__':messages__}
+               'page_ls_dan': page_ls_dan, 'messages': messages,'messages__':messages__, 'inform__':inform__}
     return render(request, 'ls/indx.html', context)

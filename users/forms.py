@@ -123,13 +123,13 @@ class AddLis(forms.Form):
 
 
 class MakeStatement(forms.Form):
-    id_ls = forms.CharField(widget=forms.TextInput(
+    id_ls = forms.CharField(label='Лицевой номер',widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
     
-    name_dom = forms.CharField(widget=forms.TextInput(
+    name_dom = forms.CharField(label='Номер дома',widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    name_kv = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'readonly': True}), required=False)
+    name_kv = forms.CharField(label='Номер квартиры',widget=forms.TextInput(
+        attrs={'class': 'form_first_name', }), required=False)
     codsch_hv1 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
     hv1_data = forms.CharField(widget=forms.TextInput(

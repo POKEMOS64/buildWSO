@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)a6e@)3jqj40-+mm^3q-cu$ga3(2u&q53akpmqipl0574#@am7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.121.3']
 
 
 # Application definition
@@ -70,7 +70,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,6 +116,8 @@ EMAIL_HOST = '192.168.120.238'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wso'
+EMAIL_USE_TLS = False
+Email_USE_SSL = False
 EMAIL_HOST_PASSWORD = 'ErguQ76!pole**'
 # Почта и все что к ней относится.
 

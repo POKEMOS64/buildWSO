@@ -22,7 +22,8 @@ def LsModelView(request):
     return render(request, 'ls/index.html', context)
 
 
-
+def ResultViews(request):
+    return render(request, 'ls/result.html')
 
 
 def inducaions(request):
@@ -31,7 +32,7 @@ def inducaions(request):
     messages = ''
     inform__ = ''
     messadges = ''
-    messages__=''
+    messages__ = ''
     datavhod = ''
     form__ = MakeStatement()
     form = MakeStatement()
@@ -42,21 +43,21 @@ def inducaions(request):
         form = MakeStatement(data=request.POST)
         id_lsPOST = request.POST['id_ls']
         name_domPOST = request.POST['name_dom']
-        if len(request.POST['name_kv'])< 1:
-            name_kvPOST=None
+        if len(request.POST['name_kv']) < 1:
+            name_kvPOST = None
             print(name_kvPOST)
             temp__check = InduImport.objects.filter(
-                id_ls=request.POST['id_ls'], 
-                name_dom=request.POST['name_dom'], 
+                id_ls=request.POST['id_ls'],
+                name_dom=request.POST['name_dom'],
             )
         else:
             name_kvPOST = request.POST['name_kv']
             temp__check = InduImport.objects.filter(
-                id_ls=request.POST['id_ls'], 
-                name_dom=request.POST['name_dom'], 
+                id_ls=request.POST['id_ls'],
+                name_dom=request.POST['name_dom'],
                 name_kv=request.POST['name_kv']
             )
-            
+
         mkdLS = mkdLsList.objects.filter(id_ls=request.POST['id_ls'])
         selaLS = selaLsList.objects.filter(id_ls=request.POST['id_ls'])
         chLS = chLsList.objects.filter(id_ls=request.POST['id_ls'])
@@ -64,18 +65,6 @@ def inducaions(request):
         mkdLS__ = InduExport.objects.filter(id_ls=request.POST['id_ls'])
         selaLS__ = InduExportSela.objects.filter(id_ls=request.POST['id_ls'])
         chLS__ = InduExportCH.objects.filter(id_ls=request.POST['id_ls'])
-        # Временная проверка убрать до 11.2023
-        # temp__check = InduImport.objects.filter(
-        #     id_ls=request.POST['id_ls'], 
-        #     name_dom=request.POST['name_dom'], 
-        #     name_kv=name_kvPOST
-        #     )
-        
-        # temp__check__ = InduImport.objects.filter(
-        #     id_ls=request.POST['id_ls'], 
-        #     name_dom=request.POST['name_dom']
-        #     )
-        # ///Временная проверка убрать до 11.2023
         if mkdLS:
             SEND_ = InduExport
             if temp__check:
@@ -106,13 +95,15 @@ def inducaions(request):
             form = MakeStatement()
         else:
             if 'lslogin' in request.POST:
-                
+
                 if form.is_valid():
-                    page_ls_dan = InduImport.objects.filter(id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
+                    page_ls_dan = InduImport.objects.filter(
+                        id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
                 else:
                     print("Hello")
             elif 'inducenter' in request.POST:
-                datavhod = InduImport.objects.filter(id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
+                datavhod = InduImport.objects.filter(
+                    id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
                 if datavhod:
                     datavhod = InduImport.objects.all().filter(id_ls=id_lsPOST)
                 else:
@@ -152,7 +143,7 @@ def inducaions(request):
                             gv4_data=__gv4_data
                         )
                         feed.save()
-                        return HttpResponseRedirect(reverse('users:profile'))
+                        return HttpResponseRedirect(reverse('ls:result'))
 
                 else:
                     form__ = MakeStatement()
@@ -161,5 +152,5 @@ def inducaions(request):
                 form__ = MakeStatement()
                 print("Робот")
     context = {'form': form,
-               'page_ls_dan': page_ls_dan, 'messages': messages,'messages__':messages__, 'inform__':inform__}
+               'page_ls_dan': page_ls_dan, 'messages': messages, 'messages__': messages__, 'inform__': inform__}
     return render(request, 'ls/indx.html', context)

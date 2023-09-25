@@ -88,10 +88,10 @@ def inducaions(request):
             messadges = 'Ваш лицевой счет не найден в МУП "Балаково-Водоканал"'
 
         if DRAW__ == '0':
-            inform__ = 'Лицевой счет не найден'
+            inform__ = 'Лицевой счет не найден.'
             form = MakeStatement()
         elif DRAW:
-            inform__ = 'Данные уже были внесены ранее'
+            inform__ = 'Данные уже были внесены ранее.'
             form = MakeStatement()
         else:
             if 'lslogin' in request.POST:

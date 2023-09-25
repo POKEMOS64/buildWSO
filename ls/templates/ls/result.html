@@ -5,5 +5,16 @@
 lk
 {% endblock class %}
 {% block index %}
-<h1>Hello</h1>
+<section class="s_info_nav continent col lef-xl3 xl9 lef-m0 m12  ">
+  <div class="container">
+    <div class="wrap">
+      <div class="col xl12 flex">
+        <h1>Данные были успешно приняты</h1>
+        <h2>Если вы хотите скоректировать данные вы можете пройти регистрацию.</h2>
+        <a href="{% url 'users:registration' %}" class="link">Пройти регистрацию</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 {% endblock index %}

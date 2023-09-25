@@ -11,6 +11,4 @@ urlpatterns = [
     path('password/', passwordreset, name='password'),
     path('profilepersona/', profilePers, name='rdt'),
     path('addlis/', profileAddLis, name='addlis'),
-
-
 ]

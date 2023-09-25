@@ -16,7 +16,7 @@ core/db.sqlite3
 pdf/*.CSV
 pdf/*.csv
 pdf/mkd/
-core/media/
+*/media/
 
 # Файл с настройкаим игнорируем, "Разное подключение к СУБД
 core/core/settings.py

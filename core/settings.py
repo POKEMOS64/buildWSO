@@ -116,8 +116,11 @@ EMAIL_HOST = '192.168.120.238'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wso'
+<<<<<<< HEAD
 EMAIL_USE_TLS = False
 Email_USE_SSL = False
+=======
+>>>>>>> 415d981 (POST MAIL)
 EMAIL_HOST_PASSWORD = 'ErguQ76!pole**'
 # Почта и все что к ней относится.
 

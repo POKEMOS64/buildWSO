@@ -105,6 +105,20 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+# Почта и все что к ней относится.
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'emails'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = '192.168.120.238'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'wso'
+EMAIL_HOST_PASSWORD = 'ErguQ76!pole**'
+# Почта и все что к ней относится.
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

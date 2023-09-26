@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import WaterModel, WaterModelDoc,WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast
+from .models import WaterModel, WaterModelDoc,WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast,indxpages
 # Register your models here.
-
+admin.site.register(indxpages)
 admin.site.register(WaterModel)
 admin.site.register(WaterModelDoc)
 admin.site.register(WaterModelDocDisposal)

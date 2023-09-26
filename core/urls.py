@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from dispatch.views import dispatchViews
 from question.views import questViews
+from informations.views import InfoPagesIdx
 from informations import views
 
 urlpatterns = [
@@ -34,7 +35,8 @@ urlpatterns = [
     path('abon/debt/', include('debt.urls', namespace='debt')),
     path('question/', include('question.urls', namespace='question')),
     path('captcha/', include('captcha.urls')),
-    path('', include('abon.urls', namespace='abon')),
+    path('abonentskiy', include('abon.urls', namespace='abon')),
+    path('', InfoPagesIdx,name='index'),
     path('info/', include('informations.urls', namespace='informations')),
     path('mail/', include('mail.urls', namespace='mail')),
     path('reset_password/', auth_views.PasswordResetView.as_view(),

@@ -21,6 +21,7 @@ lk
 </div>
 <div class="col xl4 m12 abon__operating-mode">
   <h3>Приложение к разделу</h3>
+  {% if document %}
   <div class="abon__operating-mode__list">
     {% for obj in document %}
     <a href="/media/{{obj.fileTypes}}" target="_blank" class="items">
@@ -31,5 +32,7 @@ lk
 
     <div></div>
   </div>
+  {% else %}
+  {% endif %}
 </div>
 {% endblock section %}

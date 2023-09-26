@@ -1,0 +1,22 @@
+{% extends './info_index_pages.html' %}
+{% load static %}
+{% block title %}
+{% for obj in index %}
+{{obj.title}}
+{% endfor %}
+{% endblock title %}
+
+{% block class %}
+lk
+{% endblock class %}
+
+{% block section %}
+<div class="col xl12 m12 advertisement infor">
+  <h2>О предприятии</h2>
+  <div class="info__informations-text typog">
+    {% for obj in index %}
+    {{obj.pagesText| safe}}
+    {% endfor %}
+  </div>
+</div>
+{% endblock section %}

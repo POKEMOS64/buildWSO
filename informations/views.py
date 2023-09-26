@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import WaterModel, WaterModelDoc,WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast
+from .models import WaterModel, WaterModelDoc, WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast, indxpages
 # Create your views here.
+
+
+def InfoPagesIdx(request):
+    index__ = indxpages.objects.all().filter(pk=1)
+    return render(request, 'informations/index.html', {'index': index__})
 
 
 def WaterSupply(request):
@@ -13,7 +18,7 @@ def WaterSupply(request):
 def WaterDis(request):
     water_dis = WaterModel.objects.all().filter(pk=2)
     documentTypes = WaterModelDocDisposal.objects.all()
-    return render(request, 'informations/info_index_waterdis.html', {'dis': water_dis,'document':documentTypes})
+    return render(request, 'informations/info_index_waterdis.html', {'dis': water_dis, 'document': documentTypes})
 
 
 def Informations(request):

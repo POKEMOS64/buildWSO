@@ -120,7 +120,7 @@ EMAIL_USE_TLS = False
 Email_USE_SSL = False
 EMAIL_HOST_PASSWORD = 'ErguQ76!pole**'
 # Почта и все что к ней относится.
-
+# ----------------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

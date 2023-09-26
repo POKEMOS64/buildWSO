@@ -18,10 +18,13 @@ lk
     {{obj.pagesText| safe}}
     {% endfor %}
 
+    <div class="info__informations-text__list__link">
 
-    {% for obj in infoDoc %}
-    <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
-    {% endfor %}
+
+      {% for obj in infoDoc %}
+      <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+      {% endfor %}
+    </div>
   </div>
 </div>
 <div class="col xl12 debt__tabs__base">
@@ -43,26 +46,32 @@ lk
       <div id="two" class="tabcontent " style="display: block;">
         <h3>2022</h3>
         <div class="items">
-          {% for obj in infoDocLast %}
-          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
-          {% endfor %}
+          <div class="info__informations-text__list__link">
+            {% for obj in infoDocLast %}
+            <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+            {% endfor %}
+          </div>
         </div>
 
       </div>
       <div id="one" class="tabcontent" style="display: none;">
         <h3>2021</h3>
         <div class="items">
-          {% for obj in infoDocforeLast %}
-          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
-          {% endfor %}
+          <div class="info__informations-text__list__link">
+            {% for obj in infoDocforeLast %}
+            <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+            {% endfor %}
+          </div>
         </div>
       </div>
       <div id="zero" class="tabcontent" style="display: none;">
         <h3>20220</h3>
         <div class="items">
-          {% for obj in infoDocforenazLast %}
-          <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
-          {% endfor %}
+          <div class="info__informations-text__list__link">
+            {% for obj in infoDocforenazLast %}
+            <a href="/media/{{obj.fileTypes}}">{{obj.title}}</a>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>

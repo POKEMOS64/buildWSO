@@ -19,6 +19,7 @@ pdf/*.CSV
 pdf/*.csv
 pdf/mkd/
 */media/
+*/**/**/*.pdf
 
 # Файл с настройкаим игнорируем, "Разное подключение к СУБД
 core/core/settings.py

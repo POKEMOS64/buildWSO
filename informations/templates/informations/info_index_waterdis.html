@@ -22,11 +22,13 @@ lk
 <div class="col xl4 m12 abon__operating-mode">
   <h3>Приложение к разделу</h3>
   <div class="abon__operating-mode__list">
-
-    <a href="#" class="items">
+    {% for obj in document %}
+    <a href="/media/{{obj.fileTypes}}" target="_blank" class="items">
       <img src="{% static 'img/doc_down.png' %}" alt="">
-      <p>Справка по хим анализу питьевой воды, март 2022</p>
+      <p>{{obj.title}}</p>
     </a>
+    {% endfor %}
+
     <div></div>
   </div>
 </div>

@@ -27,6 +27,18 @@ class WaterModelDoc(models.Model):
         verbose_name = "Документы по воде"
         verbose_name_plural = 'Водоснабжение Приложение'
 
+
+class WaterModelDocDisposal(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=200)
+    fileTypes = models.FileField(upload_to='waterdoc/%Y/%m/%d')
+
+    def __str__(self):
+        return self.title
+
+    class Meta():
+        verbose_name = "Документы по воде"
+        verbose_name_plural = 'Водоотведени Приложение'
+
 # Информация
 
 

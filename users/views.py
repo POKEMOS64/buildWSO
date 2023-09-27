@@ -281,6 +281,7 @@ def profilePers(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.username = username
+            instance.email = email
             instance.lic = lic
             instance.lic2 = lic2
             instance.lic3 = lic3

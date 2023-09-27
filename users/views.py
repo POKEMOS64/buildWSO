@@ -302,7 +302,7 @@ def profileAddLis(request):
     fc__ = '0'
     profile = User.objects.get(pk=request.user.pk)
     profile_user = User.objects.filter(pk=request.user.pk)
-    messages = 'Условие'
+    messages = ''
     if request.method == "POST":
         form = UserProfileForm(
             request.POST, request.FILES or None, instance=profile)

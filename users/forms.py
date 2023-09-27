@@ -18,16 +18,16 @@ class UserLoginForm(AuthenticationForm):
 
 class UserRegistrationForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}))
+        attrs={'class': 'form_first_name', 'placeholder': 'Логин'}))
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}))
     last_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Ваша фамилия'}))
     email = forms.CharField(widget=forms.EmailInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Ваша электронный адрес'}))
-    password1 = forms.CharField(widget=forms.TextInput(
+    password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Придумайте пароль'}))
-    password2 = forms.CharField(widget=forms.TextInput(
+    password2 = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Повторите пароль'}))
 
     class Meta:
@@ -123,12 +123,12 @@ class AddLis(forms.Form):
 
 
 class MakeStatement(forms.Form):
-    id_ls = forms.CharField(label='Лицевой номер',widget=forms.TextInput(
+    id_ls = forms.CharField(label='Лицевой номер', widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    
-    name_dom = forms.CharField(label='Номер дома',widget=forms.TextInput(
+
+    name_dom = forms.CharField(label='Номер дома', widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    name_kv = forms.CharField(label='Номер квартиры',widget=forms.TextInput(
+    name_kv = forms.CharField(label='Номер квартиры', widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_hv1 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)

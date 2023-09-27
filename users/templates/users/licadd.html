@@ -1,111 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
 {% block class %}
 continent
 {% endblock class %}
 {% block index %}
+<!-- ---------------------- -->
 <div class="col lef-xl3 xl9 lef-m0 m12 s_info_nav__post">
-  <div class="inducations">
+  <div class="container">
     <div class="wrap">
-      <div class="name_razdel col xl12">
-        <div class="hint">Область для заполнения</div>
-        <div class="name">Внести показания</div>
-      </div>
-      <div class="col xl6 s12 induc__info">
-        <div>
-          {{messages}}
+      <div class="col xl12 s12 s_info_nav__post">
+        <div class="wrap">
+          <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
+            <h3>
+              {{messages}}
+            </h3>
+            <form action="{% url 'users:addlis' %}" method="POST">
+              {% csrf_token %}
+              <div>
+                <span>Добавить лицевой</span>
+                <span>{{forma.fac_lis}}</span>
+              </div>
+              <div>
+                <span>Сумма: </span>
+                <span>{{forma.summ_}}</span>
+              </div>
+              <div>
+                {{form.errors}}
+              </div>
+              <div>
+                <button type="submit" class="button__click">Изменить</button>
+              </div>
+            </form>
+
+          </div>
         </div>
-        <form action="{% url 'users:addlis' %}" method="POST">
-          {% csrf_token %}
-          <div>
-            <span>Добавить лицевой</span>
-            <span>{{forma.fac_lis}}</span>
-          </div>
-          <div>
-            <span>Сумма: </span>
-            <span>{{forma.summ_}}</span>
-          </div>
-          <div>
-            {{form.errors}}
-          </div>
-          <div>
-            <button type="submit" class="button__click">Изменить</button>
-          </div>
-        </form>
-
-        <blockquote>
-          <a href="{% url 'users:password' %}">Изменить пароль</a>
-          <h4>События</h4>
-          <p>Пароль от личного кабинета можно поменять только по заявлению, обратившись в абонетский отдел.</p>
-          <p>Личный кабинет работает в режиме отладки, могут наблюдаться сбои в работе.</p>
-
-        </blockquote>
       </div>
-      <div class="col xl6 induc__forms">
-        <form action="">
-          <blockquote>
-            <h4>Важно</h4>
-            <p class="danger">При вводе данных указывайте целое число, без запятой!</p>
-          </blockquote>
-
-          <div class="induc__case_text">
-            <div class="items">
-              <i>Счетчик ХВС №1</i>
-              <div class="curcl">Последнее:
-                <span>36</span>
-              </div>
-            </div>
-            <div class="items_forms">
-              <label for="hv1">Ваши показания </label>
-              <input type="text" name="hv1">
-            </div>
-          </div>
-
-          <div class="induc__case_text">
-            <div class="items">
-              <i>Счетчик ХВС №1</i>
-              <div class="curcl">Последнее:
-                <span>36</span>
-              </div>
-            </div>
-            <div class="items_forms">
-              <label for="hv1">Ваши показания </label>
-              <input type="text" name="hv1">
-            </div>
-          </div>
-
-          <div class="induc__case_text">
-            <div class="items">
-              <i>Счетчик ХВС №1</i>
-              <div class="curcl">Последнее:
-                <span>36</span>
-              </div>
-            </div>
-            <div class="items_forms">
-              <label for="hv1">Ваши показания </label>
-              <input type="text" name="hv1">
-            </div>
-          </div>
-
-          <div class="induc__case_button">
-            <button type="submit">Зафиксировать показания</button>
-          </div>
 
 
-
-
-
-        </form>
-      </div>
-      <div class="s_info_nav__post__lk lic">
-        <form method="POST">
-          {% csrf_token %}
-
-      </div>
-      </form>
-      {{ form.lic_def}}
     </div>
   </div>
+
 </div>
+<!-- ---------------------- -->
 </div>
 
 {% endblock index %}

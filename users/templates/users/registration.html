@@ -12,15 +12,15 @@ continent
     <form action="{% url 'users:registration' %}" method="POST">
       {% csrf_token %}
       <div class="werf">
-        <label for="{{ form.username.id_for_label}}">Лицевой счет</label>
+        <label for="{{ form.username.id_for_label}}">Логин</label>
         {{ form.username}}
       </div>
       <div class="werf">
-        <label for="{{ form.last_name.id_for_label}}">Ваше имя</label>
+        <label for="{{ form.last_name.id_for_label}}">Ваша фамилия</label>
         {{ form.last_name}}
       </div>
       <div class="werf">
-        <label for="{{ form.first_name.id_for_label}}">Фамилия</label>
+        <label for="{{ form.first_name.id_for_label}}">Ваше имя</label>
         {{ form.first_name}}
       </div>
       <div class="werf">
@@ -43,13 +43,5 @@ continent
 
 
   <!--  -->
-  <span class="s_info_nav__post__name">
-    Передача показаний без авторизации
-  </span>
-  <div class="s_info_nav__post__old">
-    <a class="curlc mkd" href="#"><span>МКД</span></a>
-    <a class="curlc ch" href="#"><span>Частный сектор</span></a>
-    <a class="curlc sela" href="#"><span>Села</span></a>
-  </div>
 </div>
 {% endblock index %}

@@ -5,7 +5,7 @@ from .models import dispatch, dispatchText
 
 
 def dispatchViews(request):
-    dispatchviews = dispatch.objects.all()
+    dispatchviews = dispatch.objects.all().order_by('-pk')
     dispatchTextviews = dispatchText.objects.all()
     context = {'text': dispatchTextviews, 'dispahtviews': dispatchviews}
     return render(request, 'dispatch/dispatch_pages.html', context)

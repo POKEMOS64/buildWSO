@@ -6,6 +6,6 @@ from .models import advert, advertText
 
 def AdvertView(request):
     adverttextviews = advertText.objects.all()
-    advertviews = advert.objects.all()
+    advertviews = advert.objects.all().order_by('-pk')
     context = {'text': adverttextviews, 'advertviews': advertviews}
     return render(request, 'advert/cnn_pages.html', context)

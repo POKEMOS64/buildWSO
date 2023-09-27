@@ -11,15 +11,18 @@ continent
       <div class="col xl12 s12 s_info_nav__post">
         <div class="wrap">
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
-            <h3>
-              {{messages}}
-            </h3>
-            <form action="{% url 'users:addlis' %}" method="POST">
+            <form class="classic" action="{% url 'users:addlis' %}" method="POST">
               {% csrf_token %}
               <div>
-                <span>Добавить лицевой</span>
+                <span>Добавить лицевой: </span>
                 <span>{{forma.fac_lis}}</span>
               </div>
+              <ul>
+                <li>Введите сумму последнего платежа.</li>
+                {% if messages %}
+                <li class="danger">{{messages}}</li>
+                {% endif %}
+              </ul>
               <div>
                 <span>Сумма: </span>
                 <span>{{forma.summ_}}</span>
@@ -28,7 +31,7 @@ continent
                 {{form.errors}}
               </div>
               <div>
-                <button type="submit" class="button__click">Изменить</button>
+                <button type="submit" class="button__click">Добавить</button>
               </div>
             </form>
 

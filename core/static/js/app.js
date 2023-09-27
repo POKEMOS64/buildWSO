@@ -29,7 +29,9 @@ $('.owl-carousel').owlCarousel({
   }
 })
 
-
+if( $(document).height() <= $(window).height() ){		
+  $(".fix_footer").addClass("fixed-bottom");
+}
 
 function openDebt(evt, DebtClick){
   var i, tabcontent, tablinks;

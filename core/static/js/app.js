@@ -12,12 +12,10 @@ $(function(){
 
 
 $('.owl-carousel').owlCarousel({
-  rtl: true,
   loop:true,
   margin:10,
   nav:true,
-  afterMove: moved,
-  navText: ["Назад","Вперед"],
+  navText: ["Вперед","Назад"],
   responsive:{
       0:{
           items:1
@@ -30,12 +28,7 @@ $('.owl-carousel').owlCarousel({
       }
   }
 })
-function moved(){
-  var owl = $(".owl-carousel"),data('owlCarousel');
-  if(owl.currentItem + 1 === owl.itemsAmount){
-    alert('THE END')
-  }
-}
+
 
 if( $(document).height() <= $(window).height() ){		
   $(".fix_footer").addClass("fixed-bottom");

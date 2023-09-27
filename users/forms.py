@@ -7,7 +7,7 @@ from users.models import User, UserPol
 
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_username', 'placeholder': 'Лицевой счет'}))
+        attrs={'class': 'form_username', 'placeholder': 'Логин'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form_pass', 'placeholder': 'Пароль'}))
 

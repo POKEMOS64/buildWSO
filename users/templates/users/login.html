@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %} Абонентский отдел / Личный кабнет / Вход {% endblock title %}
 {% block class %}
 continent
 {% endblock class %}
@@ -12,7 +14,7 @@ continent
     <form action="{% url 'users:login' %}" method="POST">
       {% csrf_token %}
       <div class="werf">
-        <label for="{{ form.username.id_for_label}}">Лицевой счет</label>
+        <label for="{{ form.username.id_for_label}}">Логин</label>
         {{ form.username}}
       </div>
       <div class="werf">
@@ -22,16 +24,10 @@ continent
       <button type="submit" class="button__click">Войти</button>
 
     </form>
-    <a href="{% url 'users:registration' %}" class="link">Пройти регистрацию {{ username}}</a>
+    <a href="{% url 'users:registration' %}" class="link">Пройти регистрацию </a>
+    <br>
+    <a href="{% url 'reset_password' %}" class="link">Востановить пароль</a>
   </div>
   <!--  -->
-  <span class="s_info_nav__post__name">
-    Передача показаний без авторизации
-  </span>
-  <div class="s_info_nav__post__old">
-    <a class="curlc mkd" href="#"><span>МКД</span></a>
-    <a class="curlc ch" href="#"><span>Частный сектор</span></a>
-    <a class="curlc sela" href="#"><span>Села</span></a>
-  </div>
 </div>
 {% endblock index %}

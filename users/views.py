@@ -97,7 +97,7 @@ def profile(request):
     if LSData__List:
         qrMake = make + info1
     else:
-        qrMake = 'Данные не загруженны'
+        qrMake = 'Нужно выбрать или добавить лицевой счет для отображения суммы.'
     DRAW = ''
     if mkdLS:
         print('MKD')

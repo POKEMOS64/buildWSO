@@ -33,8 +33,12 @@ continent
                 <span>{{user.username}}</span>
               </div>
               <div>
-                <span>Ф.И.О. потребителя: </span>
+                <span>Имя потребителя: </span>
                 <span>{{user.first_name}}</span>
+              </div>
+              <div>
+                <span>Фамилия потребителя: </span>
+                <span>{{user.last_name}}</span>
               </div>
               <div>
                 <span>Электронная почта:</span>
@@ -45,11 +49,14 @@ continent
                 <span>Номер телефона:</span>
                 <span>{{user.phone}}</span>
               </div>
+              {% if user.lic_def %}
               <div>
                 <span>Лицевой счет</span>
 
                 <span>{{ user.lic_def}}</span>
               </div>
+              {% endif %}
+
               <div class="werf">
                 <label for="{{ form.lic.id_for_label}}">Выбрать лицевой</label>
                 <select name="list1" onchange="document.getElementById('id_lic_def').value= this.value">
@@ -98,6 +105,7 @@ continent
             </div>
           </div>
           <!-- --------------------------------------------------------- -->
+          {% if user.lic_def %}
           <div class="col xl7 l12 m12 profile__forms">
             <blockquote>
               <h4>Важно</h4>
@@ -355,13 +363,15 @@ continent
             </form>
             <!-- ------------------------------------------------------- -->
           </div>
+          {% endif %}
+
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
+{% if user.lic_def %}
 <div class="col lef-xl3 xl9 lef-m0 m12 tablo__informations">
   <div class="wrap">
     <div class="col xl12 tablo__informations__title">
@@ -490,4 +500,6 @@ continent
     </div>
   </div>
 </div>
+{% endif %}
+
 {% endblock index %}

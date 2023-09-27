@@ -8,6 +8,10 @@ def InfoPagesIdx(request):
     index__ = indxpages.objects.all().filter(pk=1)
     return render(request, 'informations/index.html', {'index': index__})
 
+def InfoPagesContact(request):
+    index__ = indxpages.objects.all().filter(pk=2)
+    return render(request, 'informations/index.html', {'index': index__})
+
 
 def WaterSupply(request):
     WaterSupp = WaterModel.objects.all().filter(pk=1)

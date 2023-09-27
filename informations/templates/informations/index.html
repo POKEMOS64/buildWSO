@@ -12,7 +12,10 @@ lk
 
 {% block section %}
 <div class="col xl8 m12 advertisement infor">
-  <h2>О предприятии</h2>
+  {% for obj in index %}
+  <h2>{{obj.title}}</h2>
+  {% endfor %}
+
   <div class="info__informations-text typog">
     {% for obj in index %}
     {{obj.pagesText| safe}}

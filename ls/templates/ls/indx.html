@@ -14,9 +14,9 @@ lk
         <div class="wrap">
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
             <span class="s_info_nav__post__name">
-              Передача показаний МКД {{messadges}}
+              Передача показаний
             </span>
-
+            <span>{{messadges}}</span>
             <form class="induct fix" action="{% url 'ls:inducations' %}" method="POST">
               {% if page_ls_dan == '0' %}
               {{messages}}

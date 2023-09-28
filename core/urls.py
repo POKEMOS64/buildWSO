@@ -23,7 +23,7 @@ from dispatch.views import dispatchViews
 from question.views import questViews
 from informations.views import InfoPagesIdx, InfoPagesContact, InfoPagesNormativ
 from informations import views
-from .views import PageNotFound, PageNotFound500
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -52,6 +52,3 @@ urlpatterns = [
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-handler404 = 'core.views.PageNotFound'
-handler500 = 'core.views.PageNotFound500'

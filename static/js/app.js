@@ -15,7 +15,7 @@ $('.owl-carousel').owlCarousel({
   loop:true,
   margin:10,
   nav:true,
-  navText: ["Назад","Вперед"],
+  navText: ["Вперед","Назад"],
   responsive:{
       0:{
           items:1
@@ -28,6 +28,7 @@ $('.owl-carousel').owlCarousel({
       }
   }
 })
+
 
 if( $(document).height() <= $(window).height() ){		
   $(".fix_footer").addClass("fixed-bottom");

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Абонентский отдел / Личный кабнет / Пароль для пользователя успешно сменен {% endblock title %}
+{% block title %} Абонентский отдел / Личный кабнет / Выход из системы {% endblock title %}
 {% load static %}
 
 {% block index %}
@@ -12,9 +12,12 @@
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
 
             <span class="s_info_nav__post__name">
-              Пароль для пользователя успешно изменен
+              Пользователь : Не авторизован
             </span>
-            <p><a class="button__click" href="{% url 'users:profile' %}">Войти</a></p>
+            <span class="s_info_nav__post__name">
+                Благодарим вас за время, проведенное на этом сайте.
+              </span>
+            <p><a class="button__click" href="{% url 'users:login' %}">Войти снова</a></p>
 
           </div>
         </div>

@@ -24,6 +24,7 @@ continent
               <div>
                 <a class="button_click" href="{% url 'persona:user' %}">Редактировать данные</a>
                 <a class="button_click" href="{% url 'users:addlis' %}">Добавить лицевой</a>
+                <a class="button_click" href="{% url 'logout' %}">Выйти из профиля</a>
               </div>
             </div>
             <form action="{% url 'users:profile' %}" method="post">

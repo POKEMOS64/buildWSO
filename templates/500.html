@@ -2,24 +2,26 @@
 {% block title %} Абонентский отдел / Личный кабнет / Выход из системы {% endblock title %}
 {% load static %}
 
-{% block index %}
+{% block handler %}
 
-<div class="col lef-xl3 xl9 lef-m0 m12 s_info_nav__post">
+<section class="handler col xl12 m12 white" style="background-image: url({% static 'img/404.jpg' %});">
   <div class="container">
     <div class="wrap">
-      <div class="col xl12 s12 s_info_nav__post">
+      <div class="col lef-xl2 xl10 lef-m0 m12 handler__content">
         <div class="wrap">
-          <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
-
-            <h1>Страница не найдена</h1>
-
+          <div class="col xl6">
+            <h1>404</h1>
+          </div>
+          <div class="col xl6 m12">
+            <h2>Ошибка</h2>
+            <h3>К сожалению, запрашиваемая</h3>
+            <h3>Вами страница не найдена...</h3>
           </div>
         </div>
-      </div>
 
+      </div>
 
     </div>
   </div>
-
-</div>
-{% endblock index %}
+</section>
+{% endblock handler %}

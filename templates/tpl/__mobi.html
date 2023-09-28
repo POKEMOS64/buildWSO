@@ -21,7 +21,7 @@
           <li><a href="{% url 'informations:watersupply' %}">Водоснабжение</a></li>
           <li><a href="{% url 'informations:waterdis' %}">Водоотведение</a></li>
           <li><a href="#">Подключение</a></li>
-          <li><a href="#">Нормативные акты</a></li>
+          <li><a href="{% url 'normativ' %}">Нормативные акты</a></li>
           <li><a href="{% url 'contact' %}">Контакты</a></li>
         </ul>
       </li>
@@ -33,7 +33,7 @@
         <ul>
           <li><a href="{% url 'advertisement:advertisement' %}">Контрольный обход</a></li>
           <li><a href="{% url 'ls:inducations' %}">Передача показаний</a></li>
-          
+
           <li><a href="{% url 'debt:debt' %}">Должники</a></li>
         </ul>
       </li>

@@ -21,8 +21,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 from dispatch.views import dispatchViews
 from question.views import questViews
-from informations.views import InfoPagesIdx,InfoPagesContact
+from informations.views import InfoPagesIdx, InfoPagesContact, InfoPagesNormativ
 from informations import views
+from .views import PageNotFound, PageNotFound500
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,8 +38,9 @@ urlpatterns = [
     path('question/', include('question.urls', namespace='question')),
     path('captcha/', include('captcha.urls')),
     path('abonentskiy', include('abon.urls', namespace='abon')),
-    path('', InfoPagesIdx,name='index'),
-    path('contact/',InfoPagesContact, name='contact'),
+    path('', InfoPagesIdx, name='index'),
+    path('contact/', InfoPagesContact, name='contact'),
+    path('normativ/', InfoPagesNormativ, name='normativ'),
     path('info/', include('informations.urls', namespace='informations')),
     path('mail/', include('mail.urls', namespace='mail')),
     path('reset_password/', auth_views.PasswordResetView.as_view(),
@@ -50,3 +52,6 @@ urlpatterns = [
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'core.views.PageNotFound'
+handler500 = 'core.views.PageNotFound500'

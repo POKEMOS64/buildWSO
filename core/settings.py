@@ -117,8 +117,10 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wso'
 EMAIL_USE_TLS = False
-Email_USE_SSL = False
+EMAIL_USE_SSL = False
 EMAIL_HOST_PASSWORD = 'ErguQ76!pole**'
+OSCAR_FROM_EMAIL = 'Team bot@bal-vod.ru'
+DEFAULT_FROM_EMAIL = "bot@bal-vod.ru"
 # Почта и все что к ней относится.
 # ----------------------------34343434
 

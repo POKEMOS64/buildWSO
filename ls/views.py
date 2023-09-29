@@ -45,7 +45,7 @@ def inducaions(request):
         name_domPOST = request.POST['name_dom']
         if len(request.POST['name_kv']) < 1:
             name_kvPOST = None
-            print(name_kvPOST)
+            print(name_kvPOST, 'Joker')
             temp__check = InduImport.objects.filter(
                 id_ls=request.POST['id_ls'],
                 name_dom=request.POST['name_dom'],
@@ -95,15 +95,15 @@ def inducaions(request):
             form = MakeStatement()
         else:
             if 'lslogin' in request.POST:
-
                 if form.is_valid():
+
                     page_ls_dan = InduImport.objects.filter(
-                        id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
+                        id_ls=id_lsPOST, name_dom=name_domPOST)
                 else:
                     print("Hello")
             elif 'inducenter' in request.POST:
                 datavhod = InduImport.objects.filter(
-                    id_ls=id_lsPOST, name_dom=name_domPOST, name_kv=name_kvPOST)
+                    id_ls=id_lsPOST, name_dom=name_domPOST)
                 if datavhod:
                     datavhod = InduImport.objects.all().filter(id_ls=id_lsPOST)
                 else:

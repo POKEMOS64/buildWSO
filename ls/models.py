@@ -204,7 +204,9 @@ class LsModels(models.Model):
     pred_plat = models.CharField(max_length=255, null=True)
     info1 = models.CharField(max_length=255, null=True)
     info2 = models.CharField(max_length=255, null=True)
+    qr1 = models.CharField(max_length=255, null=True)
     qr = models.CharField(max_length=255, null=True)
+    
 
     def __str__(self):
         return self.ls

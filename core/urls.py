@@ -23,6 +23,7 @@ from dispatch.views import dispatchViews
 from question.views import questViews
 from informations.views import InfoPagesIdx, InfoPagesContact, InfoPagesNormativ
 from informations import views
+from .views import StopDef
 
 
 urlpatterns = [
@@ -38,7 +39,8 @@ urlpatterns = [
     path('question/', include('question.urls', namespace='question')),
     path('captcha/', include('captcha.urls')),
     path('abonentskiy', include('abon.urls', namespace='abon')),
-    path('', InfoPagesIdx, name='index'),
+    path('index/', InfoPagesIdx, name='index'),
+    path('', InfoPagesIdx, name='stop'),
     path('contact/', InfoPagesContact, name='contact'),
     path('normativ/', InfoPagesNormativ, name='normativ'),
     path('info/', include('informations.urls', namespace='informations')),

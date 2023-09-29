@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    МУП «БАЛАКОВО-ВОДОКАНАЛ» - {% block title %} {% endblock title %}
+  </title>
+  <link rel="stylesheet" href="{% static 'css/reset.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fixx.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@300;400;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.6.1/css/iziModal.min.css"
+    integrity="sha512-3c5WiuZUnVWCQGwVBf8XFg/4BKx48Xthd9nXi62YK0xnf39Oc2FV43lIEIdK50W+tfnw2lcVThJKmEAOoQG84Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+</head>
+
+<body>
+  <div class="container max h_gidf">
+    <div class="wrap flex__line">
+
+      <section class="col xl12">
+        <div class="container max">
+          <div class="wrap">
+            <div class="col xl12 timer__run">
+              <h2>До запуска сайта</h2>
+              <div class="timer">
+                <div class="timer__items">
+                  <div class="timer__item timer__days">00</div>
+                  <div class="timer__item timer__hours">00</div>
+                  <div class="timer__item timer__minutes">00</div>
+                  <div class="timer__item timer__seconds">00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // конечная дата, например 1 июля 2021
+          const deadline = new Date(2023, 9, 3);
+          // id таймера
+          let timerId = null;
+          // склонение числительных
+          function declensionNum(num, words) {
+            return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+          }
+          // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+          function countdownTimer() {
+            const diff = deadline - new Date();
+            if (diff <= 0) {
+              clearInterval(timerId);
+            }
+            const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+            const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+            const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+            const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+            $days.textContent = days < 10 ? '0' + days : days;
+            $hours.textContent = hours < 10 ? '0' + hours : hours;
+            $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+            $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+            $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
+            $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
+            $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
+            $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+          }
+          // получаем элементы, содержащие компоненты даты
+          const $days = document.querySelector('.timer__days');
+          const $hours = document.querySelector('.timer__hours');
+          const $minutes = document.querySelector('.timer__minutes');
+          const $seconds = document.querySelector('.timer__seconds');
+          // вызываем функцию countdownTimer
+          countdownTimer();
+          // вызываем функцию countdownTimer каждую секунду
+          timerId = setInterval(countdownTimer, 1000);
+        });
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <section class="footer fix_footer">
+      <div class="container max">
+        <div class="wrap">
+          <div class="col xl12 m12 footer__bg">
+            <div class="wrap flex">
+              <div class="col xl12 footer__name ">
+                <!-- <h3>Реквизиты</h3> -->
+              </div>
+              <div class="col xl5 m12">
+                <p>
+                  413853, г.Балаково, ул. Радищева, д.55
+                </p>
+                <p>
+                  ИНН: 6439053289 КПП: 643901001
+                </p>
+                <p>
+                  Банк: АО «Балаково-Банк» г.Балаково
+                </p>
+              </div>
+              <div class="col xl5 m12">
+                <p>
+                  р/с 40702810800000000300 БИК 046311890
+                </p>
+                <p>
+                  Кор.счет. 30101810022026311890
+                </p>
+                <p>
+                  ОКПО 59396298 ОКОГУ 4210007
+                </p>
+                <p>
+                  Рег.номер в ФСС 6407392455/6407
+                </p>
+              </div>
+              <div class="col xl2 m12 dev">
+                <p>Разработан 2023 г.</p>
+                <p>Разработка <span>@WSO</span></p>
+                <p>Дизайн <span>С.В. Горбачев</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="footer__static">
+    <div class="wave">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="preloader-6">
+    <div class='circle'>
+      <div class='inner'> <img src="{% static 'img/logo_bg.png' %}" alt=""></div>
+    </div>
+  </div>
+  <script src=" {% static 'js/libs/jquery.js' %}"></script>
+  <script src=" {% static 'js/owl.carousel.min.js' %}"></script>
+  <script src=" {% static 'js/app.js' %}"></script>
+</body>
+
+</html>

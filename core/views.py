@@ -7,3 +7,7 @@ def PageNotFound(request):
 
 def PageNotFound500(request):
     return render(request, '500.html', status=500)
+
+
+def StopDef(request):
+    return render(request, 'stop.html')

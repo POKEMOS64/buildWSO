@@ -34,6 +34,7 @@ def inducaions(request):
     messadges = ''
     messages__ = ''
     datavhod = ''
+    mess_data = ''
     form__ = MakeStatement()
     form = MakeStatement()
     ls = ''
@@ -96,7 +97,6 @@ def inducaions(request):
         else:
             if 'lslogin' in request.POST:
                 if form.is_valid():
-
                     page_ls_dan = InduImport.objects.filter(
                         id_ls=id_lsPOST, name_dom=name_domPOST)
                 else:
@@ -109,6 +109,7 @@ def inducaions(request):
                 else:
                     datavhod = ''
                 if form.is_valid():
+                    
                     __hv1_data = form.cleaned_data['hv1_data']
                     __gv1_data = form.cleaned_data['gv1_data']
                     __hv2_data = form.cleaned_data['hv2_data']
@@ -121,29 +122,54 @@ def inducaions(request):
                         id_ls = obj.id_ls
                         name_dom = obj.name_dom
                         name_kv = obj.name_kv
-                        feed = SEND_(
-                            id_ls=id_ls,
-                            name_dom=name_dom,
-                            name_kv=name_kv,
-                            codsch_hv1=obj.codsch_hv1,
-                            hv1_data=__hv1_data,
-                            codsh_gv1=obj.codsh_gv1,
-                            gv1_data=__gv1_data,
-                            codsch_hv2=obj.codsch_hv2,
-                            hv2_data=__hv2_data,
-                            codsch_gv2=obj.codsch_gv2,
-                            gv2_data=__gv2_data,
-                            codsch_hv3=obj.codsch_hv3,
-                            hv3_data=__hv3_data,
-                            codsch_gv3=obj.codsch_gv3,
-                            gv3_data=__gv3_data,
-                            codsch_hv4=obj.codsch_hv4,
-                            hv_data=__hv_data,
-                            codsh_gv4=obj.codsh_gv4,
-                            gv4_data=__gv4_data
-                        )
-                        feed.save()
-                        return HttpResponseRedirect(reverse('ls:result'))
+                        if __hv1_data < obj.hv1_data:
+                            messadges = 1
+                            mess_data = 'Ошибка ХВ_1'
+                        elif __hv2_data < obj.hv2_data:
+                            messadges = 1
+                            mess_data ='Ошибка ХВ_2'
+                        elif __hv3_data < obj.hv3_data:
+                            messadges = 1
+                            mess_data ='Ошибка ХВ_3'
+                        elif __hv_data < obj.hv_data:
+                            messadges = 1
+                            mess_data ='Ошибка ХВ_4'
+                        elif __gv1_data < obj.gv1_data:
+                            messadges = 1
+                            mess_data ='Ошибка ГВС_1'
+                        elif __gv2_data < obj.gv2_data:
+                            messadges = 1
+                            mess_data ='Ошибка ГВС_2'
+                        elif __gv3_data < obj.gv3_data:
+                            messadges = 1
+                            mess_data ='Ошибка ГВС_3'
+                        elif __gv4_data < obj.gv4_data:
+                            messadges = 1
+                            mess_data ='Ошибка ГВС_4'
+                        else:
+                            feed = SEND_(
+                                id_ls=id_ls,
+                                name_dom=name_dom,
+                                name_kv=name_kv,
+                                codsch_hv1=obj.codsch_hv1,
+                                hv1_data=__hv1_data,
+                                codsh_gv1=obj.codsh_gv1,
+                                gv1_data=__gv1_data,
+                                codsch_hv2=obj.codsch_hv2,
+                                hv2_data=__hv2_data,
+                                codsch_gv2=obj.codsch_gv2,
+                                gv2_data=__gv2_data,
+                                codsch_hv3=obj.codsch_hv3,
+                                hv3_data=__hv3_data,
+                                codsch_gv3=obj.codsch_gv3,
+                                gv3_data=__gv3_data,
+                                codsch_hv4=obj.codsch_hv4,
+                                hv_data=__hv_data,
+                                codsh_gv4=obj.codsh_gv4,
+                                gv4_data=__gv4_data
+                            )
+                            feed.save()
+                            return HttpResponseRedirect(reverse('ls:result'))
 
                 else:
                     form__ = MakeStatement()
@@ -152,5 +178,11 @@ def inducaions(request):
                 form__ = MakeStatement()
                 print("Робот")
     context = {'form': form,
-               'page_ls_dan': page_ls_dan, 'messages': messages, 'messages__': messages__, 'inform__': inform__}
+               'page_ls_dan': page_ls_dan, 
+               'messages': messages,
+               'Error': messadges, 
+               'messages__': messages__, 
+               'inform__': inform__,
+               'mess_data': mess_data,
+               }
     return render(request, 'ls/indx.html', context)

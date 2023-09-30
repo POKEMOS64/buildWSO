@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Абонентский отдел {% endblock title %}
+{% block title %} Абонентский отдел / Замена ПУ {% endblock title %}
 {% block class %}
 lk
 {% endblock class %}
@@ -44,7 +44,7 @@ lk
 
 				</div>
 				<div class="abon__pages">
-					<h3>Общая информация</h3>
+					<h3>Замена прибора учета воды</h3>
 					{% for obj in index %}
 						{{obj.pagesText | safe }}
 					{% endfor %}

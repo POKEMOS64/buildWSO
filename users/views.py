@@ -90,7 +90,7 @@ def profile(request):
     LSData__List = LsModels.objects.filter(ls=tr_)
     for obj in LSData__List:
         make = obj.qr
-        info1 = obj.info1
+        info1 = obj.qr1
     qr_Options = QRCodeOptions(
         size='6', border=3, dark_color='#1f1f57', light_color='#fff', data_dark_color="#038ED1", quiet_zone_color='#fff', error_correction='L')
 
@@ -127,13 +127,10 @@ def profile(request):
     datavhod = InduImport.objects.filter(id_ls=tr_)
     if datavhod:
         datavhod = InduImport.objects.all().filter(id_ls=tr_)
-
     else:
         datavhod = ''
         messages = "Для этого лицевого, нет данных для заполнения."
-
     # -----------------------------------------------------------------
-
     # dataExport = InduExport.objects.filter(id_ls=tr_)
     if DRAW:
         DRAW_
@@ -142,6 +139,8 @@ def profile(request):
     # -----------------------------------------------------------------
     form = UserProfileForm(instance=profile)
     form__ = MakeStatement()
+    mess_data = ''
+    messadges = ''
     if request.method == 'POST' and 'profilels' in request.POST:
         form = UserProfileForm(
             request.POST, request.FILES or None, instance=profile)
@@ -180,6 +179,7 @@ def profile(request):
             print(form.errors)
     elif request.method == 'POST' and 'datavhod' in request.POST:
         form__ = MakeStatement(data=request.POST)
+        print(form__)
         if form__.is_valid():
             #     human = True
             __hv1_data = form__.cleaned_data['hv1_data']
@@ -191,6 +191,31 @@ def profile(request):
             __hv_data = form__.cleaned_data['hv_data']
             __gv4_data = form__.cleaned_data['gv4_data']
             for obj in datavhod:
+                # if __hv1_data < obj.hv1_data:
+                #     messadges = 1
+                #     mess_data = 'Ошибка ХВ_1'
+                # elif __hv2_data < obj.hv2_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ХВ_2'
+                # elif __hv3_data < obj.hv3_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ХВ_3'
+                # elif __hv_data < obj.hv_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ХВ_4'
+                # elif __gv1_data < obj.gv1_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ГВС_1'
+                # elif __gv2_data < obj.gv2_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ГВС_2'
+                # elif __gv3_data < obj.gv3_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ГВС_3'
+                # elif __gv4_data < obj.gv4_data:
+                #     messadges = 1
+                #     mess_data ='Ошибка ГВС_4'
+                # else:
                 id_ls = obj.id_ls
                 name_dom = obj.name_dom
                 name_kv = obj.name_kv
@@ -238,8 +263,19 @@ def profile(request):
         form__ = MakeStatement()
         form = UserProfileForm(instance=profile)
 
-    context = {"form": form, 'form__': form__, 'profile_user': profile_user,
-               'messages': messages, 'datavhod': datavhod, 'dataExport': DRAW, 'messages_': messages_, 'LSData': LSData__List, 'qrMake': qrMake, 'qr_Options': qr_Options}
+    context = {"form": form, 
+               'form__': form__, 
+               'profile_user': profile_user,
+               'messages': messages, 
+               'datavhod': datavhod, 
+               'dataExport': DRAW, 
+               'messages_': messages_, 
+               'LSData': LSData__List, 
+               'qrMake': qrMake, 
+               'qr_Options': qr_Options,
+               'Error': messadges,
+               'mess_data': mess_data,
+               }
     return render(request, 'users/user.html', context)
 
 
@@ -310,7 +346,7 @@ def profileAddLis(request):
         form_ = AddLis(data=request.POST)
         if form_.is_valid():
             fac_lis = request.POST['fac_lis']
-            summ_ = request.POST['summ_'].replace(',', '.')
+            summ_ = request.POST['summ_'].replace('.', ',')
             fc__ = fcecountSQL.objects.filter(
                 FCNUMBERCOUNT=fac_lis, MAX1=summ_)
             for obj in profile_user:
@@ -338,6 +374,8 @@ def profileAddLis(request):
                             messages = "Вас лицевой счет " + fac_lis + ' добавлен'
                             break
                         else:
+                            messages = "Вы добавили максимально количество лицевых для Вашего профиля " + \
+                                fac_lis + ' не добавлен'
                             form_ = AddLis()
                 res_ = front
                 instance = form.save(commit=False)

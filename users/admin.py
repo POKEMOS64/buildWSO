@@ -9,4 +9,4 @@ from django.db import models
 admin.site.register(User)
 admin.site.register(UserPol)
 admin.site.register(userPers)
-admin.site.register(fcecountSQL)
+# admin.site.register(fcecountSQL)

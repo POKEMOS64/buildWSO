@@ -63,7 +63,8 @@ class UserPol(models.Model):
 class fcecountSQL(models.Model):
     FCNUMBERCOUNT = models.CharField(
         max_length=200, verbose_name='Лицевой счет')
-    MAX = models.DateField(verbose_name="Дата платежа",)
+    MAX = models.DateField(verbose_name="Дата платежа",
+                           null='True', blank=True)
     MAX1 = models.CharField(verbose_name='Сумма')
 
     def __str__(self):

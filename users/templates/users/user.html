@@ -35,11 +35,11 @@ continent
                 <span>{{user.username}}</span>
               </div>
               <div>
-                <span>Имя потребителя: </span>
+                <span>Имя: </span>
                 <span>{{user.first_name}}</span>
               </div>
               <div>
-                <span>Фамилия потребителя: </span>
+                <span>Фамилия: </span>
                 <span>{{user.last_name}}</span>
               </div>
               <div>
@@ -93,7 +93,7 @@ continent
 
                 </select>
                 {{ form.lic_def}}
-                <button type="submit" name="profilels" class="button__click">Загрузить данные</button>
+                <button type="submit" name="profilels" class="button__click">Загрузить информацию по лицевому</button>
                 <p>{{form.errors}}</p>
 
               </div>
@@ -115,6 +115,13 @@ continent
               {% if messages %}
               <p class="danger_plus">{{messages}}</p>
               {% endif %}
+              {% if Error == 1 %}
+              <p class="danger">{{ mess_data }}</p>
+              <p>Вы передали показания меньше учтенных ранее, 
+                для восстановления расчетов по прибору учета необходимо направить обращение 
+                по средствам электронной почты на адрес: <a href="mailto:mkdkomarova@yandex.ru">mkdkomarova@yandex.ru</a>, 
+                либо обратиться лично в отдел по абонентскому обслуживанию</p>
+            {% endif %}
 
             </blockquote>
             {% if dataExport %}
@@ -126,7 +133,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВ_1</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.hv1_data }}</span>
                   </div>
                 </div>
@@ -137,7 +144,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_1</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.gv1_data }}</span>
                   </div>
                 </div>
@@ -148,7 +155,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВ_2</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.hv2_data }}</span>
                   </div>
                 </div>
@@ -159,7 +166,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_2</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.gv2_data }}</span>
                   </div>
                 </div>
@@ -171,7 +178,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВС_3</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.hv3_data }}</span>
                   </div>
                 </div>
@@ -182,7 +189,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_3</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.gv3_data }}</span>
                   </div>
                 </div>
@@ -193,7 +200,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВС_4</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.hv_data }}</span>
                   </div>
                 </div>
@@ -204,7 +211,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_4</i>
-                  <div class="curcl">В этом месяце передали:
+                  <div class="curcl">В этом месяце учтенные:
                     <span>{{ obj.gv4_data }}</span>
                   </div>
                 </div>
@@ -225,7 +232,7 @@ continent
 
                 {% if dataExport %}
                 <div class="form_title__danger">
-                  <span>При коректировки данных просим заполнять поля которые не проходят коректировку, обновление
+                  <span>При корректировки данных просим заполнять все поля,  которые не проходят корректировку, обновление
                     происходит по всем показаниям!</span>
                   <h4>{{ messages_ }}</h4>
                 </div>
@@ -240,7 +247,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВ_1</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.hv1_data }}</span>
                   </div>
                 </div>
@@ -255,7 +262,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_1</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.gv1_data }}</span>
                   </div>
                 </div>
@@ -270,7 +277,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВ_2</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.hv2_data }}</span>
                   </div>
                 </div>
@@ -285,7 +292,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_2</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.gv2_data }}</span>
                   </div>
                 </div>
@@ -300,7 +307,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВС_3</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.hv3_data }}</span>
                   </div>
                 </div>
@@ -315,7 +322,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_3</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.gv3_data }}</span>
                   </div>
                 </div>
@@ -330,7 +337,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ХВС_4</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.hv_data }}</span>
                   </div>
                 </div>
@@ -345,7 +352,7 @@ continent
               <div class="induc__case_text">
                 <div class="items">
                   <i>Cчетчик ГВС_4</i>
-                  <div class="curcl">Показания в прошлом месяце:
+                  <div class="curcl">Показание учтенные в прошлом месяце:
                     <span>{{ obj.gv4_data }}</span>
                   </div>
                 </div>

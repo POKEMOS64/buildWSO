@@ -26,79 +26,82 @@
 </head>
 
 <body>
-  {% include "tpl/__mobi.html" %}
-  {% block handler %}
-
-  {% endblock handler %}
   <div class="container max h_gidf">
     <div class="wrap flex__line">
-      <div class="col xl3 m0 header__block">
-        <!-- Шапка -->
-        <div class="header">
+
+      <section class="col xl12">
+        <div class="container max">
           <div class="wrap">
-            <a class="col xl12 s12 header__logo" href="#">
-              <img src="{% static 'img/logo.jpg' %}" alt="">
-            </a>
-            <div class="col xl12 s12 header__name">
-              <span>МУП</span>
-              <span> Балаково-Водоканал</span>
-            </div>
-          </div>
-        </div>
-        <!-- Шапка -->
-        {% include "tpl/__menu.html" %}
-
-      </div>
-      <section class="contact col xl12 s12">
-        <div class="wrap">
-          <div class="contact__inform col xl9 lef-xl3  lef-m0 m12">
-            <div class="col xl8 m12 contact__card" itemscope="" itemtype="https://schema.org/PostalAddress">
-              <div class="phone">
-                <span>ПРИЕМНАЯ:</span>
-                <a itemprop="telephone" href="tel:8(8453) 44-45-82" class="phone">8(8453) 44-45-82</a>
-              </div>
-              <div class="phone">
-                <span>ДИСПЕТЧЕРСКАЯ СЛУЖБА:</span>
-                <a itemprop="telephone" href="tel:8(8453) 44-45-33" class="phone">8(8453) 44-45-33</a>
-              </div>
-              <div class="mail">
-                <span>Почта предприятия:</span>
-                <a itemprop="email" href="mailto:office@bal-vod.ru" class="mail">office@bal-vod.ru</a>
-              </div>
-            </div>
-            <div class="contact__login col xl4 m12">
-              <div class="loginIn">
-
-                {% if user.is_authenticated %}
-                <p>Добро пожаловать: <span>{{ user.username }}</span></p>
-                <p><a href="{% url 'users:profile' %}">Личный кабинет</a></p>
-                {% else %}
-                <p>Пройдите авторизацию</p>
-                <a href="{% url 'users:login' %}">Вход</a>
-                {% endif %}
-
+            <div class="col xl12 timer__run">
+              <h2>До запуска сайта</h2>
+              <div class="timer">
+                <div class="timer__items">
+                  <div class="timer__item timer__days">00</div>
+                  <div class="timer__item timer__hours">00</div>
+                  <div class="timer__item timer__minutes">00</div>
+                  <div class="timer__item timer__seconds">00</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          // конечная дата, например 1 июля 2021
+          const deadline = new Date(2023, 9, 3);
+          // id таймера
+          let timerId = null;
+          // склонение числительных
+          function declensionNum(num, words) {
+            return words[(num % 100 > 4 && num % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(num % 10 < 5) ? num % 10 : 5]];
+          }
+          // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
+          function countdownTimer() {
+            const diff = deadline - new Date();
+            if (diff <= 0) {
+              clearInterval(timerId);
+            }
+            const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
+            const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
+            const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
+            const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
+            $days.textContent = days < 10 ? '0' + days : days;
+            $hours.textContent = hours < 10 ? '0' + hours : hours;
+            $minutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+            $seconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+            $days.dataset.title = declensionNum(days, ['день', 'дня', 'дней']);
+            $hours.dataset.title = declensionNum(hours, ['час', 'часа', 'часов']);
+            $minutes.dataset.title = declensionNum(minutes, ['минута', 'минуты', 'минут']);
+            $seconds.dataset.title = declensionNum(seconds, ['секунда', 'секунды', 'секунд']);
+          }
+          // получаем элементы, содержащие компоненты даты
+          const $days = document.querySelector('.timer__days');
+          const $hours = document.querySelector('.timer__hours');
+          const $minutes = document.querySelector('.timer__minutes');
+          const $seconds = document.querySelector('.timer__seconds');
+          // вызываем функцию countdownTimer
+          countdownTimer();
+          // вызываем функцию countdownTimer каждую секунду
+          timerId = setInterval(countdownTimer, 1000);
+        });
+      </script>
 
-      {% block index %}
-      <!-- Главная страница -->
-      {% endblock %}
 
-      {% block informations %}
-      <!-- Страница информации -->
-      {% endblock informations %}
 
-      {% block lk %}
 
-      {% endblock lk %}
+
+
+
+
+
+
+
     </div>
     <section class="footer fix_footer">
       <div class="container max">
         <div class="wrap">
-          <div class="col xl9 lef-xl3 lef-m0 m12 footer__bg">
+          <div class="col xl12 m12 footer__bg">
             <div class="wrap flex">
               <div class="col xl12 footer__name ">
                 <!-- <h3>Реквизиты</h3> -->
@@ -130,7 +133,7 @@
               </div>
               <div class="col xl2 m12 dev">
                 <p>Разработан 2023 г.</p>
-                <p>Разработка <span>С.В. Горбачев</span></p>
+                <p>Разработка <span>@WSO</span></p>
                 <p>Дизайн <span>С.В. Горбачев</span></p>
               </div>
             </div>

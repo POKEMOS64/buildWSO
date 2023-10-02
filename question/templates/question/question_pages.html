@@ -11,18 +11,24 @@ lk
 		<div class="wrap">
 			<div class="col xl8 m12 advertisement question">
 				<h2>Ответы на часто задаваемые вопросы</h2>
-				{% for obj in quest %}
-				{% if obj.answerToTheQuestion %}
-				<div class="advertisement__pages">
-					<h3>{{ obj.questionItself }}</h3>
-					<blockquote>
-						{{ obj.answerToTheQuestion| safe}}
-					</blockquote>
-				</div>
-				{% else %}
-				{% endif %}
+				<div data-spollers class="spollers">
+					{% for obj in quest %}
+					{% if obj.answerToTheQuestion %}
+					<div class="advertisement__pages spollers__item">
+						<button type="button" data-spoller class="spollers__title">
+							{{ obj.questionItself }}
+						</button>
+						<div class="spollers__body">
+							{{ obj.answerToTheQuestion| safe}}
+						</div>
+					</div>
+					{% else %}
+					{% endif %}
 
-				{% endfor %}
+					{% endfor %}
+
+				</div>
+				
 			</div>
 			<div class="col xl4 m12 question">
 				<h4></h4>

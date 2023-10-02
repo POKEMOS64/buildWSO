@@ -263,15 +263,15 @@ def profile(request):
         form__ = MakeStatement()
         form = UserProfileForm(instance=profile)
 
-    context = {"form": form, 
-               'form__': form__, 
+    context = {"form": form,
+               'form__': form__,
                'profile_user': profile_user,
-               'messages': messages, 
-               'datavhod': datavhod, 
-               'dataExport': DRAW, 
-               'messages_': messages_, 
-               'LSData': LSData__List, 
-               'qrMake': qrMake, 
+               'messages': messages,
+               'datavhod': datavhod,
+               'dataExport': DRAW,
+               'messages_': messages_,
+               'LSData': LSData__List,
+               'qrMake': qrMake,
                'qr_Options': qr_Options,
                'Error': messadges,
                'mess_data': mess_data,
@@ -371,7 +371,7 @@ def profileAddLis(request):
                     else:
                         if param_ == None:
                             front[obj] = str(result__)
-                            messages = "Вас лицевой счет " + fac_lis + ' добавлен'
+                            messages = "Ваш лицевой счет " + fac_lis + ' добавлен'
                             break
                         else:
                             messages = "Вы добавили максимально количество лицевых для Вашего профиля " + \

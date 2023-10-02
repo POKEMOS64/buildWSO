@@ -123,7 +123,7 @@ class AddLis(forms.Form):
 
 
 class MakeStatement(forms.Form):
-    id_ls = forms.CharField(label='Лицевой номер', widget=forms.TextInput(
+    id_ls = forms.CharField(label='Номер лицевого счета', widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
 
     name_dom = forms.CharField(label='Номер дома', widget=forms.TextInput(

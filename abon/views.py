@@ -11,6 +11,10 @@ def AbonZamenaPu(request):
     index__ = indxpages.objects.all().filter(pk=5)
     return render(request, 'abon/abon_pages_zamena_pu.html', {'index': index__})
 
+def AbonDisruption(request):
+    index__ = indxpages.objects.all().filter(pk=6)
+    return render(request, 'abon/abon_pages_zamena_pu.html', {'index': index__})
+
 
 def AbonIndication(request):
     return render(request, 'abon/indication_pages.html')

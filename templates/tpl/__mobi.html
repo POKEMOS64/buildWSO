@@ -15,6 +15,7 @@
       <img src="{% static 'img/logo_bg.png' %}" alt="">
     </div>
     <ul>
+      <li><a href="{% url 'ls:inducations' %}">Передача показаний</a></li>
       <li><a href="{% url 'index' %}">О предприятии</a></li>
       <li><a href="{% url 'informations:info' %}">Информация</a>
         <ul>
@@ -25,15 +26,14 @@
           <li><a href="{% url 'contact' %}">Контакты</a></li>
         </ul>
       </li>
-
-
-      <li><a href="{% url 'question:question' %}">Ответы на часто задаваемые вопросы</a></li>
       <li>
-        <a href="{% url 'abon:abon' %}">Абонентский отдел</a>
+        <a href="{% url 'abon:abon' %}">Отдел по Абонентскому обслуживанию</a>
         <ul>
-          <li><a href="{% url 'advertisement:advertisement' %}">Контрольный обход</a></li>
-          <li><a href="{% url 'ls:inducations' %}">Передача показаний</a></li>
-          <li><a href="{% url 'abon:abonzamenapu' %}">Замена ПУ</a></li>
+          <li><a href="{% url 'question:question' %}">Ответы на часто задаваемые вопросы</a></li>
+          
+          <li><a href="{% url 'advertisement:advertisement' %}">Контрольный обход жилых помещений</a></li>
+          <li><a href="{% url 'abon:abonzamenapu' %}">Замена прибора учета в ИЖС и МКД</a></li>
+            <li><a href="{% url 'abon:abondisruption' %}">Последствия нарушения пломбы ПУ в ИЖС и МКД</a></li>
 
           <li><a href="{% url 'debt:debt' %}">Должники</a></li>
         </ul>

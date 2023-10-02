@@ -27,7 +27,7 @@ from .views import StopDef
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin080600/', admin.site.urls),
     path('users/', include('users.urls', namespace='users')),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('persona/', include('person.urls', namespace='persona')),

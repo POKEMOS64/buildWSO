@@ -20,7 +20,7 @@ class qestionModel(models.Model):
         verbose_name='Ответ', null=True, blank=True)
 
     def __str__(self):
-        return f"{self.dataTimes}"
+        return f"{self.questionItself}"
 
     class Meta:
         verbose_name = 'Вопрос'

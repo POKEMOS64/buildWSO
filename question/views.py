@@ -7,7 +7,7 @@ from django.contrib import messages
 
 
 def questViews(request):
-    quest = qestionModel.objects.all()
+    quest = qestionModel.objects.all().order_by('-pk')
     messages = ''
     if request.method == "POST":
         form = questForms(data=request.POST)

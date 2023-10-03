@@ -1,8 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import WaterModel, WaterModelDoc, WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast, indxpages
+
+from .models import WaterModel, WaterModelDoc, WaterModelDocDisposal, InfoModelDoc, InfoModelDocLast, InfoModelDocbeforeLast, InfoModelDocnazLast, indxpages, IndexPost
 # Create your views here.
 
+
+#Новости
+def CNNpages(request):
+    index__ = IndexPost.objects.all()
+    context = {'index': index__}
+    return render( request, 'informations/info__post.html',context)
+
+def show_post(request, post_id):
+    index__ = IndexPost.objects.all().filter(pk=post_id)
+    return render( request, 'informations/info__post__id.html',{'index': index__})
+#Новости
 
 def InfoPagesIdx(request):
     index__ = indxpages.objects.all().filter(pk=1)

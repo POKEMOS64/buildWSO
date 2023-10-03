@@ -53,19 +53,19 @@ class UserProfileForm(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
     phone = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Ваш телефон'}), required=False)
     lic = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic2 = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic3 = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic4 = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic5 = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic6 = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Лицевой счет'}), required=False)
     lic_def = forms.CharField(
         widget=forms.HiddenInput(
             attrs={'class': 'form_first_name',
@@ -88,7 +88,7 @@ class UserProfileFormRed(UserChangeForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
     phone = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', 'placeholder': 'Ваше имя'}), required=False)
+        attrs={'class': 'form_first_name', 'placeholder': 'Телефон'}), required=False)
     email = forms.CharField(widget=forms.EmailInput(
         attrs={'class': 'form_first_name'}), required=False)
 

@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
@@ -13,6 +14,19 @@ class indxpages(models.Model):
     class Meta():
         verbose_name = "Другие разделы"
         verbose_name_plural = 'Другие'
+
+class IndexPost(models.Model):
+    title = models.CharField(verbose_name='Название страницы', max_length=200)
+    pagesText = RichTextUploadingField(verbose_name="Содержимое страницы")
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('informations:post', kwargs={'post_id': self.pk})
+
+    class Meta():
+        verbose_name = "Страницы"
+        verbose_name_plural = 'Страницы'
 
 class WaterModel(models.Model):
     title = models.CharField(verbose_name='Название страницы', max_length=200)

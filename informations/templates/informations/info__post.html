@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Loremru {% endblock title %}
+{% block class %}
+lk
+{% endblock class %}
+{% block index %}
+
+<section class="s_info_cnn_pages col lef-xl3 xl9 lef-m0 m12 white resdesign">
+	<div class="container max">
+		<div class="wrap">
+			<div class="col xl12 m12 advertisement post">
+				<h2>Новости</h2>
+				<div class="abon__pages">
+					<div class="wrap">
+					{% for obj in index %}
+						<div class="col xl6 m12 abon__pages__item__post fix">
+							<h3>{{obj.title }}</h3>
+							<div class="abon__pages__item__post__text">
+								{{obj.pagesText|safe|truncatewords:30}}
+							</div>
+							<a class="button__click__post" href="{{ obj.get_absolute_url }}">Прочитать</a>
+						</div>
+						
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock index %}

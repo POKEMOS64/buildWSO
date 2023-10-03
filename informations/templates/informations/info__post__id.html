@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Loremru {% endblock title %}
+{% block title %} 
+/ Новости / 
+{% for obj in index %}
+{{obj.title }}
+{% endfor %}
+{% endblock title %}
 {% block class %}
 lk
 {% endblock class %}
+
+{% block active %}
+active
+{% endblock active %}
+
 {% block index %}
 
 <section class="s_info_cnn_pages col lef-xl3 xl9 lef-m0 m12 white">

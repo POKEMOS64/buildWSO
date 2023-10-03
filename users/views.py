@@ -90,12 +90,13 @@ def profile(request):
     LSData__List = LsModels.objects.filter(ls=tr_)
     for obj in LSData__List:
         make = obj.qr
+        dopInfo = 'Acc=' + obj.ls + '|LastName=' + obj.fio + '|payerAddress=' + obj.adr
         info1 = obj.qr1
     qr_Options = QRCodeOptions(
         size='6', border=3, dark_color='#1f1f57', light_color='#fff', data_dark_color="#038ED1", quiet_zone_color='#fff', error_correction='L')
 
     if LSData__List:
-        qrMake = make + info1
+        qrMake = make + dopInfo + info1
     else:
         qrMake = 'Нужно выбрать или добавить лицевой счет для отображения суммы.'
     DRAW = ''

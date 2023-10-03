@@ -466,6 +466,109 @@ continent
       </div>
     </div>
     <div class="col xl8 m12 tablo__informations__chet">
+      <h2>Услуги ( Данные могут быть не точными, идет корректировка )</h2>
+      <div class="wrap">
+        <div class="col xl12 item idx">
+          <div class="wrap">
+            <div class="col xl4">Вид платежа</div>
+            <div class="col xl1">Един.</div>
+            <div class="col xl2">Расход</div>
+            <div class="col xl1">Тариф</div>
+            <div class="col xl2">Итого</div>
+            <div class="col xl2">Перерасчет</div>
+          </div>
+
+        </div>
+        {% for obj in LSData %}
+        <div class="col xl12 item">
+          {% if obj.nach_11 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_11 }}</div>
+            <div class="col xl1">{{ obj.nach_21 }}</div>
+            <div class="col xl2">{{ obj.nach_41 }}</div>
+            <div class="col xl1">{{ obj.nach_51 }}</div>
+            <div class="col xl2">{{ obj.nach_71 }}</div>
+            <div class="col xl2">{{ obj.nach_61 }}</div>
+          </div>
+          {% endif %}
+          {% if obj.nach_12 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_12 }}</div>
+            <div class="col xl1">{{ obj.nach_22 }}</div>
+            <div class="col xl2">{{ obj.nach_42 }}</div>
+            <div class="col xl1">{{ obj.nach_52 }}</div>
+            <div class="col xl2">{{ obj.nach_72 }}</div>
+            <div class="col xl2">{{ obj.nach_62 }}</div>
+          </div>
+          {% endif %}
+          {% if obj.nach_13 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_13 }}</div>
+            <div class="col xl1">{{ obj.nach_23 }}</div>
+            <div class="col xl2">{{ obj.nach_43 }}</div>
+            <div class="col xl1">{{ obj.nach_53 }}</div>
+            <div class="col xl2">{{ obj.nach_73 }}</div>
+            <div class="col xl2">{{ obj.nach_63 }}</div>
+          </div>
+          {% endif %}
+          {% if obj.nach_14 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_14 }}</div>
+            <div class="col xl1">{{ obj.nach_24 }}</div>
+            <div class="col xl2">{{ obj.nach_44 }}</div>
+            <div class="col xl1">{{ obj.nach_54 }}</div>
+            <div class="col xl2">{{ obj.nach_74 }}</div>
+            <div class="col xl2">{{ obj.nach_64 }}</div>
+          </div>
+          {% endif %}
+          {% if obj.nach_15 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_15 }}</div>
+            <div class="col xl1">{{ obj.nach_25 }}</div>
+            <div class="col xl2">{{ obj.nach_45 }}</div>
+            <div class="col xl1">{{ obj.nach_55 }}</div>
+            <div class="col xl2">{{ obj.nach_75 }}</div>
+            <div class="col xl2">{{ obj.nach_65 }}</div>
+          </div>
+          {% endif %}
+          {% if obj.nach_16 %}
+          <div class="wrap">
+            <div class="col xl4">{{ obj.nach_16 }}</div>
+            <div class="col xl1">{{ obj.nach_26 }}</div>
+            <div class="col xl2">{{ obj.nach_46 }}</div>
+            <div class="col xl2">{{ obj.nach_56 }}</div>
+            <div class="col xl1">{{ obj.nach_76 }}</div>
+            <div class="col xl2">{{ obj.nach_66 }}</div>
+          </div>
+          {% endif %}
+
+          <!-- ПК -->
+          {% if obj.nach_101 == '0.00' %}
+          {% else %}
+          <div class="wrap">
+            <div class="col xl4">ПК ХВ</div>
+            <div class="col xl1">-----</div>
+            <div class="col xl2">-----</div>
+            <div class="col xl1">-----</div>
+            <div class="col xl2">{{ obj.nach_101 }}</div>
+            <div class="col xl2">-----</div>
+          </div>
+          {% endif %}
+          <!-- ПК -->
+
+        </div>
+        <div class="wrap itogo">
+          <div class="col xl4">Итого:</div>
+          <div class="col xl1"></div>
+          <div class="col xl2"></div>
+          <div class="col xl1"></div>
+          <div class="col xl2"></div>
+          <div class="col xl2">{{ obj.it_sumnach }}</div>
+
+
+        </div>
+        {% endfor %}
+      </div>
       <h2>Оплатить</h2>
       <div class="tablo__informations__chet__qrcode">
 
@@ -474,7 +577,7 @@ continent
         </div>
         {% for obj in LSData %}
         <div class="tablo__informations__chet__qrcode__summa">
-          <span>К оплате:</span> <span>{{obj.it_dolg}} руб.</span>
+          <span>К оплате:</span> <span>{{obj.it_sumnach}} руб.</span>
         </div>
         {% endfor %}
       </div>

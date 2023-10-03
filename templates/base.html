@@ -6,6 +6,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="yandex-verification" content="0e54b6f2ae947b6b" />
   <title>
     МУП «БАЛАКОВО-ВОДОКАНАЛ» - {% block title %} {% endblock title %}
   </title>
@@ -26,6 +27,33 @@
 </head>
 
 <body>
+  <style>
+    #cookie_notification{
+  display: none;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: fixed;
+  z-index: 15;
+  bottom: 15px;
+  left: 50%;
+  width: 900px;
+  max-width: 90%;
+  transform: translateX(-50%);
+  padding: 25px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
+}
+.show{
+  display: block !important;
+}
+#cookie_notification p{
+  margin: 0;
+  font-size: 1.2rem;
+  text-align: left;
+  color: gray;
+}
+  </style>
   {% include "tpl/__mobi.html" %}
   {% block handler %}
 
@@ -151,9 +179,49 @@
       <div class='inner'> <img src="{% static 'img/logo_bg.png' %}" alt=""></div>
     </div>
   </div>
+  <div id="cookie_notification">
+    <p>Используя данный сайт, вы даете согласие на использование файлов cookie</p>
+    <button class="button cookie_accept" style="background: #006699;font-size: 14px;padding: 0;border-radius: 5px;height: 33px;font-weight: 700;border: 0;color: #000004;">Принять</button>
+</div>
   <script src=" {% static 'js/libs/jquery.js' %}"></script>
   <script src=" {% static 'js/owl.carousel.min.js' %}"></script>
   <script src=" {% static 'js/app.js' %}"></script>
+  <!-- Yandex.Metrika counter -->
+<script>
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+  ym(95126928, "init", {
+       clickmap:true,
+       trackLinks:true,
+       accurateTrackBounce:true,
+       webvisor:true
+  });
+</script>
+<script>
+  function checkCookies(){
+    let cookieDate = localStorage.getItem('cookieDate');
+    let cookieNotification = document.getElementById('cookie_notification');
+    let cookieBtn = cookieNotification.querySelector('.cookie_accept');
+
+    // Если записи про кукисы нет или она просрочена на 1 год, то показываем информацию про кукисы
+    if( !cookieDate || (+cookieDate + 31536000000) < Date.now() ){
+        cookieNotification.classList.add('show');
+    }
+
+    // При клике на кнопку, в локальное хранилище записывается текущая дата в системе UNIX
+    cookieBtn.addEventListener('click', function(){
+        localStorage.setItem( 'cookieDate', Date.now() );
+        cookieNotification.classList.remove('show');
+    })
+}
+checkCookies();
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/95126928" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 
 </html>

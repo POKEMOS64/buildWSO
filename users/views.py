@@ -88,9 +88,44 @@ def profile(request):
     chLS = chLsList.objects.filter(id_ls=tr_)
 
     LSData__List = LsModels.objects.filter(ls=tr_)
+    OverPay = 'off'
+    LSData__List__summa__ = ''
+    def Constructor(val):
+        List = []
+        type__ = ''
+       
+        for i in val:
+            if i == '-':
+                type__Prelod = '1'
+                continue
+                
+            elif i == ',':
+                i = "."
+                type__ = '1'
+            List.append(i)
+        List_ = List
+        itItog = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+        if type__ == '1':
+            res = float(itItog)
+            print(type__)
+        else:
+            res = int(itItog)
+
+        return res
+    
+
     for obj in LSData__List:
         make = obj.qr
         dopInfo = 'Acc=' + obj.ls + '|LastName=' + obj.fio + '|payerAddress=' + obj.adr
+
+        for i in obj.it_dolg:
+            if i[0] == '-':
+                OverPay = 'On'
+                print(obj.it_dolg)
+        itDolg = Constructor(obj.it_dolg)
+        itOpl = Constructor( obj.it_opl )
+        itSumnach = Constructor(obj.it_sumnach) 
+        LSData__List__summa__ = str(round(itDolg + itOpl -  itSumnach, 2))
         info1 = obj.qr1
     qr_Options = QRCodeOptions(
         size='6', border=3, dark_color='#1f1f57', light_color='#fff', data_dark_color="#038ED1", quiet_zone_color='#fff', error_correction='L')
@@ -122,7 +157,7 @@ def profile(request):
         DRAW = InduExportCH.objects.filter(id_ls=tr_)
         DRAW_ = InduExportCH.objects.all().filter(id_ls=tr_)
     else:
-        messages_ = 'Лицевой счет не определен!!! Сбой'
+        messages_ = '----'
     # /////Все то что отвечает за передачу показаний в таблицы ---
     # -----------------------------------------------------------------
     datavhod = InduImport.objects.filter(id_ls=tr_)
@@ -272,6 +307,8 @@ def profile(request):
                'dataExport': DRAW,
                'messages_': messages_,
                'LSData': LSData__List,
+               'LSData__List__summa': LSData__List__summa__,
+               'OverPay': OverPay,
                'qrMake': qrMake,
                'qr_Options': qr_Options,
                'Error': messadges,

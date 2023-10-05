@@ -20,6 +20,9 @@ def InfoPagesIdx(request):
     index__ = indxpages.objects.all().filter(pk=1)
     return render(request, 'informations/index.html', {'index': index__})
 
+def InfoPagesVakans(request):
+    index__ = indxpages.objects.all().filter(pk=7)
+    return render(request, 'informations/index.html', {'index': index__})
 
 def InfoPagesNormativ(request):
     Normativ__ = indxpages.objects.all().filter(pk=3)

@@ -122,7 +122,32 @@ def inducaions(request):
                         id_ls = obj.id_ls
                         name_dom = obj.name_dom
                         name_kv = obj.name_kv
-                        
+                        # if __hv1_data < float(obj.hv1_data):
+                        #     messadges = 1
+                        #     mess_data = 'Ошибка ХВ_1'
+                        #     print('Сработало')
+                        # elif __hv2_data < float(obj.hv2_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ХВ_2'
+                        # elif __hv3_data < float(obj.hv3_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ХВ_3'
+                        # elif __hv_data < float(obj.hv_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ХВ_4'
+                        # elif __gv1_data < float(obj.gv1_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ГВС_1'
+                        # elif __gv2_data < float(obj.gv2_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ГВС_2'
+                        # elif __gv3_data < float(obj.gv3_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ГВС_3'
+                        # elif __gv4_data < float(obj.gv4_data):
+                        #     messadges = 1
+                        #     mess_data ='Ошибка ГВС_4'
+                        # else:
                         feed = SEND_(
                             id_ls=id_ls,
                             name_dom=name_dom,

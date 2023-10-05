@@ -112,6 +112,28 @@ def profile(request):
             res = int(itItog)
 
         return res
+    def KillerString(val):
+        List = []
+        type__ = ''
+        for i in val:
+            if i == '-':
+                continue
+            elif i == ',':
+                i = "."
+                type__ = '1'
+            List.append(i)
+        List_ = List
+        itItog__ = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+        
+        if type__ == '1':
+            res = float(itItog__)
+            print(type__)
+        else:
+            itItog = itItog__ + '.00'
+            res__ = itItog
+            print(res__)
+            res = float(res__)
+        return res
     
 
     for obj in LSData__List:
@@ -215,7 +237,7 @@ def profile(request):
             print(form.errors)
     elif request.method == 'POST' and 'datavhod' in request.POST:
         form__ = MakeStatement(data=request.POST)
-        print(form__)
+        # print(form__)
         if form__.is_valid():
             #     human = True
             __hv1_data = form__.cleaned_data['hv1_data']
@@ -227,30 +249,62 @@ def profile(request):
             __hv_data = form__.cleaned_data['hv_data']
             __gv4_data = form__.cleaned_data['gv4_data']
             for obj in datavhod:
-                # if __hv1_data < obj.hv1_data:
-                #     messadges = 1
-                #     mess_data = 'Ошибка ХВ_1'
-                # elif __hv2_data < obj.hv2_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ХВ_2'
-                # elif __hv3_data < obj.hv3_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ХВ_3'
-                # elif __hv_data < obj.hv_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ХВ_4'
-                # elif __gv1_data < obj.gv1_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ГВС_1'
-                # elif __gv2_data < obj.gv2_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ГВС_2'
-                # elif __gv3_data < obj.gv3_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ГВС_3'
-                # elif __gv4_data < obj.gv4_data:
-                #     messadges = 1
-                #     mess_data ='Ошибка ГВС_4'
+                # if obj.hv1_data != None:
+                #     if __hv1_data < KillerString(obj.hv1_data):
+                #         messadges = 1
+                #         mess_data = 'Ошибка ХВ_1'
+                #         print('Ошибка ХВ_1')
+                #     else:
+                #         continue
+                # elif obj.hv2_data != None:
+                #     if __hv2_data < KillerString(obj.hv2_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ХВ_2'
+                #         print('Ошибка ХВ_2')
+                #     else:
+                #         continue
+                # elif obj.hv3_data != None:
+                #     if __hv3_data < KillerString(obj.hv3_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ХВ_3'
+                #         print('Ошибка ХВ_3')
+                #     else:
+                #         continue
+                # elif obj.hv_data != None:
+                #     if __hv_data < KillerString(obj.hv_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ХВ_4'
+                #         print('Ошибка ХВ_4')
+                #     else: 
+                #         continue
+                # elif obj.gv1_data != None:
+                #     if __gv1_data < KillerString(obj.gv1_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ГВС_1'
+                #         print('Ошибка ХВ_5')
+                #     else:
+                #         continue
+                # elif obj.gv2_data != None:
+                #     if __gv2_data < KillerString(obj.gv2_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ГВС_2'
+                #         print('Ошибка ХВ_6')
+                #     else:
+                #         continue
+                # elif obj.gv3_data != None:
+                #     if __gv3_data < KillerString(obj.gv3_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ГВС_3'
+                #         print('Ошибка ХВ_7')
+                #     else:
+                #         continue
+                # elif obj.gv4_data != None:
+                #     if __gv4_data < KillerString(obj.gv4_data):
+                #         messadges = 1
+                #         mess_data ='Ошибка ГВС_4'
+                #         print('Ошибка ХВ_8')
+                #     else:
+                #         continue
                 # else:
                 id_ls = obj.id_ls
                 name_dom = obj.name_dom

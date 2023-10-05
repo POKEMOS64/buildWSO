@@ -64,35 +64,35 @@ class InduExport(models.Model):
         max_length=50, verbose_name='Квартира', null=True, blank=True)
     codsch_hv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_1', null=True, blank=True)
-    hv1_data = models.CharField(
+    hv1_data = models.FloatField(
         max_length=50, verbose_name='Показание ХВ_1', null=True, blank=True)
     codsh_gv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ГВ_1', null=True, blank=True)
-    gv1_data = models.CharField(
+    gv1_data = models.FloatField(
         max_length=50, verbose_name='Показания ГВ_1', null=True, blank=True)
     codsch_hv2 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_2", null=True, blank=True)
-    hv2_data = models.CharField(
+    hv2_data = models.FloatField(
         max_length=50, verbose_name="Показание ХВ_2", null=True, blank=True)
     codsch_gv2 = models.CharField(
         max_length=20, verbose_name='Код счетчика ГВ_2', null=True, blank=True)
-    gv2_data = models.CharField(
+    gv2_data = models.FloatField(
         max_length=50, verbose_name='Показание ГВ_2', null=True, blank=True)
     codsch_hv3 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_3', null=True, blank=True)
-    hv3_data = models.CharField(
+    hv3_data = models.FloatField(
         max_length=50, verbose_name="Показакние ХВ_3", null=True, blank=True)
     codsch_gv3 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_3", null=True, blank=True)
-    gv3_data = models.CharField(
+    gv3_data = models.FloatField(
         max_length=50, verbose_name="Показания ГВ_3", null=True, blank=True)
     codsch_hv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_4", null=True, blank=True)
-    hv_data = models.CharField(
+    hv_data = models.FloatField(
         max_length=50, verbose_name='Показания ХВ_4', null=True, blank=True)
     codsh_gv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_4", null=True, blank=True)
-    gv4_data = models.CharField(
+    gv4_data = models.FloatField(
         max_length=50, verbose_name="Показание ГВ_4", null=True, blank=True)
 
     def __str__(self):
@@ -113,35 +113,35 @@ class InduExportSela(models.Model):
         max_length=50, verbose_name='Квартира', null=True, blank=True)
     codsch_hv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_1', null=True, blank=True)
-    hv1_data = models.CharField(
+    hv1_data = models.FloatField(
         max_length=50, verbose_name='Показание ХВ_1', null=True, blank=True)
     codsh_gv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ГВ_1', null=True, blank=True)
-    gv1_data = models.CharField(
+    gv1_data = models.FloatField(
         max_length=50, verbose_name='Показания ГВ_1', null=True, blank=True)
     codsch_hv2 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_2", null=True, blank=True)
-    hv2_data = models.CharField(
+    hv2_data = models.FloatField(
         max_length=50, verbose_name="Показание ХВ_2", null=True, blank=True)
     codsch_gv2 = models.CharField(
         max_length=20, verbose_name='Код счетчика ГВ_2', null=True, blank=True)
-    gv2_data = models.CharField(
+    gv2_data = models.FloatField(
         max_length=50, verbose_name='Показание ГВ_2', null=True, blank=True)
     codsch_hv3 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_3', null=True, blank=True)
-    hv3_data = models.CharField(
+    hv3_data = models.FloatField(
         max_length=50, verbose_name="Показакние ХВ_3", null=True, blank=True)
     codsch_gv3 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_3", null=True, blank=True)
-    gv3_data = models.CharField(
+    gv3_data = models.FloatField(
         max_length=50, verbose_name="Показания ГВ_3", null=True, blank=True)
     codsch_hv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_4", null=True, blank=True)
-    hv_data = models.CharField(
+    hv_data = models.FloatField(
         max_length=50, verbose_name='Показания ХВ_4', null=True, blank=True)
     codsh_gv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_4", null=True, blank=True)
-    gv4_data = models.CharField(
+    gv4_data = models.FloatField(
         max_length=50, verbose_name="Показание ГВ_4", null=True, blank=True)
 
     def __str__(self):
@@ -162,35 +162,35 @@ class InduExportCH(models.Model):
         max_length=50, verbose_name='Квартира', null=True, blank=True)
     codsch_hv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_1', null=True, blank=True)
-    hv1_data = models.CharField(
+    hv1_data = models.FloatField(
         max_length=50, verbose_name='Показание ХВ_1', null=True, blank=True)
     codsh_gv1 = models.CharField(
         max_length=50, verbose_name='Код счетчика ГВ_1', null=True, blank=True)
-    gv1_data = models.CharField(
+    gv1_data = models.FloatField(
         max_length=50, verbose_name='Показания ГВ_1', null=True, blank=True)
     codsch_hv2 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_2", null=True, blank=True)
-    hv2_data = models.CharField(
+    hv2_data = models.FloatField(
         max_length=50, verbose_name="Показание ХВ_2", null=True, blank=True)
     codsch_gv2 = models.CharField(
         max_length=20, verbose_name='Код счетчика ГВ_2', null=True, blank=True)
-    gv2_data = models.CharField(
+    gv2_data = models.FloatField(
         max_length=50, verbose_name='Показание ГВ_2', null=True, blank=True)
     codsch_hv3 = models.CharField(
         max_length=50, verbose_name='Код счетчика ХВ_3', null=True, blank=True)
-    hv3_data = models.CharField(
+    hv3_data = models.FloatField(
         max_length=50, verbose_name="Показакние ХВ_3", null=True, blank=True)
     codsch_gv3 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_3", null=True, blank=True)
-    gv3_data = models.CharField(
+    gv3_data = models.FloatField(
         max_length=50, verbose_name="Показания ГВ_3", null=True, blank=True)
     codsch_hv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ХВ_4", null=True, blank=True)
-    hv_data = models.CharField(
+    hv_data = models.FloatField(
         max_length=50, verbose_name='Показания ХВ_4', null=True, blank=True)
     codsh_gv4 = models.CharField(
         max_length=50, verbose_name="Код счетчика ГВ_4", null=True, blank=True)
-    gv4_data = models.CharField(
+    gv4_data = models.FloatField(
         max_length=50, verbose_name="Показание ГВ_4", null=True, blank=True)
 
     def __str__(self):

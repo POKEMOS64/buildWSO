@@ -132,35 +132,35 @@ class MakeStatement(forms.Form):
         attrs={'class': 'form_first_name', }), required=False)
     codsch_hv1 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    hv1_data = forms.CharField(widget=forms.TextInput(
+    hv1_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsh_gv1 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    gv1_data = forms.CharField(widget=forms.TextInput(
+    gv1_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_hv2 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    hv2_data = forms.CharField(widget=forms.TextInput(
+    hv2_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_gv2 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    gv2_data = forms.CharField(widget=forms.TextInput(
+    gv2_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_hv3 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    hv3_data = forms.CharField(widget=forms.TextInput(
+    hv3_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_gv3 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    gv3_data = forms.CharField(widget=forms.TextInput(
+    gv3_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsch_hv4 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    hv_data = forms.CharField(widget=forms.TextInput(
+    hv_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
     codsh_gv4 = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form_first_name', }), required=False)
-    gv4_data = forms.CharField(widget=forms.TextInput(
+    gv4_data = forms.FloatField(widget=forms.NumberInput(
         attrs={'class': 'form_first_name', }), required=False)
 
     class Meta:

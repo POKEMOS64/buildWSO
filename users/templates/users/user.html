@@ -228,7 +228,7 @@ continent
             <form action="{% url 'users:profile' %}" method="post">
               {% csrf_token %}
               {% if datavhod %}
-              
+
               <div class="form_title">
                 <h2>Передача показаний</h2>
 
@@ -565,7 +565,7 @@ continent
             <div class="col xl1 m0 "></div>
             <div class="col xl2 m0 "></div>
             <div class="col xl1 m0 "></div>
-            
+
             <div class="col xl2 m0">{{ obj.it_sumnach }}</div>
             <div class="col xl2 m0">{{ obj.it_dolg }}</div>
           </div>
@@ -579,14 +579,14 @@ continent
           {% qr_from_text qrMake options=qr_Options %}
         </div>
         {% for obj in LSData %}
-        <div class="tablo__informations__chet__qrcode__summa">
+        <!-- <div class="tablo__informations__chet__qrcode__summa">
           {% if OverPay == 'On' %}
           <span>Переплата:</span> <span>{{LSData__List__summa}} руб.</span>
           {% else %}
           <span>К оплате:</span> <span>{{LSData__List__summa}} руб.</span>
           {% endif %}
           
-        </div>
+        </div> -->
         {% endfor %}
       </div>
       <!-- <h2>Квитанции (В разработке)</h2>

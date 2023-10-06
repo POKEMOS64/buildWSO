@@ -93,7 +93,6 @@ def profile(request):
     def Constructor(val):
         List = []
         type__ = ''
-       
         for i in val:
             if i == '-':
                 type__Prelod = '1'
@@ -134,7 +133,61 @@ def profile(request):
             print(res__)
             res = float(res__)
         return res
-    
+    def Constructor__Plus(val, value):
+        L__ = []
+        L = ''
+        res__x = ''
+        resultat__ = ''
+        def Constructor_x(value__):
+            List = []
+            type__ = ''
+            for i in value__:
+                if i == '-':
+                    type__Prelod = '1'
+                    continue
+                    
+                elif i == ',':
+                    i = "."
+                    type__ = '1'
+                List.append(i)
+            List_ = List
+            itItog = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+            print(itItog)
+            if type__ == '1':
+                res = float(itItog)
+                print(type__)
+            else:
+                itItog = itItog + '.00'
+                res__ = itItog
+                print(res__)
+                res = float(res__)
+            return res
+        
+        if val == None:
+            res__ = float(100000)
+        elif isinstance(val, float):
+            res__ = val
+            print(res__)
+        else:
+            for i in val:
+                if i == ',':
+                    i = '.'
+                L__.append(i)
+            L = str(L__).replace('[', '').replace(']', '').replace(
+                ',', '').replace("'", "").replace(' ', '')
+            val = L
+            res__ = float(val)
+            print(res__)
+        
+        resultat__ = Constructor_x(value)
+        data_1 = res__
+        if data_1 >= resultat__:
+            res__x = '1'
+        else:
+            res__x = '0'
+        res = res__x
+            
+        return res
 
     for obj in LSData__List:
         make = obj.qr
@@ -151,7 +204,6 @@ def profile(request):
         info1 = obj.qr1
     qr_Options = QRCodeOptions(
         size='6', border=3, dark_color='#1f1f57', light_color='#fff', data_dark_color="#038ED1", quiet_zone_color='#fff', error_correction='L')
-
     if LSData__List:
         qrMake = make + dopInfo + info1
     else:
@@ -197,6 +249,7 @@ def profile(request):
     # -----------------------------------------------------------------
     form = UserProfileForm(instance=profile)
     form__ = MakeStatement()
+    value = ''
     mess_data = ''
     messadges = ''
     if request.method == 'POST' and 'profilels' in request.POST:
@@ -249,101 +302,81 @@ def profile(request):
             __hv_data = form__.cleaned_data['hv_data']
             __gv4_data = form__.cleaned_data['gv4_data']
             for obj in datavhod:
-                # if obj.hv1_data != None:
-                #     if __hv1_data < KillerString(obj.hv1_data):
-                #         messadges = 1
-                #         mess_data = 'Ошибка ХВ_1'
-                #         print('Ошибка ХВ_1')
-                #     else:
-                #         continue
-                # elif obj.hv2_data != None:
-                #     if __hv2_data < KillerString(obj.hv2_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ХВ_2'
-                #         print('Ошибка ХВ_2')
-                #     else:
-                #         continue
-                # elif obj.hv3_data != None:
-                #     if __hv3_data < KillerString(obj.hv3_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ХВ_3'
-                #         print('Ошибка ХВ_3')
-                #     else:
-                #         continue
-                # elif obj.hv_data != None:
-                #     if __hv_data < KillerString(obj.hv_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ХВ_4'
-                #         print('Ошибка ХВ_4')
-                #     else: 
-                #         continue
-                # elif obj.gv1_data != None:
-                #     if __gv1_data < KillerString(obj.gv1_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ГВС_1'
-                #         print('Ошибка ХВ_5')
-                #     else:
-                #         continue
-                # elif obj.gv2_data != None:
-                #     if __gv2_data < KillerString(obj.gv2_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ГВС_2'
-                #         print('Ошибка ХВ_6')
-                #     else:
-                #         continue
-                # elif obj.gv3_data != None:
-                #     if __gv3_data < KillerString(obj.gv3_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ГВС_3'
-                #         print('Ошибка ХВ_7')
-                #     else:
-                #         continue
-                # elif obj.gv4_data != None:
-                #     if __gv4_data < KillerString(obj.gv4_data):
-                #         messadges = 1
-                #         mess_data ='Ошибка ГВС_4'
-                #         print('Ошибка ХВ_8')
-                #     else:
-                #         continue
-                # else:
                 id_ls = obj.id_ls
                 name_dom = obj.name_dom
                 name_kv = obj.name_kv
-                feed = SEND_(
-                    id_ls=id_ls,
-                    name_dom=name_dom,
-                    name_kv=name_kv,
-                    codsch_hv1=obj.codsch_hv1,
-                    hv1_data=__hv1_data,
-                    codsh_gv1=obj.codsh_gv1,
-                    gv1_data=__gv1_data,
-                    codsch_hv2=obj.codsch_hv2,
-                    hv2_data=__hv2_data,
-                    codsch_gv2=obj.codsch_gv2,
-                    gv2_data=__gv2_data,
-                    codsch_hv3=obj.codsch_hv3,
-                    hv3_data=__hv3_data,
-                    codsch_gv3=obj.codsch_gv3,
-                    gv3_data=__gv3_data,
-                    codsch_hv4=obj.codsch_hv4,
-                    hv_data=__hv_data,
-                    codsh_gv4=obj.codsh_gv4,
-                    gv4_data=__gv4_data
-                )
-                if DRAW:
-                    DRAW.update(
+                hv1_data  = Constructor__Plus(__hv1_data, obj.hv1_data )
+                hv2_data = Constructor__Plus(__hv2_data, obj.hv2_data )
+                hv3_data = Constructor__Plus(__hv3_data, obj.hv3_data )
+                hv4_data = Constructor__Plus(__hv_data, obj.hv_data )
+                gv1_data = Constructor__Plus(__gv1_data, obj.gv1_data )
+                gv2_data = Constructor__Plus(__gv2_data, obj.gv2_data )
+                gv3_data = Constructor__Plus(__gv3_data, obj.gv3_data )
+                gv4_data = Constructor__Plus(__gv4_data, obj.gv4_data )
+                if hv1_data == '0':
+                    mess_data = 'Ошибка ХВ_1'
+                    print(mess_data)
+                elif hv2_data == '0':
+                    mess_data = 'Ошибка ХВ_2'
+                    print(mess_data)
+                elif hv3_data == '0':
+                    mess_data = 'Ошибка ХВ_3'
+                    print(mess_data)
+                elif hv3_data == '0':
+                    mess_data = 'Ошибка ХВ_3'
+                    print(mess_data)
+                elif hv4_data == '0':
+                    mess_data = 'Ошибка ХВ_4'
+                    print(mess_data)
+                elif gv1_data == '0':
+                    mess_data = 'Ошибка ГВС_1'
+                    print(mess_data)
+                elif gv2_data == '0':
+                    mess_data = 'Ошибка ГВС_2'
+                    print(mess_data)
+                elif gv3_data == '0':
+                    mess_data = 'Ошибка ГВС_3'
+                    print(mess_data)
+                elif gv4_data == '0':
+                    mess_data = 'Ошибка ГВС_4'
+                    print(mess_data)
+                else:
+                    feed = SEND_(
+                        id_ls=id_ls,
+                        name_dom=name_dom,
+                        name_kv=name_kv,
+                        codsch_hv1=obj.codsch_hv1,
                         hv1_data=__hv1_data,
+                        codsh_gv1=obj.codsh_gv1,
                         gv1_data=__gv1_data,
+                        codsch_hv2=obj.codsch_hv2,
                         hv2_data=__hv2_data,
+                        codsch_gv2=obj.codsch_gv2,
                         gv2_data=__gv2_data,
+                        codsch_hv3=obj.codsch_hv3,
                         hv3_data=__hv3_data,
+                        codsch_gv3=obj.codsch_gv3,
                         gv3_data=__gv3_data,
+                        codsch_hv4=obj.codsch_hv4,
                         hv_data=__hv_data,
+                        codsh_gv4=obj.codsh_gv4,
                         gv4_data=__gv4_data
                     )
-                else:
-                    feed.save()
-            return HttpResponseRedirect(reverse('users:profile'))
+                    if DRAW:
+                        DRAW.update(
+                            hv1_data=__hv1_data,
+                            gv1_data=__gv1_data,
+                            hv2_data=__hv2_data,
+                            gv2_data=__gv2_data,
+                            hv3_data=__hv3_data,
+                            gv3_data=__gv3_data,
+                            hv_data=__hv_data,
+                            gv4_data=__gv4_data
+                        )
+                    else:
+                        feed.save()
+                        return HttpResponseRedirect(reverse('users:profile'))
+                
         else:
             form__ = MakeStatement()
             print("Робот")

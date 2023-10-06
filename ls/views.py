@@ -39,6 +39,61 @@ def inducaions(request):
     form = MakeStatement()
     ls = ''
     DRAW__ = ''
+    def Constructor__Plus(val, value):
+        L__ = []
+        L = ''
+        res__x = ''
+        resultat__ = ''
+        def Constructor_x(value__):
+            List = []
+            type__ = ''
+            for i in value__:
+                if i == '-':
+                    type__Prelod = '1'
+                    continue
+                    
+                elif i == ',':
+                    i = "."
+                    type__ = '1'
+                List.append(i)
+            List_ = List
+            itItog = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+            print(itItog)
+            if type__ == '1':
+                res = float(itItog)
+                print(type__)
+            else:
+                itItog = itItog + '.00'
+                res__ = itItog
+                print(res__)
+                res = float(res__)
+            return res
+        
+        if val == None:
+            res__ = float(100000)
+        elif isinstance(val, float):
+            res__ = val
+            print(res__)
+        else:
+            for i in val:
+                if i == ',':
+                    i = '.'
+                L__.append(i)
+            L = str(L__).replace('[', '').replace(']', '').replace(
+                ',', '').replace("'", "").replace(' ', '')
+            val = L
+            res__ = float(val)
+            print(res__)
+        
+        resultat__ = Constructor_x(value)
+        data_1 = res__
+        if data_1 >= resultat__:
+            res__x = '1'
+        else:
+            res__x = '0'
+        res = res__x
+            
+        return res
     # ------------ Таблицы---------------------
     if request.method == 'POST':
         form = MakeStatement(data=request.POST)
@@ -122,55 +177,73 @@ def inducaions(request):
                         id_ls = obj.id_ls
                         name_dom = obj.name_dom
                         name_kv = obj.name_kv
-                        # if __hv1_data < float(obj.hv1_data):
-                        #     messadges = 1
-                        #     mess_data = 'Ошибка ХВ_1'
-                        #     print('Сработало')
-                        # elif __hv2_data < float(obj.hv2_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ХВ_2'
-                        # elif __hv3_data < float(obj.hv3_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ХВ_3'
-                        # elif __hv_data < float(obj.hv_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ХВ_4'
-                        # elif __gv1_data < float(obj.gv1_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ГВС_1'
-                        # elif __gv2_data < float(obj.gv2_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ГВС_2'
-                        # elif __gv3_data < float(obj.gv3_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ГВС_3'
-                        # elif __gv4_data < float(obj.gv4_data):
-                        #     messadges = 1
-                        #     mess_data ='Ошибка ГВС_4'
-                        # else:
-                        feed = SEND_(
-                            id_ls=id_ls,
-                            name_dom=name_dom,
-                            name_kv=name_kv,
-                            codsch_hv1=obj.codsch_hv1,
-                            hv1_data=__hv1_data,
-                            codsh_gv1=obj.codsh_gv1,
-                            gv1_data=__gv1_data,
-                            codsch_hv2=obj.codsch_hv2,
-                            hv2_data=__hv2_data,
-                            codsch_gv2=obj.codsch_gv2,
-                            gv2_data=__gv2_data,
-                            codsch_hv3=obj.codsch_hv3,
-                            hv3_data=__hv3_data,
-                            codsch_gv3=obj.codsch_gv3,
-                            gv3_data=__gv3_data,
-                            codsch_hv4=obj.codsch_hv4,
-                            hv_data=__hv_data,
-                            codsh_gv4=obj.codsh_gv4,
-                            gv4_data=__gv4_data
-                        )
-                        feed.save()
-                        return HttpResponseRedirect(reverse('ls:result'))
+                        hv1_data  = Constructor__Plus(__hv1_data, obj.hv1_data )
+                        hv2_data = Constructor__Plus(__hv2_data, obj.hv2_data )
+                        hv3_data = Constructor__Plus(__hv3_data, obj.hv3_data )
+                        hv4_data = Constructor__Plus(__hv_data, obj.hv_data )
+                        gv1_data = Constructor__Plus(__gv1_data, obj.gv1_data )
+                        gv2_data = Constructor__Plus(__gv2_data, obj.gv2_data )
+                        gv3_data = Constructor__Plus(__gv3_data, obj.gv3_data )
+                        gv4_data = Constructor__Plus(__gv4_data, obj.gv4_data )
+                        if hv1_data == '0':
+                            mess_data = 'Ошибка ХВ_1'
+                            messadges= '1'
+                            print(mess_data)
+                        elif hv2_data == '0':
+                            mess_data = 'Ошибка ХВ_2'
+                            messadges= '1'
+                            print(mess_data)
+                        elif hv3_data == '0':
+                            mess_data = 'Ошибка ХВ_3'
+                            messadges= '1'
+                            print(mess_data)
+                        elif hv3_data == '0':
+                            mess_data = 'Ошибка ХВ_3'
+                            print(mess_data)
+                        elif hv4_data == '0':
+                            mess_data = 'Ошибка ХВ_4'
+                            messadges= '1'
+                            print(mess_data)
+                        elif gv1_data == '0':
+                            mess_data = 'Ошибка ГВС_1'
+                            messadges= '1'
+                            print(mess_data)
+                        elif gv2_data == '0':
+                            mess_data = 'Ошибка ГВС_2'
+                            messadges= '1'
+                            print(mess_data)
+                        elif gv3_data == '0':
+                            mess_data = 'Ошибка ГВС_3'
+                            messadges= '1'
+                            print(mess_data)
+                        elif gv4_data == '0':
+                            mess_data = 'Ошибка ГВС_4'
+                            messadges= '1'
+                            print(mess_data)
+                        else:
+                            feed = SEND_(
+                                id_ls=id_ls,
+                                name_dom=name_dom,
+                                name_kv=name_kv,
+                                codsch_hv1=obj.codsch_hv1,
+                                hv1_data=__hv1_data,
+                                codsh_gv1=obj.codsh_gv1,
+                                gv1_data=__gv1_data,
+                                codsch_hv2=obj.codsch_hv2,
+                                hv2_data=__hv2_data,
+                                codsch_gv2=obj.codsch_gv2,
+                                gv2_data=__gv2_data,
+                                codsch_hv3=obj.codsch_hv3,
+                                hv3_data=__hv3_data,
+                                codsch_gv3=obj.codsch_gv3,
+                                gv3_data=__gv3_data,
+                                codsch_hv4=obj.codsch_hv4,
+                                hv_data=__hv_data,
+                                codsh_gv4=obj.codsh_gv4,
+                                gv4_data=__gv4_data
+                            )
+                            feed.save()
+                            return HttpResponseRedirect(reverse('ls:result'))
 
                 else:
                     form__ = MakeStatement()

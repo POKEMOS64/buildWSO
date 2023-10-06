@@ -109,22 +109,20 @@ continent
           <!-- --------------------------------------------------------- -->
           {% if user.lic_def %}
           <div class="col xl7 l12 m12 profile__forms">
+            {% if Error == 1 %}
             <blockquote>
-              <h4>Важно</h4>
-              <p class="danger">При вводе данных указывайте целое число, без запятой!</p>
-              {% if messages %}
+              <h4>Оповещение</h4>
               <p class="danger_plus">{{messages}}</p>
-              {% endif %}
-              {% if Error == 1 %}
               <p class="danger">{{ mess_data }}</p>
               <p>Вы передали показания меньше учтенных ранее,
                 для восстановления расчетов по прибору учета необходимо направить обращение
                 по средствам электронной почты на адрес: <a
                   href="mailto:mkdkomarova@yandex.ru">mkdkomarova@yandex.ru</a>,
                 либо обратиться лично в отдел по абонентскому обслуживанию</p>
-              {% endif %}
+              
 
             </blockquote>
+            {% endif %}
             {% if dataExport %}
             <div class="info__data__result">
 

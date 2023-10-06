@@ -7,7 +7,7 @@ from .models import WaterModel, WaterModelDoc, WaterModelDocDisposal, InfoModelD
 
 #Новости
 def CNNpages(request):
-    index__ = IndexPost.objects.all()
+    index__ = IndexPost.objects.all().order_by('-pk')
     context = {'index': index__}
     return render( request, 'informations/info__post.html',context)
 

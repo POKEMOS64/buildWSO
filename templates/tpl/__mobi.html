@@ -15,11 +15,11 @@
       <img src="{% static 'img/logo_bg.png' %}" alt="">
     </div>
     <ul>
-      
-      <li><a href="{% url 'index' %}">О предприятии</a></li>
+      <li><a href="{% url 'index' %}">Новости</a></li>
+    <li><a href="{% url 'infocnn' %}">О предприятии</a></li>
       <li><a href="{% url 'informations:info' %}">Информация</a>
         <ul>
-          <li><a href="{% url 'informations:infocnn' %}">Новости</a></li>
+          
           <li><a href="{% url 'informations:job' %}">Вакансии</a></li>
           <li><a href="{% url 'informations:watersupply' %}">Водоснабжение</a></li>
           <li><a href="{% url 'informations:waterdis' %}">Водоотведение</a></li>

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from dispatch.views import dispatchViews
 from question.views import questViews
-from informations.views import InfoPagesIdx, InfoPagesContact, InfoPagesNormativ
+from informations.views import InfoPagesIdx, CNNpages, InfoPagesContact, InfoPagesNormativ
 from informations import views
 from .views import StopDef
 
@@ -40,7 +40,8 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('abonentskiy/', include('abon.urls', namespace='abon')),
     path('index222/', StopDef, name='stop'),
-    path('', InfoPagesIdx, name='index'),
+    path('o_nas/', InfoPagesIdx , name='infocnn'),
+    path('', CNNpages, name='index'),
     path('contact/', InfoPagesContact, name='contact'),
     path('normativ/', InfoPagesNormativ, name='normativ'),
     path('info/', include('informations.urls', namespace='informations')),

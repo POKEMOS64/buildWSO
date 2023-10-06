@@ -315,31 +315,40 @@ def profile(request):
                 gv4_data = Constructor__Plus(__gv4_data, obj.gv4_data )
                 if hv1_data == '0':
                     mess_data = 'Ошибка ХВ_1'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif hv2_data == '0':
                     mess_data = 'Ошибка ХВ_2'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif hv3_data == '0':
                     mess_data = 'Ошибка ХВ_3'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif hv3_data == '0':
                     mess_data = 'Ошибка ХВ_3'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif hv4_data == '0':
                     mess_data = 'Ошибка ХВ_4'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif gv1_data == '0':
                     mess_data = 'Ошибка ГВС_1'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif gv2_data == '0':
                     mess_data = 'Ошибка ГВС_2'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif gv3_data == '0':
                     mess_data = 'Ошибка ГВС_3'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 elif gv4_data == '0':
                     mess_data = 'Ошибка ГВС_4'
-                    print(mess_data)
+                    messadges= '1'
+                    form__ = MakeStatement()
                 else:
                     feed = SEND_(
                         id_ls=id_ls,
@@ -389,8 +398,9 @@ def profile(request):
     context = {"form": form,
                'form__': form__,
                'profile_user': profile_user,
-               'messages': messages,
+               'messages': mess_data,
                'datavhod': datavhod,
+               'Error': messadges,
                'dataExport': DRAW,
                'messages_': messages_,
                'LSData': LSData__List,

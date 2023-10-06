@@ -17,8 +17,8 @@ lk
               Передача показаний
             </span>
             <span>{{messadges}}</span>
-            {% if Error == 1 %}
-            <p class="danger">{{ mess_data }}</p>
+            {% if Error == '1' %}
+            <p class="danger">{{ mess_data }} Показания не приняты!</p>
             <p>Вы передали показания меньше учтенных ранее,
               для восстановления расчетов по прибору учета необходимо направить обращение
               по средствам электронной почты на адрес: <a href="mailto:mkdkomarova@yandex.ru">mkdkomarova@yandex.ru</a>,

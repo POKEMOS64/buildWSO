@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'connect',
     'abon',
     'informations',
-    'qr_code'
+    'qr_code',
+    'kvit',
 ]
 
 MIDDLEWARE = [

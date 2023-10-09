@@ -193,14 +193,14 @@ def profile(request):
         make = obj.qr
         dopInfo = 'Acc=' + obj.ls + '|LastName=' + obj.fio + '|payerAddress=' + obj.adr
 
-        for i in obj.it_dolg:
+        for i in obj.koplate:
             if i[0] == '-':
                 OverPay = 'On'
                 print(obj.it_dolg)
         itDolg = Constructor(obj.it_dolg)
-        itOpl = Constructor( obj.it_opl )
+        itOpl = Constructor( obj.koplate )
         itSumnach = Constructor(obj.it_sumnach) 
-        LSData__List__summa__ = str(round(itDolg + itOpl -  itSumnach, 2))
+        LSData__List__summa__ = str(round(itOpl, 2))
         info1 = obj.qr1
     qr_Options = QRCodeOptions(
         size='6', border=3, dark_color='#1f1f57', light_color='#fff', data_dark_color="#038ED1", quiet_zone_color='#fff', error_correction='L')

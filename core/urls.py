@@ -45,6 +45,7 @@ urlpatterns = [
     path('contact/', InfoPagesContact, name='contact'),
     path('normativ/', InfoPagesNormativ, name='normativ'),
     path('info/', include('informations.urls', namespace='informations')),
+    path('kvit/', include('kvit.urls', namespace='kvit')),
     path('mail/', include('mail.urls', namespace='mail')),
     path('reset_password/', auth_views.PasswordResetView.as_view(),
          name='reset_password'),

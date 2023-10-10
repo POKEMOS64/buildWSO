@@ -11,15 +11,15 @@ class Receipt(models.Model):
     lic4_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №4', blank=True, null=True)
     lic5_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №5', blank=True, null=True)
     lic6_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №6', blank=True, null=True)
-    lic11_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №1-Доп поле', blank=True, null=True)
-    lic12_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №2-Доп поле', blank=True, null=True)
-    lic13_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №3-Доп поле', blank=True, null=True)
-    lic14_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №4-Доп поле', blank=True, null=True)
-    lic15_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №5-Доп поле', blank=True, null=True)
-    lic16_pole = models.IntegerField(max_length=50, verbose_name='Лицевой №6-Доп поле', blank=True, null=True)
+    lic11_pole = models.BooleanField(verbose_name='Лицевой №1-Доп поле', blank=True, null=True)
+    lic12_pole = models.BooleanField(verbose_name='Лицевой №2-Доп поле', blank=True, null=True)
+    lic13_pole = models.BooleanField(verbose_name='Лицевой №3-Доп поле', blank=True, null=True)
+    lic14_pole = models.BooleanField(verbose_name='Лицевой №4-Доп поле', blank=True, null=True)
+    lic15_pole = models.BooleanField(verbose_name='Лицевой №5-Доп поле', blank=True, null=True)
+    lic16_pole = models.BooleanField(verbose_name='Лицевой №6-Доп поле', blank=True, null=True)
 
     def __str__(self):
-        return str(self.email_pole)
+        return str(self.user_name)
 
     class Meta:
         verbose_name = 'Пользователь'

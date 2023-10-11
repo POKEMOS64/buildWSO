@@ -16,6 +16,7 @@ from django.urls import reverse
 from qr_code.qrcode.maker import make_qr
 from qr_code.qrcode.utils import QRCodeOptions
 
+
 # Create your views here.
 
 

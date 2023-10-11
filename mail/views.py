@@ -5,6 +5,6 @@ from django.core.mail import send_mail
 
 
 def Mail(request):
-    send_mail('MUP "Balakovo-VODOKANAL"', 'Send on is WSO-Project',
-              settings.EMAIL_HOST_USER, ['it@bal-vod.ru'])
+    send_mail('МУП "Балаково-Водоканал"', 'Тут будет квитанция',
+              settings.EMAIL_HOST_USER, ['srv@bal-vod.ru'])
     return render(request, 'mail/send.html')

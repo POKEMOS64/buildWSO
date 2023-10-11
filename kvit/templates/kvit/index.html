@@ -8,58 +8,100 @@ continent
 {% block index %}
 <!-- ---------------------- -->
 <div class="col lef-xl3 xl9 lef-m0 m12 s_info_nav__post">
-    <div class="container">
-      <div class="wrap">
-        <div class="col xl12 s12 s_info_nav__post">
-          <div class="wrap">
-            <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
-              <form class="classic" action="{% url 'kvit:index' %}" method="POST">
-                {% csrf_token %}
-                <div>
-                  <span>Лицевой 1: </span>
-                  <span>{{form.lic}}</span>
-                </div>
-  
-                <div>
-                  <span>Лицевой 2:</span>
-                  <span>{{form.lic2}}</span>
-                </div>
-                <div>
-                  <span>Лицевой 3:</span>
-                  <span>{{form.lic3}}</span>
-                </div>
-                <div>
-                  <span>Лицевой 4:</span>
-                  <span>{{form.lic4}}</span>
-                </div>
-                <div>
-                  <span>Лицевой 5:</span>
-                  <span>{{form.lic5}}</span>
-                </div>
-                <div>
-                  <span>Лицевой 6:</span>
-                  <span>{{form.lic6}}</span>
-                </div>
-                <div>
-                  {{form.errors}}
-                </div>
-                <div>
-                  <button type="submit" class="button__click">Изменить</button>
-                </div>
-              </form>
+  <div class="container">
+    <div class="wrap">
+      <div class="col xl12 s12 s_info_nav__post">
+        <div class="wrap">
+          <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
+            <form class="classic" action="{% url 'kvit:forma' %}" method="POST">
+              {% csrf_token %}
+              {% if useCheck %}
+              {% else %}
+              {% endif %}
+              {% for i in useCheck %}
+              <div>
+                <span>Лицевой счет: {{i.lic1_pole}}</span>
+                <span>
+                  {% if i.lic11_pole == True %}
+                  <input type="checkbox" name="lic" class="form_first_name" placeholder="Лицевой счет1" id="id_lic" checked>
+                  {% else %}
+                  {{form.lic}}
+                  {% endif %}
+                </span>
+                
+              </div>
 
-              
-            </div>
-            
+              <div>
+                <span>Лицевой счет: {{i.lic2_pole}}</span>
+                <span>
+                  {% if i.lic12_pole == True %}
+                  <input type="checkbox" name="lic2" class="form_first_name" placeholder="Лицевой счет2" id="id_lic2" checked>
+                  {% else %}
+                  {{form.lic2}}
+                  {% endif %}
+                </span>
+              </div>
+              <div>
+                <span>Лицевой счет: {{i.lic3_pole}}</span>
+                <span>
+                  {% if i.lic13_pole == True %}
+                  <input type="checkbox" name="lic3" class="form_first_name" placeholder="Лицевой счет3" id="id_lic3" checked>
+                  {% else %}
+                  {{form.lic3}}
+                  {% endif %}
+
+                </span>
+              </div>
+              <div>
+                <span>Лицевой счет: {{i.lic4_pole}}</span>
+                <span>
+                  {% if i.lic14_pole == True %}
+                  <input type="checkbox" name="lic4" class="form_first_name" placeholder="Лицевой счет4" id="id_lic4" checked>
+                  {% else %}
+                  {{form.lic4}}
+                  {% endif %}
+                </span>
+              </div>
+              <div>
+                <span>Лицевой счет: {{i.lic5_pole}}</span>
+                <span>
+                  {% if i.lic15_pole == True %}
+                  <input type="checkbox" name="lic5" class="form_first_name" placeholder="Лицевой счет5" id="id_lic5" checked>
+                  {% else %}
+                  {{form.lic5}}
+                  {% endif %}
+                </span>
+              </div>
+              <div>
+                <span>Лицевой счет: {{i.lic6_pole}}</span>
+                <span>
+                  {% if i.lic16_pole == True %}
+                  <input type="checkbox" name="lic6" class="form_first_name" placeholder="Лицевой счет6" id="id_lic6" checked>
+                  {% else %}
+                  {{form.lic6}}
+                  {% endif %}
+
+                </span>
+              </div>
+              {% endfor %}
+              <div>
+                {{form.errors}}
+              </div>
+              <div>
+                <button type="submit" class="button__click">Изменить</button>
+              </div>
+            </form>
           </div>
+
         </div>
-  
-  
       </div>
+
+
     </div>
-  
   </div>
-  <!-- ---------------------- -->
-  
-  
+
+</div>
+<!-- ---------------------- -->
+
+
 {% endblock index %}

@@ -6,11 +6,17 @@ from .models import Receipt
 from .forms import KvitForm
 from users.models import User
 # Create your views here.
+def FlagDef(val):
+    flag = False
+    if val == True:
+        flag = True
+    return flag
 
 def Kvit(request):
     listkvit = Receipt.objects.all()
     profile = User.objects.get(pk=request.user.pk)
     list_prof = Receipt.objects.filter(user_name = profile)
+    useListCheck = Receipt.objects.all().filter(user_name = profile)
     profile_user = User.objects.filter(pk=request.user.pk)
     form = KvitForm()
     if request.method == 'POST':
@@ -25,6 +31,7 @@ def Kvit(request):
                 lic4X = x.lic4
                 lic5X = x.lic5
                 lic6X = x.lic6
+            
             feed = Receipt(
                 user_name = userX,
                 email_pole = emailX,
@@ -52,12 +59,25 @@ def Kvit(request):
                 )
             else:
                 feed.save()
-                return HttpResponseRedirect(reverse('kvit:index'))
+        return HttpResponseRedirect(reverse('kvit:index'))
 
     else:
         form = KvitForm()
     context={
         'form':form,
         'listkvit':listkvit,
+        'useCheck':useListCheck,
     }
     return render(request, 'kvit/index.html', context )
+
+def KvitResult(request):
+    options = False
+    profile = User.objects.get(pk=request.user.pk)
+    useListCheck = Receipt.objects.all().filter(user_name = profile)
+    if useListCheck:
+        options = True
+    context={
+        'options': options,
+        'useList': useListCheck
+    }
+    return render(request, 'kvit/result.html', context)

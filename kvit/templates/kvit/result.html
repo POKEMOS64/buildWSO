@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load qr_code %}
+{% load static %}
+{% block title %} Абонентский отдел / Личный кабнет / Область профиля {% endblock title %}
+{% block class %}
+continent
+{% endblock class %}
+{% block index %}
+<section class="s_info_cnn_pages col lef-xl3 xl9 lef-m0 m12 white resdesign">
+    <div class="container max">
+      <div class="wrap">
+        <div class="post-mailing col xl12">
+          <h2>Квитанции (В разработке)</h2>
+        </div>
+        <div class="col xl4 m6 s12 post-mailing__form">
+          <h3>Выбрать лицевые для рассылки</h3>
+          <blockquote>
+            <p>Отправка происходит после формировании с 27 числа по 31 число, текущего месяца</p>
+          </blockquote>
+          <div class="post-mailing__result">
+            {% if options == True %}
+            {% for x in useList %}
+            <h3>Включены в рассылку на адрес: <span>{{ x.email_pole}}</span></h3>
+                {% if x.lic11_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic1_pole}}</span>
+                  </div>
+                {% endif %}
+                {% if x.lic12_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic2_pole}}</span>
+                  </div>
+                {% endif %}
+                {% if x.lic13_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic3_pole}}</span>
+                  </div>
+                {% endif %}
+                {% if x.lic14_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic4_pole}}</span>
+                  </div>
+                {% endif %}
+                {% if x.lic15_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic5_pole}}</span>
+                  </div>
+                {% endif %}
+                {% if x.lic16_pole == True %}
+                  <div class="flexdef">
+                    <h4>Лицевой счет:</h4>
+                    <span class="True">{{ x.lic6_pole}}</span>
+                  </div>
+                {% endif %}
+            {% endfor %}
+            <div class="post-mailing__button">
+              <a class="button_click" href="{% url 'kvit:forma'%}">Редактировать</a>
+            </div>
+            {% else %}
+            <a href="{% url 'kvit:forma'%}" class="danger">Подключится к рассылке</a>
+            {% endif %}
+          </div>
+
+        </div>
+        <div class="col xl6 m6 s12 post-mailing__list">
+          <h3>Квитанции</h3>
+          <!-- <div class="wrap">
+            <div class="post-mailing__list__item col xl12">
+              <h3>Январь</h3>
+              <a href="http://" target="_blank">Скачать</a>
+            </div>
+            <div class="post-mailing__list__item col xl12">
+              <h3>Февраль</h3>
+              <a href="http://" target="_blank">Скачать</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock index %}

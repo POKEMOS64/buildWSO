@@ -1,9 +1,10 @@
 from django.urls import path
 
-from .views import Kvit
+from .views import Kvit, KvitResult
 
 app_name='kvit'
 
 urlpatterns=[
-    path('index/', Kvit , name='index'),
+    path('forma.asp', Kvit , name='forma'),
+    path('idx.asp', KvitResult , name='index'),
 ]

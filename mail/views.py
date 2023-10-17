@@ -37,7 +37,7 @@ def pdfLove(request):
     # 406373
     # 106206
     # 514332
-    lsKV = LsModels.objects.all().filter(ls='305183')
+    lsKV = LsModels.objects.all().filter(ls='600008')
     uslugi_legends = {
         '1': "Вид \n услуги",
         '2': 'Способ \n учета',
@@ -72,6 +72,10 @@ def pdfLove(request):
         pdfmetrics.registerFont(TTFont('Roboto', 'static/font/Roboto-Light.ttf'))
         pdfmetrics.registerFont(TTFont('RobotoBold', 'static/font/Roboto-Black.ttf'))
         pdfmetrics.registerFont(TTFont('RobotoThin', 'static/font/Roboto-Thin.ttf'))
+        # I = Image('static/img/logo.jpg')
+        # I.drawHeight = 1.25*inch*I.drawHeight / I.drawWidth
+        # I.drawWidth = 1.25*inch
+
         swift.setFont('RobotoBold', 10)
         swift.drawString(20, 392, "Счет-извещения")
         swift.setFont('Roboto', 8)
@@ -79,29 +83,50 @@ def pdfLove(request):
         swift.setFont('Roboto', 7)
         swift.drawString(20, 380, "Получатель: " +  i.org)
         swift.drawString(20, 370, i.innkpp)
+        swift.drawString( 20, 360, "р/c: "+ i.rsch )
+        swift.drawString( 30, 350, "в " + i.bank  +", БИК: " + i.bic)
         swift.drawString(
-                20, 360, "р/c: "+ i.rsch +' в ' + i.bank  +", БИК: " + i.bic)
+                20, 340, "р/c: 40702810956000085886")
         swift.drawString(
-                20, 350, "р/c: 40702810956000085886 Поволжский Банк ПАО Сбербанк, БИК 043601607")
-        swift.line(20, 340, 340, 340)
-        swift.line(20, 285, 340, 285)
-        swift.line(340, 340, 340, 285)
-        swift.line(20, 340, 20, 285)
-        swift.drawString(25, 330, "Адрес потребителя: "+ i.adr )
-        swift.drawString(25, 320, "Ф.И.О. потребителя: "+ i.fio)
-        swift.drawString(25, 310, "Л/счет потребителя: "+ i.ls)
+                30, 330, "Поволжский Банк ПАО Сбербанк, БИК 043601607")
+        swift.line(20, 320, 250, 320)
+        swift.line(20, 240, 250, 240)
+        swift.line(18, 238, 250, 238)
+        swift.line(250, 320, 250, 240)
+        swift.line(20, 240, 20, 320)
+        swift.line(18, 238, 18, 320)
+        
+        swift.setFont('RobotoBold', 8)
+        swift.drawString(30, 280, i.fio)
+        swift.drawString(105, 270,i.ls)
+        swift.drawString(30, 300, i.adr )
+        swift.drawString(138, 260, i.o_s + " кв.м")
+        swift.drawString(130, 250, i.kol_prog)
+        swift.drawString(265, 280, "Всего к оплате: ")
+        swift.setFont('RobotoBold', 10)
+        swift.drawString(270, 250, i.koplate + ' руб.')
+
+
+        swift.line(260, 265, 260, 240)
+        swift.line(340, 265, 340, 240)
+
+
+        swift.setFont('Roboto', 8)
+        swift.drawString(25, 310, "Адрес потребителя: ")
+        swift.drawString(25, 290, "Ф.И.О. потребителя: ")
+        swift.drawString(25, 270, "Л/счет потребителя: ")
+        
         swift.drawString(
-                25, 300, "Площадь жилого помещения: "+ i.o_s + " кв.м")
+                25, 260, "Площадь жилого помещения: ")
         swift.drawString(
-                25, 290, "Количество проживающих: " + i.kol_prog)
+                25, 250, "Количество проживающих: ")
         # -----------------------------------
-        swift.setFont('RobotoBold', 11)
-        swift.drawString(150, 273, "Всего к оплате: " + i.koplate + ' руб.')
+        
         swift.setFont('Roboto', 7)
-        swift.drawString(20, 260, "Пункт приема: " + info['adr'])
-        swift.drawString(20, 250, "Адрес эл.почты: " + info['post'])
-        swift.drawString(20, 240, "Телефон для передачи показаний: " +
-                            info['phone'] + "     Срок оплаты до " + info['srok'])
+        # swift.drawString(20, 260, "Пункт приема: " + info['adr'])
+        # swift.drawString(20, 250, "Адрес эл.почты: " + info['post'])
+        # swift.drawString(20, 240, "Телефон для передачи показаний: " +
+                            # info['phone'] + "     Срок оплаты до " + info['srok'])
         # Таблица Платежей-----------------------------------------------------
         p0 = ParagraphStyle('title', fontName='RobotoBold', leading=8, fontSize=6)
         Data__ = [[Paragraph('№ пр.учета',p0),Paragraph('Показания счетчика',p0),'',Paragraph('Номер прибора',p0),Paragraph('Годен',p0)],
@@ -176,92 +201,89 @@ def pdfLove(request):
                 ['', '', '', '', '', '', '', '', ''],
                 [1, 2, 3, 4, "5 = 3*4", 6, 7, "8 = 5 + 6 + 7", 9, "10 = 8 + 9"],
                 ]
+        #---------------------------------------/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+        # --------------------------/*/*/*/*/*/*/*/*/*/*/*/************/*/*/*/*/*/*/
+
+        def Biling(st,h,*args):
+            lsKV = LsModels.objects.all().filter(ls='600008')
+            for it__ in lsKV:
+                ch__ = it__.name_met1
+            UsList = [st]
+            for  numb,i in enumerate(args):
+                if numb == 0:
+                    if ch__:
+                        i = '----'
+                    else:
+                        i = i[:-3]
+                UsList.append(i)
+            if UsList[6] == 'м3':
+                UsList[6] = 0
+            else:
+                UsList[6] = '0.00'
+            if st == 'Водоснабжение' or st == "Водоотведение ГВС":
+                UsList[6] = h
+            kOplt__ = float(UsList[4]) + float(UsList[5]) + float(UsList[6])
+            UsList[7] = kOplt__
+            return UsList
+        #---------------------------------------/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
         if i.nach_11:
-            data.append([i.nach_11, i.nach_31,
-                              i.nach_41, i.nach_51, 
-                              i.nach_61, i.nach_71, i.nach_21, 
-                              i.nach_81, i.nach_91 
-                        ])
+            data.append(
+                Biling(i.nach_11,i.nach_101, i.nach_31,i.nach_41, i.nach_51, i.nach_61, i.nach_71, i.nach_21, i.nach_81, i.nach_91)
+                )
         
         if i.nach_12:
-            data.append([i.nach_12, i.nach_32,
-                              i.nach_42, i.nach_52, 
-                              i.nach_62, i.nach_72, i.nach_22, 
-                              i.nach_82, i.nach_92 
-                        ])
+            data.append(
+                Biling(i.nach_12,i.nach_102, i.nach_32,i.nach_42, i.nach_52, i.nach_62, i.nach_72, i.nach_22, i.nach_82, i.nach_92)
+                )
         
         if i.nach_13:
-            data.append([i.nach_13, i.nach_33,
-                              i.nach_43, i.nach_53, 
-                              i.nach_63, i.nach_73, i.nach_23, 
-                              i.nach_83, i.nach_93 
-                        ])
+            data.append(
+                Biling(i.nach_13,i.nach_103, i.nach_33,i.nach_43, i.nach_53, i.nach_63, i.nach_73, i.nach_23, i.nach_83, i.nach_93)
+                )
         if i.nach_14:
-            data.append([i.nach_14, i.nach_34,
-                              i.nach_44, i.nach_54, 
-                              i.nach_64, i.nach_74, i.nach_24, 
-                              i.nach_84, i.nach_94 
-                        ])
+            data.append(
+                Biling(i.nach_14,i.nach_104, i.nach_34,i.nach_44, i.nach_54, i.nach_64, i.nach_74, i.nach_24, i.nach_84, i.nach_94)
+                )
         if i.nach_25:
-            data.append([i.nach_25, i.nach_35,
-                              i.nach_45, i.nach_55, 
-                              i.nach_65, i.nach_75, i.nach_25, 
-                              i.nach_85, i.nach_95 
-                        ])
+            data.append(
+                Biling(i.nach_25,i.nach_105, i.nach_35,i.nach_45, i.nach_55, i.nach_65, i.nach_75, i.nach_25,i.nach_85, i.nach_95)
+                )
         if i.nach_16:
-            data.append([i.nach_26, i.nach_36,
-                              i.nach_46, i.nach_56, 
-                              i.nach_66, i.nach_76, i.nach_26, 
-                              i.nach_86, i.nach_96 
-                        ])
+            data.append(
+                Biling(i.nach_26,i.nach_106, i.nach_36,i.nach_46, i.nach_56,i.nach_66, i.nach_76, i.nach_26,i.nach_86, i.nach_96)
+                )
         if i.nach_27:
-            data.append([i.nach_27, i.nach_37,
-                              i.nach_47, i.nach_57, 
-                              i.nach_67, i.nach_77, i.nach_27, 
-                              i.nach_87, i.nach_97 
-                        ])
+            data.append(
+                Biling(i.nach_27,i.nach_107, i.nach_37,i.nach_47, i.nach_57, i.nach_67, i.nach_77, i.nach_27, i.nach_87, i.nach_97)
+                )
         if i.nach_28:
-            data.append([i.nach_28, i.nach_38,
-                              i.nach_48, i.nach_58, 
-                              i.nach_68, i.nach_78, i.nach_28, 
-                              i.nach_88, i.nach_98 
-                        ])
+            data.append(
+                Biling(i.nach_28,i.nach_108, i.nach_38,i.nach_48, i.nach_58, i.nach_68, i.nach_78, i.nach_28,i.nach_88, i.nach_98 )
+                )
         if i.nach_19:
-            data.append([i.nach_19, i.nach_39,
-                              i.nach_49, i.nach_59, 
-                              i.nach_69, i.nach_79, i.nach_29, 
-                              i.nach_89, i.nach_99 
-                        ])
+            data.append(
+                Biling(i.nach_19,i.nach_109, i.nach_39,i.nach_49, i.nach_59, i.nach_69, i.nach_79, i.nach_29, i.nach_89, i.nach_99)
+                )
         if i.nach_110:
-            data.append([i.nach_110,i.nach_210, i.nach_310,
-                              i.nach_410, i.nach_510, 
-                              i.nach_610, i.nach_710, i.nach_810, 
-                              i.nach_910,  
-                        ])
+            data.append(
+                Biling(i.nach_110,i.nach_1010,i.nach_210, i.nach_310,i.nach_410, i.nach_510, i.nach_610, i.nach_710, i.nach_810, i.nach_910)
+                )
         if i.nach_111:
-            data.append([i.nach_111,i.nach_211, i.nach_311,
-                              i.nach_411, i.nach_511, 
-                              i.nach_611, i.nach_711, i.nach_811, 
-                              i.nach_911,  
-                        ])
+            data.append(
+                Biling(i.nach_111,i.nach_1011,i.nach_211, i.nach_311,i.nach_411, i.nach_511, i.nach_611, i.nach_711, i.nach_811,i.nach_911)
+                )
         if i.nach_112:
-            data.append([i.nach_112,i.nach_212, i.nach_312,
-                              i.nach_412, i.nach_512, 
-                              i.nach_612, i.nach_712, i.nach_812, 
-                              i.nach_912,  
-                        ])
+            data.append(
+                Biling(i.nach_112,i.nach_1012,i.nach_212, i.nach_312,i.nach_412, i.nach_512, i.nach_612, i.nach_712, i.nach_812, i.nach_912,)
+                )
         if i.nach_113:
-            data.append([i.nach_113,i.nach_213, i.nach_313,
-                              i.nach_413, i.nach_513, 
-                              i.nach_613, i.nach_713, i.nach_813, 
-                              i.nach_913,  
-                        ])
+            data.append(
+                Biling(i.nach_113,i.nach_1013,i.nach_213, i.nach_313,i.nach_413, i.nach_513, i.nach_613, i.nach_713, i.nach_813, i.nach_913)
+                )
         if i.nach_114:
-            data.append([i.nach_114,i.nach_214, i.nach_314,
-                              i.nach_414, i.nach_514, 
-                              i.nach_614, i.nach_714, i.nach_814, 
-                              i.nach_914,  
-                        ])
+            data.append(
+                Biling(i.nach_114,i.nach_1014,i.nach_214, i.nach_314,i.nach_414, i.nach_514,i.nach_614, i.nach_714, i.nach_814,i.nach_914,)
+                )
         data.append(['Итого: ',i.it_sumnach, i.it_sumpeni, i.it_dolg,i.it_opl, i.pred_plat])
         # Услуги
         
@@ -303,16 +325,17 @@ def pdfLove(request):
         ]))
         uslugi.wrapOn(swift, 400, 300)
         width2, height2 = uslugi.wrapOn(swift, 400, 113)
-        uslugi.drawOn(swift, 20,  230 - height2, 0)
+        uslugi.drawOn(swift, 20,  215 - height2, 0)
         # Таблица Платежей-----------------------------------------------------
         # QR-New
-        qrw = QrCodeWidget("Checking the text - Проверка текста")
+        dopInfo = 'Acc=' + i.ls + '|LastName=' + i.fio + '|payerAddress=' + i.adr
+        qrw = QrCodeWidget(i.qr + dopInfo + i.qr1)
         b = qrw.getBounds()
         w = b[2]-b[0]
         h = b[3]-b[1]
-        d = Drawing(45, 45, transform=[60./w, 0, 0, 60./h, 0, 0])
+        d = Drawing(60, 60, transform=[90./w, 0, 0, 90./h, 0, 0])
         d.add(qrw)
-        renderPDF.draw(d, swift, 290, 350)
+        renderPDF.draw(d, swift, 255, 310)
         # QR-New
     swift.showPage()
     swift.save()

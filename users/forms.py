@@ -111,9 +111,9 @@ class UserProfilePass(UserChangeForm):
 
 class AddLis(forms.Form):
     fac_lis = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', }), required=True)
+        attrs={'class': 'form_first_name', 'placeholder': '111111'}), required=True)
     summ_ = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form_first_name', }), required=True)
+        attrs={'class': 'form_first_name','placeholder': '486,67' }), required=True)
 
     class Meta:
         fields = ('fac_lis', 'summ_')

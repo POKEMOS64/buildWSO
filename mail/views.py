@@ -224,6 +224,8 @@ def pdfLove(request):
                 UsList[6] = h
             kOplt__ = float(UsList[4]) + float(UsList[5]) + float(UsList[6])
             UsList[7] = kOplt__
+            UsList[8] = '--'
+            
             return UsList
         #---------------------------------------/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
         if i.nach_11:

@@ -214,7 +214,7 @@ def pdfLove(request):
                     if ch__:
                         i = '----'
                     else:
-                        i = i[:-3]
+                        i = round(float(i),2)
                 UsList.append(i)
             if UsList[6] == 'м3':
                 UsList[6] = 0

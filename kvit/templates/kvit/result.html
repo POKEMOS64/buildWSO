@@ -58,11 +58,13 @@ continent
                   </div>
                 {% endif %}
             {% endfor %}
-            <div class="post-mailing__button">
-              <a class="button_click" href="{% url 'kvit:forma'%}">Редактировать</a>
+            <div class="post-mailing__button" style="margin: 1rem;">
+              <a class="button_click" href="{% url 'kvit:forma'%}" style="padding: .3rem;">Выбрать Лицевой счет</a>
             </div>
             {% else %}
-            <a href="{% url 'kvit:forma'%}" class="danger">Подключится к рассылке</a>
+            <div class="post-mailing__button" style="margin: 1rem;">
+            <a class="button_click" href="{% url 'kvit:forma'%}" class="danger">Подключиться к email-рассылкам</a>
+            </div>
             {% endif %}
           </div>
 

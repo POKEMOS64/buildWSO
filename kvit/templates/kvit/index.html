@@ -12,6 +12,14 @@ continent
     <div class="wrap">
       <div class="col xl12 s12 s_info_nav__post">
         <div class="wrap">
+          <div class="col xl12">
+            <h3 style="text-align: center; background: #fff; padding: .5rem; border-radius: 8px">Выбрать лицевой для
+              включения в рассылку</h3>
+            
+            <blockquote>
+              <h3 style="text-align: center; background: #fff; padding: .5rem; border-radius: 8px">Тестовый запуск запланирован на 01/12/2023</h3>
+            </blockquote>
+          </div>
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
             <form class="classic" action="{% url 'kvit:forma' %}" method="POST">
               {% csrf_token %}
@@ -23,19 +31,21 @@ continent
                 <span>Лицевой счет: {{i.lic1_pole}}</span>
                 <span>
                   {% if i.lic11_pole == True %}
-                  <input type="checkbox" name="lic" class="form_first_name" placeholder="Лицевой счет1" id="id_lic" checked>
+                  <input type="checkbox" name="lic" class="form_first_name" placeholder="Лицевой счет1" id="id_lic"
+                    checked>
                   {% else %}
                   {{form.lic}}
                   {% endif %}
                 </span>
-                
+
               </div>
 
               <div>
                 <span>Лицевой счет: {{i.lic2_pole}}</span>
                 <span>
                   {% if i.lic12_pole == True %}
-                  <input type="checkbox" name="lic2" class="form_first_name" placeholder="Лицевой счет2" id="id_lic2" checked>
+                  <input type="checkbox" name="lic2" class="form_first_name" placeholder="Лицевой счет2" id="id_lic2"
+                    checked>
                   {% else %}
                   {{form.lic2}}
                   {% endif %}
@@ -45,7 +55,8 @@ continent
                 <span>Лицевой счет: {{i.lic3_pole}}</span>
                 <span>
                   {% if i.lic13_pole == True %}
-                  <input type="checkbox" name="lic3" class="form_first_name" placeholder="Лицевой счет3" id="id_lic3" checked>
+                  <input type="checkbox" name="lic3" class="form_first_name" placeholder="Лицевой счет3" id="id_lic3"
+                    checked>
                   {% else %}
                   {{form.lic3}}
                   {% endif %}
@@ -56,7 +67,8 @@ continent
                 <span>Лицевой счет: {{i.lic4_pole}}</span>
                 <span>
                   {% if i.lic14_pole == True %}
-                  <input type="checkbox" name="lic4" class="form_first_name" placeholder="Лицевой счет4" id="id_lic4" checked>
+                  <input type="checkbox" name="lic4" class="form_first_name" placeholder="Лицевой счет4" id="id_lic4"
+                    checked>
                   {% else %}
                   {{form.lic4}}
                   {% endif %}
@@ -66,7 +78,8 @@ continent
                 <span>Лицевой счет: {{i.lic5_pole}}</span>
                 <span>
                   {% if i.lic15_pole == True %}
-                  <input type="checkbox" name="lic5" class="form_first_name" placeholder="Лицевой счет5" id="id_lic5" checked>
+                  <input type="checkbox" name="lic5" class="form_first_name" placeholder="Лицевой счет5" id="id_lic5"
+                    checked>
                   {% else %}
                   {{form.lic5}}
                   {% endif %}
@@ -76,7 +89,8 @@ continent
                 <span>Лицевой счет: {{i.lic6_pole}}</span>
                 <span>
                   {% if i.lic16_pole == True %}
-                  <input type="checkbox" name="lic6" class="form_first_name" placeholder="Лицевой счет6" id="id_lic6" checked>
+                  <input type="checkbox" name="lic6" class="form_first_name" placeholder="Лицевой счет6" id="id_lic6"
+                    checked>
                   {% else %}
                   {{form.lic6}}
                   {% endif %}
@@ -88,7 +102,7 @@ continent
                 {{form.errors}}
               </div>
               <div>
-                <button type="submit" class="button__click">Изменить</button>
+                <button type="submit" class="button__click">Подключить</button>
               </div>
             </form>
           </div>

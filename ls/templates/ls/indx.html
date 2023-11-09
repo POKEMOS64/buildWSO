@@ -16,7 +16,7 @@ lk
             <span class="s_info_nav__post__name">
               Передача показаний
             </span>
-            <span>{{messadges}}</span>
+            <span>{{ messages}}</span>
             {% if Error == '1' %}
             <p class="danger">{{ mess_data }} Показания не приняты!</p>
             <p>Вы передали показания меньше учтенных ранее,
@@ -25,11 +25,13 @@ lk
               либо обратиться лично в отдел по абонентскому обслуживанию</p>
             {% endif %}
             <form class="induct fix" action="{% url 'ls:inducations' %}" method="POST">
+
               {% if page_ls_dan == '0' %}
               {{messages}}
               {{messages__}}
               {% csrf_token %}
               <h2>{{inform__}}</h2>
+
               <div class="flex__line">
                 <div class="werf">
                   <label for="">{{ form.id_ls.label}}</label>

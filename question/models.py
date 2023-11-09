@@ -6,8 +6,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class qestionModel(models.Model):
     department = [
-        (1, 'Асу'),
-        (2, 'Отдел по работе с юр. лицами'),
+        (1, 'Ответили'),
+        (2, 'Повторение'),
         (3, 'Отдел ПТО'),
         (4, 'Отдел закупок'),
     ]
@@ -20,7 +20,14 @@ class qestionModel(models.Model):
         verbose_name='Ответ', null=True, blank=True)
 
     def __str__(self):
-        return f"{self.questionItself}"
+        otvet = 'Не ответили'
+        if self.departmentReplied == 1:
+            otvet = 'Ответил'
+        if self.departmentReplied == 2:
+            otvet = 'Повторение'
+        self.y = 'Дата: ' + str(self.dataTimes) + '  |  ' + \
+            self.questionItself + '  |  Статус :   ' + otvet
+        return f"{self.y}"
 
     class Meta:
         verbose_name = 'Вопрос'

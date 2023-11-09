@@ -192,7 +192,7 @@ def profile(request):
 
     for obj in LSData__List:
         make = obj.qr
-        dopInfo = 'Acc=' + obj.ls + '|LastName=' + obj.fio + '|payerAddress=' + obj.adr
+        dopInfo = '|LastName=' + obj.fio + '|payerAddress=' + obj.adr
         for i in obj.koplate:
             if i[0] == '-':
                 OverPay = 'On'

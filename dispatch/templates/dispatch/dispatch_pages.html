@@ -8,7 +8,7 @@ lk
 active
 {% endblock active %}
 {% block index %}
-<section class="s_info_cnn_pages col lef-xl3 xl9 lef-m0 m12 white">
+<section class="s_info_cnn_pages col lef-xl3 xl9 lef-m0 m12 white resdesign">
     <div class="container max">
         <div class="wrap">
             <div class="col xl8 m12 advertisement">
@@ -21,7 +21,7 @@ active
             </div>
             <div class="col xl12 advertisement__carusel">
                 <div class="wrap">
-                    <div class="col xl6 m12 advertisement__carusel__name">
+                    <div class="col xl12 m12 advertisement__carusel__name">
                         В связи с проведением аварийных работ, прекращена подача холодной воды по адресам:
                     </div>
                     <div class="owl-carousel owl-theme">
@@ -29,14 +29,40 @@ active
                         <div class="item">
                             <div class="wrap">
                                 <div class="col xl12 item__data">
-                                    <p>{{ obj.dataAd }}</p><span>{{ obj.gapTime }}</span>
+                                    <span>C {{ obj.gapTimeUp }}</span>
+                                    {% if obj.gapTimeDown == None %}
+                                    {% else %}
+                                    <span>По {{ obj.gapTimeDown }}</span>
+                                    {% endif %}
+
                                 </div>
                                 <div class="col xl12 item__name">
-                                    <p>{{ obj.optMaps }}</p>
-                                    {% if obj.optMaps_one == '0' %}
-
-                                    {% else %}
-                                    <p>{{ obj.optMaps_one }}</p>
+                                    {% if obj.optMaps %}
+                                    <span>{{ obj.optMaps }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_one %}
+                                    <span>{{ obj.optMaps_one }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_two %}
+                                    <span>{{ obj.optMaps_two }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_three %}
+                                    <span>{{ obj.optMaps_three }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_four %}
+                                    <span>{{ obj.optMaps_four }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_four %}
+                                    <span>{{ obj.optMaps_four }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_five %}
+                                    <span>{{ obj.optMaps_five }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_six %}
+                                    <span>{{ obj.optMaps_six }}</span>
+                                    {% endif %}
+                                    {% if obj.optMaps_seven %}
+                                    <span>{{ obj.optMaps_seven }}</span>
                                     {% endif %}
 
                                 </div>

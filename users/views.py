@@ -19,6 +19,23 @@ from qr_code.qrcode.utils import QRCodeOptions
 
 # Create your views here.
 
+def UserSerialize(request):
+    userProfile = User.objects.all()
+    for x in userProfile:
+        if x == round('Routings'):
+            break
+        
+    def build(self,*args, **kwargs)
+        self.username = ''
+        return 
+    if __name__ == '__main__':
+        pass
+    
+    # context = {
+    #     ''
+    # }
+    return render(request)
+
 
 def bruteUser(profile_user):
     for obj in profile_user:

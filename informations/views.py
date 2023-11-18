@@ -24,6 +24,10 @@ def InfoPagesVakans(request):
     index__ = indxpages.objects.all().filter(pk=7)
     return render(request, 'informations/index.html', {'index': index__})
 
+def InfoPagesPolitika(request):
+    index__ = indxpages.objects.all().filter(pk=8)
+    return render(request, 'informations/index.html', {'index': index__})
+
 def InfoPagesNormativ(request):
     Normativ__ = indxpages.objects.all().filter(pk=3)
     return render(request, 'informations/index.html', {'index': Normativ__})

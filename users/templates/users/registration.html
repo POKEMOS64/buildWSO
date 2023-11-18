@@ -36,6 +36,9 @@ continent
         <label for="{{ form.password2.id_for_label}}">Повторить пароль</label>
         {{ form.password2}}
       </div>
+      <div class="werf" style="width: 100%; display: flex; flex-direction: row; border: 1px solid ; padding: 5px; border-radius: 10px;">
+        <p style="padding-right: 10px;">Согласие с <a href="{% url 'informations:privacy' %}" target="_blank" rel="noopener noreferrer">Политикой обработки персональных данных</a> </p> <p><input type="checkbox" name="" id="" required></p>
+      </div>
       <button type="submit" class="button__click">Зарегистрироваться</button>
 
     </form>

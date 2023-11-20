@@ -19,22 +19,22 @@ from qr_code.qrcode.utils import QRCodeOptions
 
 # Create your views here.
 
-def UserSerialize(request):
-    userProfile = User.objects.all()
-    for x in userProfile:
-        if x == round('Routings'):
-            break
-        
-    def build(self,*args, **kwargs)
-        self.username = ''
-        return 
-    if __name__ == '__main__':
-        pass
-    
-    # context = {
-    #     ''
-    # }
-    return render(request)
+# def UserSerialize(request):
+#     userProfile = User.objects.all()
+#     for x in userProfile:
+#         if x == round('Routings'):
+#             break
+
+#     def build(self,*args, **kwargs)
+#         self.username = ''
+#         return
+#     if __name__ == '__main__':
+#         pass
+
+#     # context = {
+#     #     ''
+#     # }
+#     return render(request)
 
 
 def bruteUser(profile_user):
@@ -108,6 +108,7 @@ def profile(request):
     LSData__List = LsModels.objects.filter(ls=tr_)
     OverPay = 'off'
     LSData__List__summa__ = ''
+
     def Constructor(val):
         List = []
         type__ = ''
@@ -115,13 +116,14 @@ def profile(request):
             if i == '-':
                 type__Prelod = '1'
                 continue
-                
+
             elif i == ',':
                 i = "."
                 type__ = '1'
             List.append(i)
         List_ = List
-        itItog = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+        itItog = str(List_).replace('[', '').replace("]", '').replace(
+            "'", "").replace(',', '').replace(' ', '')
         if type__ == '1':
             res = float(itItog)
             print(type__)
@@ -129,6 +131,7 @@ def profile(request):
             res = int(itItog)
 
         return res
+
     def KillerString(val):
         List = []
         type__ = ''
@@ -140,8 +143,9 @@ def profile(request):
                 type__ = '1'
             List.append(i)
         List_ = List
-        itItog__ = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
-        
+        itItog__ = str(List_).replace('[', '').replace("]", '').replace(
+            "'", "").replace(',', '').replace(' ', '')
+
         if type__ == '1':
             res = float(itItog__)
             print(type__)
@@ -151,11 +155,13 @@ def profile(request):
             print(res__)
             res = float(res__)
         return res
+
     def Constructor__Plus(val, value):
         L__ = []
         L = ''
         res__x = ''
         resultat__ = ''
+
         def Constructor_x(value__):
             List = []
             type__ = ''
@@ -163,13 +169,14 @@ def profile(request):
                 if i == '-':
                     type__Prelod = '1'
                     continue
-                    
+
                 elif i == ',':
                     i = "."
                     type__ = '1'
                 List.append(i)
             List_ = List
-            itItog = str(List_).replace('[','').replace("]",'').replace("'","").replace(',','').replace(' ','')
+            itItog = str(List_).replace('[', '').replace("]", '').replace(
+                "'", "").replace(',', '').replace(' ', '')
             print(itItog)
             if type__ == '1':
                 res = float(itItog)
@@ -180,7 +187,7 @@ def profile(request):
                 print(res__)
                 res = float(res__)
             return res
-        
+
         if val == None:
             res__ = float(100000)
         elif isinstance(val, float):
@@ -196,7 +203,7 @@ def profile(request):
             val = L
             res__ = float(val)
             print(res__)
-        
+
         resultat__ = Constructor_x(value)
         data_1 = res__
         if data_1 >= resultat__:
@@ -204,7 +211,7 @@ def profile(request):
         else:
             res__x = '0'
         res = res__x
-            
+
         return res
 
     for obj in LSData__List:
@@ -215,8 +222,8 @@ def profile(request):
                 OverPay = 'On'
                 print(obj.it_dolg)
         itDolg = Constructor(obj.it_dolg)
-        itOpl = Constructor( obj.koplate )
-        itSumnach = Constructor(obj.it_sumnach) 
+        itOpl = Constructor(obj.koplate)
+        itSumnach = Constructor(obj.it_sumnach)
         LSData__List__summa__ = str(round(itOpl, 2))
         info1 = obj.qr1
     qr_Options = QRCodeOptions(
@@ -322,49 +329,49 @@ def profile(request):
                 id_ls = obj.id_ls
                 name_dom = obj.name_dom
                 name_kv = obj.name_kv
-                hv1_data  = Constructor__Plus(__hv1_data, obj.hv1_data )
-                hv2_data = Constructor__Plus(__hv2_data, obj.hv2_data )
-                hv3_data = Constructor__Plus(__hv3_data, obj.hv3_data )
-                hv4_data = Constructor__Plus(__hv_data, obj.hv_data )
-                gv1_data = Constructor__Plus(__gv1_data, obj.gv1_data )
-                gv2_data = Constructor__Plus(__gv2_data, obj.gv2_data )
-                gv3_data = Constructor__Plus(__gv3_data, obj.gv3_data )
-                gv4_data = Constructor__Plus(__gv4_data, obj.gv4_data )
+                hv1_data = Constructor__Plus(__hv1_data, obj.hv1_data)
+                hv2_data = Constructor__Plus(__hv2_data, obj.hv2_data)
+                hv3_data = Constructor__Plus(__hv3_data, obj.hv3_data)
+                hv4_data = Constructor__Plus(__hv_data, obj.hv_data)
+                gv1_data = Constructor__Plus(__gv1_data, obj.gv1_data)
+                gv2_data = Constructor__Plus(__gv2_data, obj.gv2_data)
+                gv3_data = Constructor__Plus(__gv3_data, obj.gv3_data)
+                gv4_data = Constructor__Plus(__gv4_data, obj.gv4_data)
                 if hv1_data == '0':
                     mess_data = 'Ошибка ХВ_1'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif hv2_data == '0':
                     mess_data = 'Ошибка ХВ_2'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif hv3_data == '0':
                     mess_data = 'Ошибка ХВ_3'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif hv3_data == '0':
                     mess_data = 'Ошибка ХВ_3'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif hv4_data == '0':
                     mess_data = 'Ошибка ХВ_4'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif gv1_data == '0':
                     mess_data = 'Ошибка ГВС_1'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif gv2_data == '0':
                     mess_data = 'Ошибка ГВС_2'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif gv3_data == '0':
                     mess_data = 'Ошибка ГВС_3'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 elif gv4_data == '0':
                     mess_data = 'Ошибка ГВС_4'
-                    messadges= '1'
+                    messadges = '1'
                     form__ = MakeStatement()
                 else:
                     feed = SEND_(
@@ -402,7 +409,7 @@ def profile(request):
                     else:
                         feed.save()
                         return HttpResponseRedirect(reverse('users:profile'))
-                
+
         else:
             form__ = MakeStatement()
             print("Робот")

@@ -15,9 +15,10 @@ continent
           <div class="col xl12">
             <h3 style="text-align: center; background: #fff; padding: .5rem; border-radius: 8px">Выбрать лицевой для
               включения в рассылку</h3>
-            
+
             <blockquote>
-              <h3 style="text-align: center; background: #fff; padding: .5rem; border-radius: 8px">Тестовый запуск запланирован на 01/12/2023</h3>
+              <h3 style="text-align: center; background: #fff; padding: .5rem; border-radius: 8px">Тестовый запуск
+                запланирован на 01/12/2023</h3>
             </blockquote>
           </div>
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
@@ -27,6 +28,7 @@ continent
               {% else %}
               {% endif %}
               {% for i in useCheck %}
+
               <div>
                 <span>Лицевой счет: {{i.lic1_pole}}</span>
                 <span>
@@ -39,7 +41,7 @@ continent
                 </span>
 
               </div>
-
+              {% if i.lic2_pole %}
               <div>
                 <span>Лицевой счет: {{i.lic2_pole}}</span>
                 <span>
@@ -51,6 +53,8 @@ continent
                   {% endif %}
                 </span>
               </div>
+              {% endif %}
+              {% if i.lic3_pole %}
               <div>
                 <span>Лицевой счет: {{i.lic3_pole}}</span>
                 <span>
@@ -63,6 +67,8 @@ continent
 
                 </span>
               </div>
+              {% endif %}
+              {% if i.lic4_pole %}
               <div>
                 <span>Лицевой счет: {{i.lic4_pole}}</span>
                 <span>
@@ -74,6 +80,8 @@ continent
                   {% endif %}
                 </span>
               </div>
+              {% endif %}
+              {% if i.lic5_pole %}
               <div>
                 <span>Лицевой счет: {{i.lic5_pole}}</span>
                 <span>
@@ -85,6 +93,8 @@ continent
                   {% endif %}
                 </span>
               </div>
+              {% endif %}
+              {% if i.lic6_pole %}
               <div>
                 <span>Лицевой счет: {{i.lic6_pole}}</span>
                 <span>
@@ -97,6 +107,7 @@ continent
 
                 </span>
               </div>
+              {% endif %}
               {% endfor %}
               <div>
                 {{form.errors}}

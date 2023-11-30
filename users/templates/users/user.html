@@ -23,7 +23,9 @@ continent
               <h3>Данные пользователя</h3>
               <div>
                 <a class="button_click" href="{% url 'persona:user' %}">Редактировать данные</a>
+                {% if user.lic %}
                 <a class="button_click" href="{% url 'kvit:index' %}">Включить рассылку</a>
+                {% endif %}
                 <a class="button_click" href="{% url 'users:addlis' %}">Добавить лицевой</a>
                 <a class="button_click" href="{% url 'logout' %}">Выйти из профиля</a>
               </div>
@@ -108,7 +110,7 @@ continent
             </div>
           </div>
           <!-- --------------------------------------------------------- -->
-          {% if user.lic_def %}
+          {% if user.lic_def == '0' %}
           <div class="col xl7 l12 m12 profile__forms">
             {% if Error == 1 %}
             <blockquote>
@@ -587,7 +589,7 @@ continent
 
         </div>
         {% endfor %}
-        
+
       </div>
       <!-- <h2>Квитанции (В разработке)</h2>
       <div class="wrap">

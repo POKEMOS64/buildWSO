@@ -80,6 +80,7 @@ def registration(request):
             return HttpResponseRedirect(reverse('users:login'))
         else:
             print(form.errors)
+            
     else:
         form = UserRegistrationForm()
     context = {'form': form}

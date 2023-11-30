@@ -50,6 +50,7 @@ def Kvit(request):
             )
             if list_prof:
                 Receipt.objects.filter(user_name = userX).update(
+                    
                     lic11_pole = form.cleaned_data['lic'],
                     lic12_pole = form.cleaned_data['lic2'],
                     lic13_pole = form.cleaned_data['lic3'],

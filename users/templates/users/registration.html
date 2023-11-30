@@ -10,6 +10,9 @@ continent
     <span class="s_info_nav__post__name">
       Регистрация
     </span>
+    {% if form.errors %}
+      <span style="background: red; padding: 5px; color: #fff; display: block; text-align: center;">Пользователь с логином уже существует! Придумайте уникальный логин.</span>
+    {% endif %}
     <form action="{% url 'users:registration' %}" method="POST">
       {% csrf_token %}
       <div class="werf">

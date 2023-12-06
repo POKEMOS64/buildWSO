@@ -6,7 +6,7 @@ from django.db import models
 # Register your models here.
 
 
-admin.site.register(User)
+admin.site.register(UserAdmin)
 admin.site.register(UserPol)
 admin.site.register(userPers)
 # admin.site.register(fcecountSQL)

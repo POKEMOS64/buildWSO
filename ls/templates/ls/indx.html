@@ -24,8 +24,8 @@ lk
               по средствам электронной почты на адрес: <a href="mailto:mkdkomarova@yandex.ru">mkdkomarova@yandex.ru</a>,
               либо обратиться лично в отдел по абонентскому обслуживанию</p>
             {% endif %}
-            <h2 style="text-align: center;">Все показания были приняты.</h2>
-            <!--             
+            <!-- <h2 style="text-align: center;">Все показания были приняты.</h2> -->
+
             <form class="induct fix" action="{% url 'ls:inducations' %}" method="POST">
 
               {% if page_ls_dan == '0' %}
@@ -83,142 +83,142 @@ lk
                 </div>
                 {% endif %}
                 <!--  -->
-            {% if obj.codsh_gv1 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ГВС_1</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.gv1_data }}</span>
+                {% if obj.codsh_gv1 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ГВС_1</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.gv1_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.gv1_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.gv1_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsch_hv2 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ХВ_2</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.hv2_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsch_hv2 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ХВ_2</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.hv2_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.hv2_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.hv2_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsch_gv2 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ГВС_2</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.gv2_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsch_gv2 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ГВС_2</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.gv2_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.gv2_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.gv2_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsch_hv3 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ХВС_3</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.hv3_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsch_hv3 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ХВС_3</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.hv3_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.hv3_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.hv3_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsch_gv3 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ГВС_3</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.gv3_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsch_gv3 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ГВС_3</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.gv3_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.gv3_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.gv3_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsch_hv4 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ХВС_4</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.hv_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsch_hv4 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ХВС_4</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.hv_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.hv_data }}
+                  </div>
                 </div>
-              </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.hv_data }}
-              </div>
-            </div>
-            {% endif %}
-            <!--  -->
-            {% if obj.codsh_gv4 %}
-            <div class="induc__case_text">
-              <div class="items">
-                <i>Cчетчик ГВС_4</i>
-                <div class="curcl">Показания в прошлом месяце:
-                  <span>{{ obj.gv4_data }}</span>
+                {% endif %}
+                <!--  -->
+                {% if obj.codsh_gv4 %}
+                <div class="induc__case_text">
+                  <div class="items">
+                    <i>Cчетчик ГВС_4</i>
+                    <div class="curcl">Показания в прошлом месяце:
+                      <span>{{ obj.gv4_data }}</span>
+                    </div>
+                  </div>
+                  <div class="items_forms">
+                    <label for="hv1">Ваши показания </label>
+                    {{ form.gv4_data }}
+                  </div>
                 </div>
+                {% endif %}
               </div>
-              <div class="items_forms">
-                <label for="hv1">Ваши показания </label>
-                {{ form.gv4_data }}
-              </div>
+
+              {% endfor %}
+              <button type="submit" name="inducenter" class="button__click">Передать</button>
+              {% endif %}
+
+            </form>
+            <div class="infor__div">
+              <a href="{% url 'users:registration' %}" class="link link-button">Пройти регистрацию</a>
+              <p>Данный раздел находится в разработке, может быть сбой при проверке данных. <br>
+                Мы постоянно работаем и улучшаем систему. <br> Спасибо за понимание.
+
+              </p>
             </div>
-            {% endif %}
           </div>
-
-          {% endfor %}
-          <button type="submit" name="inducenter" class="button__click">Передать</button>
-          {% endif %}
-
-          </form> -->
-          <div class="infor__div">
-            <a href="{% url 'users:registration' %}" class="link link-button">Пройти регистрацию</a>
-            <p>Данный раздел находится в разработке, может быть сбой при проверке данных. <br>
-              Мы постоянно работаем и улучшаем систему. <br> Спасибо за понимание.
-
-            </p>
-          </div>
-        </div>
-        <!--  -->
-        <div class="induc__link col xl12">
-          <span class="s_info_nav__post__name">
-            Передача показаний без авторизации
-          </span>
-          <div class="s_info_nav__post__old">
-            <a class="curlc mkd" href="#" style="background-image: url({% static 'img/mkd.svg' %});">
-              <span>МКД</span></a>
-            <a class="curlc ch" href="#" style="background-image: url({% static 'img/ch.svg' %});">
-              <span>Частный сектор</span></a>
-            <a class="curlc sela" href="#" style="background-image: url({% static 'img/sela.svg' %});">
-              <span>Села</span></a>
+          <!--  -->
+          <div class="induc__link col xl12">
+            <span class="s_info_nav__post__name">
+              Передача показаний без авторизации
+            </span>
+            <div class="s_info_nav__post__old">
+              <a class="curlc mkd" href="#" style="background-image: url({% static 'img/mkd.svg' %});">
+                <span>МКД</span></a>
+              <a class="curlc ch" href="#" style="background-image: url({% static 'img/ch.svg' %});">
+                <span>Частный сектор</span></a>
+              <a class="curlc sela" href="#" style="background-image: url({% static 'img/sela.svg' %});">
+                <span>Села</span></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
   </div>
   <!-- Конец -->

@@ -80,7 +80,7 @@ def registration(request):
             return HttpResponseRedirect(reverse('users:login'))
         else:
             print(form.errors)
-            
+
     else:
         form = UserRegistrationForm()
     context = {'form': form}
@@ -551,7 +551,7 @@ def profileAddLis(request):
                 instance.lic6 = res_[5]
                 instance.save()
             else:
-                messages = 'Такой лицевой счет не найден. Попробуйте добавить другой'
+                messages = 'Такой лицевой счет не найден (Оплата еще не зашла). Попробуйте добавить другой'
                 form_ = AddLis()
         else:
             print("Не работает")

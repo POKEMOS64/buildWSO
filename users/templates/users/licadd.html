@@ -12,9 +12,10 @@ continent
       <div class="col xl12 s12 s_info_nav__post">
         <div class="wrap">
           <div class="s_info_nav__post__lk col xl12" style="background-image: url({% static 'img/walve.svg' %});">
-            <form class="classic" action="{% url 'users:addlis' %}" method="POST">
+            <h2 style="text-align: center;padding: 1rem;font-size: 1.2rem;background: red;margin: 1rem;color: white;border-radius: 10px;">Система остановленна. Данные не обновлялись больше месяца.</h2>
+            <!-- <form class="classic" action="{% url 'users:addlis' %}" method="POST">
               {% csrf_token %}
-              <h4>Обновление (06.11.2023)</h4>
+              <h4>Обновление (11.12.2023)</h4>
               <div>
                 <span>Добавить лицевой: </span>
                 <span>(Ваш номер лицевого) </span>
@@ -36,7 +37,7 @@ continent
               <div>
                 <button type="submit" class="button__click">Добавить</button>
               </div>
-            </form>
+            </form> -->
 
           </div>
         </div>

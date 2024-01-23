@@ -44,6 +44,10 @@ def WaterSupply(request):
     return render(request, 'informations/info_index_watersupply.html', {'waterpages': WaterSupp, 'document': documentTypes})
 
 
+def WaterConnect_Polevoy(request):
+    water_dis = WaterModel.objects.all().filter(pk=4)
+    return render(request, 'informations/info_index_waterconnect_Polevoy.html', {'waterpages': water_dis})
+
 def WaterDis(request):
     water_dis = WaterModel.objects.all().filter(pk=2)
     documentTypes = WaterModelDocDisposal.objects.all().order_by('-pk')

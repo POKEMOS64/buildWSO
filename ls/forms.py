@@ -3,7 +3,7 @@ from django import forms
 
 class LkInduc(forms.Form):
     id_ls = forms.CharField(label='Номер лицевого счета', max_length=15)
-    name_dom = forms.CharField(label='Номер дома', max_length=10)
+    name_dom = forms.CharField(label='Номер дома !', max_length=10)
     name_kv = forms.CharField(label='Номер квартиры', max_length=10)
 
     class Meta:
